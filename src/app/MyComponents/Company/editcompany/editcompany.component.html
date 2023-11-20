@@ -1,0 +1,30 @@
+<div class="container" >
+	<!-- start: PAGE HEADER -->
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- start: PAGE TITLE & BREADCRUMB -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#"> <i class="fa fa-home"></i>&nbsp;Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Company</li>
+                </ol>
+            </div>
+        </div>
+           
+      <form (ngSubmit)="onSubmit()" method="POST">
+     
+       <div class="card">
+           <div class="card-header"><h4>Edit Company</h4> </div>
+     
+       <div class="card-body">
+        <div class="form-group">
+            <input type="hidden" name="comp_id" [(ngModel)]="company.comp_id"/>
+            <label for="comp_name">Company Name:</label>
+            <input type="text" class="form-control mb-3" id="comp_name" [(ngModel)]="company.comp_name"  placeholder="Enter Company's Name" name="comp_name" required>
+        </div>
+            <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;<button type="reset" class="btn btn-primary">Cancel</button>
+        </div>
+      </div>
+     </form>
+   </div>

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'finalassetmanagement';
+  loggedUser = 'admin'
+  isUserLoggedIn() {
+    return true
+  }
 }
