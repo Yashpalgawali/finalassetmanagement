@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GlobalComponent } from '../GlobalComponent';
-import { Designation } from '../Models/Designation';
+
 import { Observable } from 'rxjs';
+import { GlobalComponent } from '../GlobalComponents';
+import { Designation } from 'src/Models/Designation';
 
 @Injectable({
   providedIn: 'root'

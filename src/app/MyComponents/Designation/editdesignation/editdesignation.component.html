@@ -1,0 +1,28 @@
+<div class="container" >
+	
+    <!-- start: PAGE HEADER -->
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- start: PAGE TITLE & BREADCRUMB -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#"> <i class="fa fa-home"></i>&nbsp;Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Designation</li>
+                </ol>
+            </div>
+        </div>
+           
+    <form (ngSubmit)="onSubmit()" method="POST">
+       <div class="card">
+           <div class="card-header"><h4>Edit Designation</h4> </div>
+       <div class="card-body">
+        <div class="form-group">
+           <label for="desig_name">Designation Name:</label>
+            <input type="text" class="form-control mb-3" id="desig_name" [(ngModel)]="designation.desig_name" placeholder="Enter Designation" name="desig_name" required>
+        </div>
+            <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;<button type="reset" class="btn btn-primary">Cancel</button>
+        </div>
+      </div>
+     </form>
+   </div>
