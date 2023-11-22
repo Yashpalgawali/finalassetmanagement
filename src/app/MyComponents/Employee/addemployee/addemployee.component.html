@@ -9,10 +9,10 @@
 				</ol>
 			</div>
 		</div>
-		<form   method="post">
+		<form  (submit)="onSubmit()" method="post">
 			<div class="card">
 				<div class="card-header"><h4>Assign Asset</h4></div>
-				<!-- <input type="hidden" id="appname" name="appname" th:value="${appname}"/>	 -->
+				
 				<div class="card-body">
 					<div class="form-group">
 						<label for="emp_name">Employee Name</label>
@@ -49,23 +49,17 @@
 					</div>
                     <div class="form-group mb-3">
                         <label for="multi_assets">Assets</label>
-                       
-                        <!-- <ng-multiselect-dropdown
-											[placeholder]="'Select Assets'"
-											name="multi_assets"
-											[data]="clist"
-											[(ngModel)]="employee.multi_assets"
-											>
-					</ng-multiselect-dropdown> -->
-                    
-                        <ng-select
-                        [items]="clist"
-                        bindLabel="multi_assets"
-                        placeholder="Select item"
-                        appendTo="body"
-                        [multiple]="true"
-                        [(ngModel)]="employee.multi_assets">
-                        </ng-select>
+						<ng-select
+							[items]="assetlist"
+							[(ngModel)]="employee.asset_ids"
+							[multiple]="true"
+							[closeOnSelect]="false"
+							bindLabel="asset_name"
+							bindValue="asset_id"
+							placeholder="Select Assets"
+							name="multi_assets"
+						>
+						</ng-select>
                     </div>
                   <input type="submit" class="btn btn-primary" value="Submit" /><input type="reset" class="btn btn-primary" value="RESET" />
 				</div>

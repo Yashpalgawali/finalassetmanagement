@@ -1,5 +1,5 @@
-import { Company } from "./Company"
-import { Department } from "./Department"
+import { Company }     from "./Company"
+import { Department }  from "./Department"
 import { Designation } from "./Designation"
 
 export class Employee {
@@ -9,7 +9,8 @@ export class Employee {
     emp_contact !: string
     designation !: Designation  
     department  !: Department
-    multi_assets!: string
+    multi_assets!: any
+    asset_ids   !: any[]
     comments    !: string
     company     !: Company
 }
