@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { error } from 'jquery';
 import { Designation } from 'src/Models/Designation';
 import { DesignationService } from 'src/app/Services/designation.service';
 
@@ -20,7 +21,12 @@ export class EditdesignationComponent {
 
   onSubmit()
   {
-    this.desigserv.updateDesignation(this.designation).subscribe(data=>this.goToViewDesignations());
+    this.desigserv.updateDesignation(this.designation).subscribe(data=>{
+                                                                        sessionStorage.setItem('response','Designation is updated successfully')  
+                                                                        this.goToViewDesignations()},
+                                                                        error=>{
+                                                                          sessionStorage.setItem('reserr','Designation is not updated')
+                                                                        });
   }
   goToViewDesignations()
   {

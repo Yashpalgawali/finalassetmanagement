@@ -26,6 +26,7 @@ import { ViewassettypeComponent } from './MyComponents/AssetType/viewassettype/v
 import { EditassettypeComponent } from './MyComponents/AssetType/editassettype/editassettype.component';
 import { ViewassetComponent } from './MyComponents/Asset/viewasset/viewasset.component';
 import { EditassetComponent } from './MyComponents/Asset/editasset/editasset.component';
+import { AssignedassetsComponent } from './MyComponents/Asset/assignedassets/assignedassets.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { EditassetComponent } from './MyComponents/Asset/editasset/editasset.com
     ViewassettypeComponent,
     EditassettypeComponent,
     ViewassetComponent,
-    EditassetComponent
+    EditassetComponent,
+    AssignedassetsComponent
   ],
   imports: [
     BrowserModule,

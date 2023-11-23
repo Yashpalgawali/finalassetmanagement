@@ -3,6 +3,7 @@ import { GlobalComponent } from '../GlobalComponents';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from 'src/Models/Employee';
 import { Observable } from 'rxjs';
+import { AssignedAssets } from 'src/Models/AssignedAssets';
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +32,9 @@ export class EmployeeService {
   // {
   //   return this.http.put<Employee[]>(`${this.base_url}`,desig);
   // }
+
+  public getAssignedAssets():Observable<AssignedAssets[]>
+  {
+    return this.http.get<AssignedAssets[]>(`${this.base_url}viewassignedassets`)
+  }
 }
