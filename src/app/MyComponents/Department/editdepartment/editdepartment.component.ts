@@ -25,7 +25,10 @@ export class EditdepartmentComponent {
   }
 
   public onSubmit() {
-    this.deptserv.updateDepartment(this.department).subscribe(data=>this.goToViewDepartments());
+    this.deptserv.updateDepartment(this.department).subscribe(data=>{ 
+                                                                    sessionStorage.setItem('response','Company updated Successfully')
+                                                                    this.goToViewDepartments()
+                                                              });
   }
   public goToViewDepartments()
   {

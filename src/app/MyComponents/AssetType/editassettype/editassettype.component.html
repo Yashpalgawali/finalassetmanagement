@@ -1,0 +1,28 @@
+<div class="container">
+	<!-- start: PAGE HEADER -->
+		<div class="row">
+			<div class="col-sm-12">
+				<!-- start: PAGE TITLE & BREADCRUMB -->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a routerLink="/"><i class="fa fa-home"></i>&nbsp;Home</a>
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">Edit Asset Type</li>
+				</ol>
+			</div>
+		</div>
+		<form (submit)="onSubmit()" method="post" > 
+			<div class="card">
+			  <div class="card-header"><h4>Edit Asset Type</h4></div>
+				<div class="card-body">
+				<div class="form-group mb-3">
+				  <label>Asset Type </label>
+                    <input type="hidden" [(ngModel)]="assettype.type_id" name="type_id" />
+					<input class="form-control " type="text" id="type_name" name="type_name" [(ngModel)]="assettype.type_name" placeholder="Enter Asset Type " required/>
+				</div>
+				<input type="submit" class="btn btn-primary" value="Submit"/>
+					<input type="reset" class="btn btn-primary" value="RESET"/>
+				</div>	
+			</div>	
+		</form>
+	</div>

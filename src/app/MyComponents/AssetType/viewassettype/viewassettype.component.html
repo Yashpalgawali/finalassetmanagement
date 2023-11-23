@@ -6,33 +6,33 @@
                 <li class="breadcrumb-item">
                     <a routerLink="/"> <i class="fa fa-home"></i>&nbsp;Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">View Company</li>
+                <li class="breadcrumb-item active" aria-current="page">View AssetTypes</li>
             </ol>
         </div>
     </div>
     <div class="card-header">
-        <h4>View Companies 
-            <a routerLink="/addcompany" style="float:right;" class="btn btn-primary mb-3">Add Company</a>
+        <h4>View AssetTypes 
+            <a routerLink="/addassettype" style="float:right;" class="btn btn-primary mb-3">Add AssetType</a>
         </h4>
     </div>
-    <div *ngIf="response"><h6 class="alert alert-success">{{response}}</h6></div>
-    <div *ngIf="reserr"><h6 class="alert alert-danger">{{reserr}}</h6></div>
+    <div *ngIf="response"> <h6 class="alert alert-success">{{response}}</h6> </div>
+    <div *ngIf="reserr"> <h6 class="alert alert-danger">{{reserr}}</h6> </div>
 <div class="card-body">
   <div class="table-responsive-sm">    
     <table class="table table-striped  table-hover table-full-width dt-responsive nowrap " datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="width: 100%;" id="comptable">
         <thead>
             <tr>
                 <th>Sr No.</th> 
-                <th>Company</th>
+                <th>Asset Type</th>
                 <th>Action</th>
             </tr>
         </thead>
     <tbody>
-        <tr *ngFor="let comp of complist; let i = index ">
+        <tr *ngFor="let type of atypelist; let i = index ">
             <td>{{i+1}}</td>
-            <td>{{comp.comp_name}}</td>
+            <td>{{type.type_name}}</td>
             <td>
-                <button (click)="getCompById(comp.comp_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button> 
+                <button (click)="getAssetTypeById(type.type_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button> 
             </td>
         </tr> 
     </tbody>

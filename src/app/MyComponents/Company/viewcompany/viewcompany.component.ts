@@ -26,7 +26,21 @@ export class ViewcompanyComponent {
     }
     this.compserv.getAllCompanies().subscribe(data=>{
                                                       this.complist=data 
-                                                       // initiate our data table
+                                                      if(sessionStorage.getItem('response')!=null)
+                                                      {
+                                                        this.response=sessionStorage.getItem('response')
+                                                        setTimeout(() => {
+                                                          sessionStorage.removeItem('response')
+                                                        }, 4000);
+                                                      }
+                                                      if(sessionStorage.getItem('reserr')!=null)
+                                                      {
+                                                        this.reserr=sessionStorage.getItem('reserr')
+                                                        setTimeout(() => {
+                                                          sessionStorage.removeItem('reserr')
+                                                        }, 4000);
+                                                      } 
+                                                      // initiate our data table
                                                        this.dtTrigger.next(null)
                                                     });
     

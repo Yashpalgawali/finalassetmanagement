@@ -15,23 +15,23 @@ export class AssetService {
   
   constructor(private http : HttpClient) { }
 
-  // public saveCompany(company : Company):Observable<Company>
-  // {
-  //   return this.http.post<Company>(`${this.base_url}`,company  );
-  // }
+  public saveAsset(Assets : Assets):Observable<Assets>
+  {
+    return this.http.post<Assets>(`${this.base_url}`,Assets  );
+  }
 
   public getAllAssets():Observable<Assets[]>
   {
     return this.http.get<Assets[]>(`${this.base_url}`);
   }
 
-  // public getCompanyById(cid :any):Observable<Company>
-  // {
-  //   return this.http.get<Company>(`${this.base_url}${cid}`);
-  // }
+  public getAssetsById(cid :any):Observable<Assets>
+  {
+    return this.http.get<Assets>(`${this.base_url}${cid}`);
+  }
 
-  // public updateCompany(company : Company)
-  // {
-  //   return this.http.put<Company[]>(`${this.base_url}`,company);
-  // }
+  public updateAssets(Assets : Assets)
+  {
+    return this.http.put<Assets[]>(`${this.base_url}`,Assets);
+  }
 }

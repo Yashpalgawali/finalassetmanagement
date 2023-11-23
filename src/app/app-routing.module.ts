@@ -12,6 +12,12 @@ import { ViewdesignationComponent } from './MyComponents/Designation/viewdesigna
 import { AddemployeeComponent } from './MyComponents/Employee/addemployee/addemployee.component';
 import { ViewemployeeComponent } from './MyComponents/Employee/viewemployee/viewemployee.component';
 import { EditemployeeComponent } from './MyComponents/Employee/editemployee/editemployee.component';
+import { AddassettypeComponent } from './MyComponents/AssetType/addassettype/addassettype.component';
+import { ViewassettypeComponent } from './MyComponents/AssetType/viewassettype/viewassettype.component';
+import { EditassettypeComponent } from './MyComponents/AssetType/editassettype/editassettype.component';
+import { AddassetComponent } from './MyComponents/Asset/addasset/addasset.component';
+import { ViewassetComponent } from './MyComponents/Asset/viewasset/viewasset.component';
+import { EditassetComponent } from './MyComponents/Asset/editasset/editasset.component';
 
 const routes: Routes = [
   { path : "addcompany" , component : AddcompanyComponent },
@@ -28,7 +34,14 @@ const routes: Routes = [
   { path : "editdesigbyid/:id" , component : EditdesignationComponent },
   { path : "addemployee" , component : AddemployeeComponent  },
   { path : "viewemployee" , component : ViewemployeeComponent },
-  { path : "editdesigbyid/:id" , component : EditemployeeComponent }
+  { path : "editdesigbyid/:id" , component : EditemployeeComponent },
+ 
+  { path : "addassettype" , component : AddassettypeComponent  },
+  { path : "viewassettypes" , component : ViewassettypeComponent },
+  { path : "editassettypebyid/:id" , component : EditassettypeComponent },
+  { path : "addasset" , component : AddassetComponent },
+  { path : "viewassets" , component : ViewassetComponent },
+  { path : "editassetbyid/:id" , component : EditassetComponent }
  
 ];
 

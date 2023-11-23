@@ -20,6 +20,12 @@ import { ViewemployeeComponent } from './MyComponents/Employee/viewemployee/view
 import { EditemployeeComponent } from './MyComponents/Employee/editemployee/editemployee.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AddassetComponent } from './MyComponents/Asset/addasset/addasset.component';
+import { AddassettypeComponent } from './MyComponents/AssetType/addassettype/addassettype.component';
+import { ViewassettypeComponent } from './MyComponents/AssetType/viewassettype/viewassettype.component';
+import { EditassettypeComponent } from './MyComponents/AssetType/editassettype/editassettype.component';
+import { ViewassetComponent } from './MyComponents/Asset/viewasset/viewasset.component';
+import { EditassetComponent } from './MyComponents/Asset/editasset/editasset.component';
 
 
 @NgModule({
@@ -36,7 +42,13 @@ import { NgSelectModule } from '@ng-select/ng-select';
     EditdesignationComponent,
     AddemployeeComponent,
     ViewemployeeComponent,
-    EditemployeeComponent
+    EditemployeeComponent,
+    AddassetComponent,
+    AddassettypeComponent,
+    ViewassettypeComponent,
+    EditassettypeComponent,
+    ViewassetComponent,
+    EditassetComponent
   ],
   imports: [
     BrowserModule,

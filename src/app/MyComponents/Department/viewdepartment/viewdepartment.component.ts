@@ -12,7 +12,8 @@ import { DepartmentService } from 'src/app/Services/department.service';
 export class ViewdepartmentComponent {
 
   constructor(private deptserv : DepartmentService,private router : Router ) {}
-
+  response : any
+  reserr : any
   deptlist : any;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
@@ -23,6 +24,20 @@ export class ViewdepartmentComponent {
   }
     this.deptserv.getAllDepartments().subscribe(data=>{
                                                         this.deptlist=data
+                                                        if(sessionStorage.getItem('response')!=null)
+                                                        {
+                                                          this.response=sessionStorage.getItem('response')
+                                                          setTimeout(() => {
+                                                            sessionStorage.removeItem('response')
+                                                          }, 4000);
+                                                        }
+                                                        if(sessionStorage.getItem('reserr')!=null)
+                                                        {
+                                                          this.reserr=sessionStorage.getItem('reserr')
+                                                          setTimeout(() => {
+                                                            sessionStorage.removeItem('reserr')
+                                                          }, 4000);
+                                                        } 
                                                         // initiate our data table
                                                         this.dtTrigger.next(null);
                                                       }
