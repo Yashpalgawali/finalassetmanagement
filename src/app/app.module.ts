@@ -27,6 +27,7 @@ import { EditassettypeComponent } from './MyComponents/AssetType/editassettype/e
 import { ViewassetComponent } from './MyComponents/Asset/viewasset/viewasset.component';
 import { EditassetComponent } from './MyComponents/Asset/editasset/editasset.component';
 import { AssignedassetsComponent } from './MyComponents/Asset/assignedassets/assignedassets.component';
+import { AssetAssignHistoryComponent } from './MyComponents/Asset/asset-assign-history/asset-assign-history.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AssignedassetsComponent } from './MyComponents/Asset/assignedassets/ass
     EditassettypeComponent,
     ViewassetComponent,
     EditassetComponent,
-    AssignedassetsComponent
+    AssignedassetsComponent,
+    AssetAssignHistoryComponent
   ],
   imports: [
     BrowserModule,

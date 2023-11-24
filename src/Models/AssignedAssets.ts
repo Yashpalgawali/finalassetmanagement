@@ -8,7 +8,7 @@ export class AssignedAssets {
     ass_assets : any
     assigned_asset_types : any
     assigned !: string
-    
+    model_numbers !: string
     assigned_types !: string
     asset_id   :any
     emp_id !: number

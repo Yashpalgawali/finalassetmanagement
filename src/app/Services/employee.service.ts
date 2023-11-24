@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Employee } from 'src/Models/Employee';
 import { Observable } from 'rxjs';
 import { AssignedAssets } from 'src/Models/AssignedAssets';
+import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,10 @@ export class EmployeeService {
   public getAssignedAssets():Observable<AssignedAssets[]>
   {
     return this.http.get<AssignedAssets[]>(`${this.base_url}viewassignedassets`)
+  }
+
+  public getAssetAssignHistByEmpId(eid : any):Observable<AssetAssignHistory[]>
+  {
+    return this.http.get<AssetAssignHistory[]>(`${this.base_url}viewemphistbyempid/${eid}`); 
   }
 }

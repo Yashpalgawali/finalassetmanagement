@@ -7,10 +7,10 @@ export class Employee {
     emp_name    !: string
     emp_email   !: string
     emp_contact !: string
-    designation !: Designation  
-    department  !: Department
+    designation : Designation  = new Designation()
+    department  : Department = new Department()
     multi_assets!: any
     asset_ids   !: any[]
     comments    !: string
-    company     !: Company
+    company     : Company = new Company()
 }

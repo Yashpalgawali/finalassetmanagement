@@ -18,6 +18,9 @@ import { EditassettypeComponent } from './MyComponents/AssetType/editassettype/e
 import { AddassetComponent } from './MyComponents/Asset/addasset/addasset.component';
 import { ViewassetComponent } from './MyComponents/Asset/viewasset/viewasset.component';
 import { EditassetComponent } from './MyComponents/Asset/editasset/editasset.component';
+import { AssignedassetsComponent } from './MyComponents/Asset/assignedassets/assignedassets.component';
+import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
+import { AssetAssignHistoryComponent } from './MyComponents/Asset/asset-assign-history/asset-assign-history.component';
 
 const routes: Routes = [
   { path : "addcompany" , component : AddcompanyComponent },
@@ -41,7 +44,9 @@ const routes: Routes = [
   { path : "editassettypebyid/:id" , component : EditassettypeComponent },
   { path : "addasset" , component : AddassetComponent },
   { path : "viewassets" , component : ViewassetComponent },
-  { path : "editassetbyid/:id" , component : EditassetComponent }
+  { path : "editassetbyid/:id" , component : EditassetComponent },
+  { path : "viewassignedassets" , component : AssignedassetsComponent },
+  { path : "viewassetassignhist/:id" , component : AssetAssignHistoryComponent }
  
 ];
 

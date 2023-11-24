@@ -42,7 +42,6 @@ deptlist   : Department[] = [];
 
   onSubmit()
   {
-    //alert(this.employee.asset_ids)
     this.empserv.saveEmployee(this.employee).subscribe(data=>alert('emp saved successfully'))
   }
 

@@ -44,7 +44,7 @@
 						<label for="department">Department</label> 
 							<select class="form-control mb-3" id="department" name="department" [(ngModel)]="employee.department">
 							   <option selected disabled>Please Select Department</option>
-                                <option *ngFor="let dept of deptlist" [ngValue]="department">{{dept.dept_name}}</option>
+                                <option *ngFor="let dept of deptlist" [ngValue]="dept">{{dept.dept_name}}</option>
 							</select>
 					</div>
                     <div class="form-group mb-3">
