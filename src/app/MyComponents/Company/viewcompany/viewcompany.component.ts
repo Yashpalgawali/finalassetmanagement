@@ -43,7 +43,6 @@ export class ViewcompanyComponent {
                                                       // initiate our data table
                                                        this.dtTrigger.next(null)
                                                     });
-    
   }
 
   ngOnDestroy(): void {
