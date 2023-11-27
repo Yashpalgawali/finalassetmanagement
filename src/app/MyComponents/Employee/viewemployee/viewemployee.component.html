@@ -30,6 +30,7 @@
                 <th>Designation</th>
                 <th>Department</th>
                 <th>Company</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -41,7 +42,7 @@
                 <td>{{emp.department.dept_name}}</td>
                 <td>{{emp.department.company.comp_name}}</td>
                 <td>
-                    <!-- <button (click)="getDeptById(dept.dept_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button>  -->
+                    <button (click)="getEmpById(emp.emp_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button> 
                 </td>
             </tr> 
         </tbody>

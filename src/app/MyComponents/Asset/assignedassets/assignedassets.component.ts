@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
+import { Subject } from 'rxjs';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
 import { EmployeeService } from 'src/app/Services/employee.service';
 
@@ -16,8 +17,21 @@ reserr   : any
 
   assigned_assets : any 
   assign_hist : AssetAssignHistory[] = []
+
+  dtOptions : DataTables.Settings={}  
+  dtTrigger : Subject<any> = new Subject<any>
+
+
   ngOnInit(): void {
-    this.empserv.getAssignedAssets().subscribe(data=>this.assigned_assets=data)
+    this.dtOptions={
+      pagingType : 'full_numbers'
+    }
+    this.empserv.getAssignedAssets().subscribe(
+                                            data=>
+                                            {
+                                              this.assigned_assets=data
+                                              this.dtTrigger.next(null)
+                                            }) 
   }
 
   editemployeebyid(eid : any)

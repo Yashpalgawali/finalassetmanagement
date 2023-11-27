@@ -27,12 +27,13 @@ export class EmployeeService {
 
   public getEmployeeById(eid : any):Observable<Employee>
   {
-    return this.http.get<Employee>(`${this.base_url}${eid}`);
+    return this.http.get<Employee>(`${this.base_url}editempassignassetbyempid/${eid}`);
+   // return this.http.get<Employee>(`${this.base_url}${eid}`);
   }
-  // public updateEmployee(desig : Employee):Observable<Employee[]>
-  // {
-  //   return this.http.put<Employee[]>(`${this.base_url}`,desig);
-  // }
+  public updateEmployee(desig : Employee):Observable<Employee[]>
+  {
+    return this.http.put<Employee[]>(`${this.base_url}`,desig);
+  }
 
   public getAssignedAssets():Observable<AssignedAssets[]>
   {
@@ -43,4 +44,5 @@ export class EmployeeService {
   {
     return this.http.get<AssetAssignHistory[]>(`${this.base_url}viewemphistbyempid/${eid}`); 
   }
+
 }

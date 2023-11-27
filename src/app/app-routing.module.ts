@@ -37,7 +37,7 @@ const routes: Routes = [
   { path : "editdesigbyid/:id" , component : EditdesignationComponent },
   { path : "addemployee" , component : AddemployeeComponent  },
   { path : "viewemployee" , component : ViewemployeeComponent },
-  { path : "editdesigbyid/:id" , component : EditemployeeComponent },
+  { path : "editempbyid/:id" , component : EditemployeeComponent },
  
   { path : "addassettype" , component : AddassettypeComponent  },
   { path : "viewassettypes" , component : ViewassettypeComponent },

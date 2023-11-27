@@ -38,7 +38,6 @@ export class AssetAssignHistoryComponent {
                                           this.dtTrigger.next(null)
                                         },
                                         error=>{
-                                          
                                           sessionStorage.setItem('reserr','No Employee Found for given ID')
                                           this.router.navigate(['viewassignedassets'])
                                         })
