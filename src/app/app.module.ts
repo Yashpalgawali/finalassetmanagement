@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,9 @@ import { ViewassetComponent } from './MyComponents/Asset/viewasset/viewasset.com
 import { EditassetComponent } from './MyComponents/Asset/editasset/editasset.component';
 import { AssignedassetsComponent } from './MyComponents/Asset/assignedassets/assignedassets.component';
 import { AssetAssignHistoryComponent } from './MyComponents/Asset/asset-assign-history/asset-assign-history.component';
+import { LoginComponent } from './MyComponents/Login/login/login.component';
+import { BasicAuthenticationService } from './Services/basic-authentication.service';
+import { HttpInterceptorBasicAuthService } from './http/http-interceptor-basic-auth.service';
 
 
 @NgModule({
@@ -52,7 +55,8 @@ import { AssetAssignHistoryComponent } from './MyComponents/Asset/asset-assign-h
     ViewassetComponent,
     EditassetComponent,
     AssignedassetsComponent,
-    AssetAssignHistoryComponent
+    AssetAssignHistoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,7 @@ import { AssetAssignHistoryComponent } from './MyComponents/Asset/asset-assign-h
     NgSelectModule
     
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorBasicAuthService,multi : true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

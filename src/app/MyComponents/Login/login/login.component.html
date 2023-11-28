@@ -1,0 +1,48 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+                <div class="card-header"><h2 class="text-center">Login </h2></div>
+                <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+                <div *ngIf="logoutsuccess" class="alert alert-danger">{{logoutsuccess}}</div>
+                <div class="card-body">
+                    <form
+                           (ngSubmit)="onSubmit()"
+                            class="form-horizontal"
+                    >
+                        <div class="form-group mb-3">
+                            <label for="username" class="control-label"> Username</label>
+                            <input
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    class="form-control"
+                                    placeholder="Enter Username"
+                                    [(ngModel)]="login.username"
+                                    required
+                            />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password" class="control-label mb-2"> Password</label>
+                            <input
+                                    type="password"
+                                    id  ="password"
+                                    name="password"
+                                    [(ngModel)]="login.password"
+                                    class="form-control"
+                                    placeholder="Enter password"
+                                    required
+                            />
+                           
+                        </div>
+                        <input type="submit" value="Login" class="btn btn-primary"> &nbsp;  
+                        <a  routerLink="/forgotpassword">Forgot Password? Click to recover</a>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

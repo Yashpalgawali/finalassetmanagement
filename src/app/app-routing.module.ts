@@ -21,6 +21,7 @@ import { EditassetComponent } from './MyComponents/Asset/editasset/editasset.com
 import { AssignedassetsComponent } from './MyComponents/Asset/assignedassets/assignedassets.component';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
 import { AssetAssignHistoryComponent } from './MyComponents/Asset/asset-assign-history/asset-assign-history.component';
+import { LoginComponent } from './MyComponents/Login/login/login.component';
 
 const routes: Routes = [
   { path : "addcompany" , component : AddcompanyComponent },
@@ -46,7 +47,8 @@ const routes: Routes = [
   { path : "viewassets" , component : ViewassetComponent },
   { path : "editassetbyid/:id" , component : EditassetComponent },
   { path : "viewassignedassets" , component : AssignedassetsComponent },
-  { path : "viewassetassignhist/:id" , component : AssetAssignHistoryComponent }
+  { path : "viewassetassignhist/:id" , component : AssetAssignHistoryComponent },
+  { path : "login" , component : LoginComponent }
  
 ];
 
