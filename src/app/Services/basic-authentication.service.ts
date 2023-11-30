@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GlobalComponent } from '../GlobalComponents';
 import { AuthenticationBean } from 'src/Models/AuthenticationBean';
-import { data, map } from 'jquery';
+import { data } from 'jquery';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +24,13 @@ export class BasicAuthenticationService {
       sessionStorage.setItem('token',basicAuthHeaderString)
       
       return this.http.get<AuthenticationBean>(`${this.base_url}basicauth`,{ headers : headers }).pipe(
-                    map(
-                      data=>{
-                              sessionStorage.setItem('token',basicAuthHeaderString);
-                              //sessionStorage.setItem('authenticatedUser',username);
-                              return data;
-                        }
-                    ));
+        map(
+          data=>{
+                  sessionStorage.setItem('token',basicAuthHeaderString);
+                  sessionStorage.setItem('authenticatedUser',username);
+                  return data;
+            }
+        ));
   }
 
+}
