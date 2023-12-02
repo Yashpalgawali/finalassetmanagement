@@ -22,8 +22,7 @@ ngOnInit()
   pagingType : 'full_numbers'
 }
   this.atypeserv.getAllAssetTypes().subscribe(data=>{
-                                                    this.atypelist=data 
-                                                   
+                                                    this.atypelist=data
                                                     if(sessionStorage.getItem('response')!=null)
                                                     {
                                                       this.response=sessionStorage.getItem('response')
@@ -39,14 +38,12 @@ ngOnInit()
                                                       }, 4000);
                                                     }
                                                     this.dtTrigger.next(null)
-                                                   
-                                                   
                                                   })
 }
 
 getAssetTypeById(atid : any)
 {
-  this.router.navigate(['editassettypebyid',atid])
+  this.router.navigate(['assettypes',atid])
 }
 
 }

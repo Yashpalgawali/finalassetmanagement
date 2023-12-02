@@ -12,8 +12,8 @@
         <li ngbDropdown class="nav-item dropdown">
           <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Company</a>
            <ul ngbDropdownMenu class="dropdown-menu">
-             <li><a ngbDropdownItem class="dropdown-item" routerLink ="addcompany">Add Company</a></li>
-              <li><a  ngbDropdownItem class="dropdown-item" routerLink="viewcompany">View Company</a></li>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink ="company">Add Company</a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewcompany">View Company</a></li>
            </ul>
         </li>
   
@@ -21,7 +21,7 @@
           <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Department</a>
            <ul ngbDropdownMenu class="dropdown-menu">
              <li><a ngbDropdownItem class="dropdown-item" routerLink="adddepartment">Add Department</a></li>
-              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewdepartment">View Department</a></li>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="viewdepartment">View Department</a></li>
            </ul>
         </li>
   
@@ -75,7 +75,7 @@
     </div>
       <!--/row-->
       
-      <div *ngIf="isUserLoggedIn()===false">
+      <div *ngIf="isUserLoggedIn()===null">
         <nav class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
           <!--   <a class="navbar-brand  " routerLink=" "><img  src=  " img/savera_logo.jpg}  "id="c_logo  "></a> -->
               <button class="navbar-toggler  "type="button  "data-toggle="collapse  "data-target="#collapsibleNavbar  ">

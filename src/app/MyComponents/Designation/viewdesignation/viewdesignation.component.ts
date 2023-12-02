@@ -43,7 +43,7 @@ export class ViewdesignationComponent {
     }
   getDesigById(did : any)
   {
-    this.router.navigate(['editdesigbyid',did]);
+    this.router.navigate(['designations',did]);
   }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();

@@ -31,6 +31,7 @@ import { AssetAssignHistoryComponent } from './MyComponents/Asset/asset-assign-h
 import { LoginComponent } from './MyComponents/Login/login/login.component';
 import { BasicAuthenticationService } from './Services/basic-authentication.service';
 import { HttpInterceptorBasicAuthService } from './http/http-interceptor-basic-auth.service';
+import { AdminHomeComponent } from './MyComponents/admin-home/admin-home.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { HttpInterceptorBasicAuthService } from './http/http-interceptor-basic-a
     EditassetComponent,
     AssignedassetsComponent,
     AssetAssignHistoryComponent,
-    LoginComponent
+    LoginComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,

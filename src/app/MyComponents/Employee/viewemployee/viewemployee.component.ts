@@ -29,6 +29,6 @@ export class ViewemployeeComponent implements OnInit{
 
   getEmpById(empid : number)
   {
-    this.router.navigate(['editempbyid',empid])
+    this.router.navigate(['employees',empid])
   }
 }

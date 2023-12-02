@@ -30,7 +30,7 @@ reserr   : any
                                             data=>
                                             {
                                               this.assigned_assets=data
-                                              this.dtTrigger.next(null)
+                                             this.dtTrigger.next(null)
                                             }) 
   }
 
@@ -41,6 +41,6 @@ reserr   : any
 
   viewemployeehistbyid(eid :any)
   {
-    this.router.navigate(['viewassetassignhist',eid])
+    this.router.navigate(['assetassignhist',eid])
   }
 }

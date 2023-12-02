@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BasicAuthenticationService } from './Services/basic-authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'finalassetmanagement';
-  loggedUser = 'admin'
+  
+  loggedUser : any
+  constructor(private basicauthserv : BasicAuthenticationService) { }
+
   isUserLoggedIn() {
-    return true
+    if(this.basicauthserv.getAuthenticatedUser()!=null)
+      return true
+    else  
+      return false
+  }
+  ngOnInit(): void {
+    this.loggedUser = sessionStorage.getItem('authenticatedUser')
+  
   }
 }

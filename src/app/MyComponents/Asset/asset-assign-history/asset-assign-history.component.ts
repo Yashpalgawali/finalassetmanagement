@@ -13,8 +13,9 @@ import { EmployeeService } from 'src/app/Services/employee.service';
 })
 export class AssetAssignHistoryComponent {
 
-  response : any
-  reserr : any
+  response  : any
+  reserr    : any
+  
   dtOptions : DataTables.Settings={}
   dtTrigger : Subject<any> = new Subject<any>
   eid : any
@@ -23,17 +24,14 @@ export class AssetAssignHistoryComponent {
   constructor(private empserv : EmployeeService,private route : ActivatedRoute,private router : Router) {}
 
   ngOnInit(): void {
-    this.dtOptions= {
-      pagingType : 'full_numbers'
-    }
+   this.dtOptions={
+    pagingType : 'full_numbers'
+   }
 
   this.eid = this.route.snapshot.params['id']
   
   this.empserv.getAssetAssignHistByEmpId(this.eid).subscribe(data=>
                                         {
-                                          // sessionStorage.setItem('emp_name',this.employee.emp_name)
-                                          // sessionStorage.setItem('dept_name',this.employee.department.dept_name)
-                                          // sessionStorage.setItem('comp_name',this.employee.department.company.comp_name)
                                           this.empserv.getAssetAssignHistByEmpId(this.eid).subscribe(data=>this.assign_hist=data)
                                           this.dtTrigger.next(null)
                                         },

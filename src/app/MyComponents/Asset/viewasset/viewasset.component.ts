@@ -23,13 +23,12 @@ export class ViewassetComponent {
     }
     this.assetserv.getAllAssets().subscribe(data=>{
                                                   this.aslist=data
-                                                 
                                                   this.dtTrigger.next(null) 
                                                 })
   }
 
   getAssetById(aid : number)
   {
-    this.router.navigate(['editassetbyid',aid])
+    this.router.navigate(['assets',aid])
   }
 }

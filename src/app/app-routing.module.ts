@@ -22,33 +22,33 @@ import { AssignedassetsComponent } from './MyComponents/Asset/assignedassets/ass
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
 import { AssetAssignHistoryComponent } from './MyComponents/Asset/asset-assign-history/asset-assign-history.component';
 import { LoginComponent } from './MyComponents/Login/login/login.component';
+import { AdminHomeComponent } from './MyComponents/admin-home/admin-home.component';
 
 const routes: Routes = [
-  { path : "addcompany" , component : AddcompanyComponent },
+  { path : "company" ,  component : AddcompanyComponent },
   { path : "viewcompany" , component : ViewcompanyComponent },
-  { path : "editcompbyid/:id" , component : EditcompanyComponent },
-  { path : "adddepartment" , component : AdddepartmentComponent },
-  { path : "viewdepartment" , component : ViewdepartmentComponent },
-  { path : "editdeptbyid/:id" , component : EditdepartmentComponent },
-  { path : "adddepartment" , component : AdddepartmentComponent  },
-  { path : "viewdepartment" , component : ViewdepartmentComponent },
-  { path : "editdeptbyid/:id" , component : EditdepartmentComponent },
-  { path : "adddesignation" , component : AdddesignationComponent  },
-  { path : "viewdesignation" , component : ViewdesignationComponent },
-  { path : "editdesigbyid/:id" , component : EditdesignationComponent },
-  { path : "addemployee" , component : AddemployeeComponent  },
-  { path : "viewemployee" , component : ViewemployeeComponent },
-  { path : "editempbyid/:id" , component : EditemployeeComponent },
+  { path : "companies/:id" , component : EditcompanyComponent },
+  { path : "adddepartment" ,    component : AdddepartmentComponent },
+  { path : "viewdepartment" ,   component : ViewdepartmentComponent },
+  { path : "departments/:id" , component : EditdepartmentComponent },
+ 
+  { path : "adddesignation" ,   component : AdddesignationComponent  },
+  { path : "viewdesignation" ,  component : ViewdesignationComponent },
+  { path : "designations/:id" ,component : EditdesignationComponent },
+  { path : "addemployee" ,      component : AddemployeeComponent  },
+  { path : "viewemployee" ,     component : ViewemployeeComponent },
+  { path : "employees/:id" ,  component : EditemployeeComponent },
  
   { path : "addassettype" , component : AddassettypeComponent  },
   { path : "viewassettypes" , component : ViewassettypeComponent },
-  { path : "editassettypebyid/:id" , component : EditassettypeComponent },
+  { path : "assettypes/:id" , component : EditassettypeComponent },
   { path : "addasset" , component : AddassetComponent },
   { path : "viewassets" , component : ViewassetComponent },
-  { path : "editassetbyid/:id" , component : EditassetComponent },
+  { path : "assets/:id" , component : EditassetComponent },
   { path : "viewassignedassets" , component : AssignedassetsComponent },
-  { path : "viewassetassignhist/:id" , component : AssetAssignHistoryComponent },
-  { path : "login" , component : LoginComponent }
+  { path : "assetassignhist/:id" , component : AssetAssignHistoryComponent },
+  { path : "" , component : LoginComponent },
+  { path : "adminhome" , component : AdminHomeComponent }
  
 ];
 

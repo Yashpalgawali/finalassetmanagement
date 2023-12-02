@@ -51,6 +51,6 @@ export class ViewcompanyComponent {
 
   getCompById(cid : any)
   {
-    this.router.navigate(['editcompbyid',cid]);
+    this.router.navigate(['companies',cid]);
   }
 }
