@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { data } from 'jquery';
+import { data, error } from 'jquery';
 import { Login } from 'src/Models/Login';
 import { BasicAuthenticationService } from 'src/app/Services/basic-authentication.service';
 
@@ -22,6 +22,9 @@ export class LoginComponent {
     //alert(this.login.username+'=>> '+this.login.password)
       this.basicauthserv.executeAuthenticationService(this.login.username,this.login.password).subscribe(data=>{
       this.router.navigate(['adminhome'])
+    },error=>{
+        this.errorMessage="Invalid Credentials"
+        this.router.navigate(['login'])
     })
   }
   

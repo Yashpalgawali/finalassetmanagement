@@ -32,6 +32,9 @@ import { LoginComponent } from './MyComponents/Login/login/login.component';
 import { BasicAuthenticationService } from './Services/basic-authentication.service';
 import { HttpInterceptorBasicAuthService } from './http/http-interceptor-basic-auth.service';
 import { AdminHomeComponent } from './MyComponents/admin-home/admin-home.component';
+import { LogoutComponent } from './MyComponents/Login/logout/logout.component';
+import { ForgotPasswordComponent } from './MyComponents/ForgotPassword/forgot-password/forgot-password.component';
+import { ConfirmOtpForgotPassComponent } from './MyComponents/confirm-otp-forgot-pass/confirm-otp-forgot-pass.component';
 
 
 @NgModule({
@@ -58,7 +61,10 @@ import { AdminHomeComponent } from './MyComponents/admin-home/admin-home.compone
     AssignedassetsComponent,
     AssetAssignHistoryComponent,
     LoginComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    LogoutComponent,
+    ForgotPasswordComponent,
+    ConfirmOtpForgotPassComponent
   ],
   imports: [
     BrowserModule,
