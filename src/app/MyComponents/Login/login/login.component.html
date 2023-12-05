@@ -5,14 +5,11 @@
           <div class="card">
               <div class="card-header"><h2 class="text-center">Login </h2></div>
                 <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
-                <div *ngIf="logoutsuccess" class="alert alert-danger">{{logoutsuccess}}</div>
+                <div *ngIf="logoutsuccess" class="alert alert-success">{{logoutsuccess}}</div>
                 <div class="card-body">
-                    <form
-                           (ngSubmit)="onSubmit()"
-                            class="form-horizontal"
-                    >
+                    <form (ngSubmit)="onSubmit()"  class="form-horizontal" >
                         <div class="form-group mb-3">
-                            <label for="username" class="control-label"> Username</label>
+                          <label for="username" class="control-label"> Username</label>
                             <input
                                     type="text"
                                     id="username"

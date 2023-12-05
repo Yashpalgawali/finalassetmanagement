@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { data, error } from 'jquery';
+import { generate } from 'rxjs';
 import { Users } from 'src/Models/Users';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -27,15 +28,33 @@ export class ForgotPasswordComponent {
                                                         {
                                                           this.user=data
                                                           this.reserr=""
-                                                          this.userserv.generateOtp(this.user.email).subscribe(data=>
-                                                            {
-                                                              sessionStorage.setItem('otp',`${data}`)
-                                                              sessionStorage.setItem('user_email',this.user.email)
-                                                              sessionStorage.setItem('response','OTP sent to your Email ID')
-                                                              this.router.navigate(['confirmotpforgotpass'])
-                                                            })
+                                                          this.generateOtp(this.user.email)
+                                                          // this.userserv.generateOtp(this.user.email).subscribe(data=>
+                                                          //   {
+                                                          //     sessionStorage.setItem('otp',`${data}`)
+                                                          //     sessionStorage.setItem('user_email',this.user.email)
+                                                          //     sessionStorage.setItem('response','OTP sent to your Email ID')
+                                                          //     alert('Otp successfully generated '+sessionStorage.getItem('otp'))
+                                                          //     alert('Ouside the generateOtp')
+                                                          //   this.router.navigate(['confirmotpforgotpass'])  
+                                                          //   })
+                                                          //  this.router.navigate(['confirmotpforgotpass'])
                                                         },error=>{
                                                             this.reserr="No User found for given Email"
                                                         })
                     }
+
+    generateOtp(email : string)
+    {
+      this.userserv.generateOtp(email).subscribe(data=>
+        {
+          sessionStorage.setItem('otp',`${data}`)
+          sessionStorage.setItem('user_email',email)
+          sessionStorage.setItem('response','OTP sent to your Email ID')
+          alert('Otp successfully generated '+sessionStorage.getItem('otp'))
+          alert('Ouside the generateOtp')
+        this.router.navigate(['confirmotp'])  
+        })
+
+    }
 }

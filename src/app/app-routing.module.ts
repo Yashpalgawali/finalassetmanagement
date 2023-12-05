@@ -26,6 +26,8 @@ import { AdminHomeComponent } from './MyComponents/admin-home/admin-home.compone
 import { LogoutComponent } from './MyComponents/Login/logout/logout.component';
 import { RouteGuardService } from './Services/route-guard.service';
 import { ForgotPasswordComponent } from './MyComponents/ForgotPassword/forgot-password/forgot-password.component';
+import { ConfirmOtpForgotPassComponent } from './MyComponents/confirm-otp-forgot-pass/confirm-otp-forgot-pass.component';
+import { UpdatePasswordComponent } from './MyComponents/update-password/update-password.component';
 
 const routes: Routes = [
   { path : "company" ,  component : AddcompanyComponent , canActivate : [RouteGuardService]},
@@ -35,27 +37,29 @@ const routes: Routes = [
   { path : "viewdepartment" ,   component : ViewdepartmentComponent, canActivate : [RouteGuardService] },
   { path : "departments/:id" , component : EditdepartmentComponent , canActivate : [RouteGuardService]},
  
-  { path : "adddesignation" , component : AdddesignationComponent , canActivate : [RouteGuardService] },
-  { path : "viewdesignation" ,component : ViewdesignationComponent , canActivate : [RouteGuardService]},
-  { path : "designations/:id",component : EditdesignationComponent, canActivate : [RouteGuardService] },
-  { path : "addemployee" ,    component : AddemployeeComponent , canActivate : [RouteGuardService] },
+  { path : "adddesignation" , component : AdddesignationComponent , canActivate : [RouteGuardService]},
+  { path : "viewdesignation" ,component : ViewdesignationComponent, canActivate : [RouteGuardService]},
+  { path : "designations/:id",component : EditdesignationComponent, canActivate : [RouteGuardService]},
+  { path : "addemployee" ,    component : AddemployeeComponent ,  canActivate : [RouteGuardService]},
   { path : "viewemployee" ,   component : ViewemployeeComponent , canActivate : [RouteGuardService]},
   { path : "employees/:id" ,  component : EditemployeeComponent , canActivate : [RouteGuardService]},
  
-  { path : "addassettype" ,   component : AddassettypeComponent , canActivate : [RouteGuardService] },
-  { path : "viewassettypes" , component : ViewassettypeComponent , canActivate : [RouteGuardService]},
-  { path : "assettypes/:id" , component : EditassettypeComponent, canActivate : [RouteGuardService] },
-  { path : "addasset" ,   component : AddassetComponent , canActivate : [RouteGuardService]},
+  { path : "addassettype" ,   component : AddassettypeComponent , canActivate : [RouteGuardService]},
+  { path : "viewassettypes" , component : ViewassettypeComponent ,canActivate : [RouteGuardService]},
+  { path : "assettypes/:id" , component : EditassettypeComponent, canActivate : [RouteGuardService]},
+  { path : "addasset" ,   component : AddassetComponent ,  canActivate : [RouteGuardService]},
   { path : "viewassets" , component : ViewassetComponent , canActivate : [RouteGuardService]},
   { path : "assets/:id" , component : EditassetComponent , canActivate : [RouteGuardService]},
-  { path : "viewassignedassets" , component : AssignedassetsComponent , canActivate : [RouteGuardService]},
-  { path : "assetassignhist/:id", component : AssetAssignHistoryComponent , canActivate : [RouteGuardService]},
+  { path : "viewassignedassets" , component : AssignedassetsComponent ,   canActivate : [RouteGuardService]},
+  { path : "assetassignhist/:id", component : AssetAssignHistoryComponent,canActivate : [RouteGuardService]},
   { path : "login" , component : LoginComponent },
   { path : "" , component : LoginComponent },
   { path : "logout" , component : LogoutComponent , canActivate : [RouteGuardService]},
   { path : "adminhome" , component : AdminHomeComponent , canActivate : [RouteGuardService]},
-  { path : "forgotpassword" , component : ForgotPasswordComponent } 
-
+  { path : "forgotpassword" , component : ForgotPasswordComponent },
+  { path : "confirmotp" , component : ConfirmOtpForgotPassComponent },
+  { path : "updatepassword" , component : UpdatePasswordComponent }
+  
  
 ];
 

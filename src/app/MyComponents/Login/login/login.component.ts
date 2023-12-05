@@ -19,12 +19,13 @@ export class LoginComponent {
 
   onSubmit()
   {
-    //alert(this.login.username+'=>> '+this.login.password)
-      this.basicauthserv.executeAuthenticationService(this.login.username,this.login.password).subscribe(data=>{
-      this.router.navigate(['adminhome'])
-    },error=>{
-        this.errorMessage="Invalid Credentials"
-        this.router.navigate(['login'])
+      this.basicauthserv.executeAuthenticationService(this.login.username,this.login.password).subscribe(data=>
+        {
+          this.router.navigate(['adminhome'])
+        },
+        error=>{
+          this.errorMessage="Invalid Credentials"
+          this.router.navigate(['login'])
     })
   }
   

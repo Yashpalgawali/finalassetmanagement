@@ -35,6 +35,7 @@ import { AdminHomeComponent } from './MyComponents/admin-home/admin-home.compone
 import { LogoutComponent } from './MyComponents/Login/logout/logout.component';
 import { ForgotPasswordComponent } from './MyComponents/ForgotPassword/forgot-password/forgot-password.component';
 import { ConfirmOtpForgotPassComponent } from './MyComponents/confirm-otp-forgot-pass/confirm-otp-forgot-pass.component';
+import { UpdatePasswordComponent } from './MyComponents/update-password/update-password.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { ConfirmOtpForgotPassComponent } from './MyComponents/confirm-otp-forgot
     AdminHomeComponent,
     LogoutComponent,
     ForgotPasswordComponent,
-    ConfirmOtpForgotPassComponent
+    ConfirmOtpForgotPassComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,
