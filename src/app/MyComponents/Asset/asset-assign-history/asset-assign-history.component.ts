@@ -40,7 +40,6 @@ export class AssetAssignHistoryComponent {
                                                                                      // initiate our data table
                                                                                     this.dtTrigger.next(null)
                                                                                   })
-                                       
                                       },
                                       error=>{
                                         sessionStorage.setItem('reserr','No Employee Found for given ID')
