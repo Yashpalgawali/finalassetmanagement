@@ -13,16 +13,23 @@ export class ViewemployeeComponent implements OnInit{
 
   constructor(private empserv : EmployeeService,private router : Router) { }
  
-  dtOptions : DataTables.Settings={}
-  dtTrigger : Subject<any> = new Subject<any>();
-
-  emplist : any;
+  dtOptions: DataTables.Settings={}
+  dtTrigger: Subject<any> = new Subject<any>();
+  response : any
+  reserr   : any
+  emplist  : any;
   ngOnInit(){
     this.dtOptions={
       pagingType : 'full_numbers'
     }
       this.empserv.getAllEmployees().subscribe(data=>{ 
                                                   this.emplist=data 
+                                                  this.response=sessionStorage.getItem('response')
+                                                 
+                                                    setTimeout(() => {
+                                                      sessionStorage.removeItem('response')
+                                                    }, 3000);
+                                                
                                                   this.dtTrigger.next(null)
                                                 })
   } 

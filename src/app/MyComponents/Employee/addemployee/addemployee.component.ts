@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { data } from 'jquery';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/public_api';
 
@@ -29,7 +30,8 @@ deptlist   : Department[] = [];
               private desigserv : DesignationService,
               private deptserv  : DepartmentService,
               private assetserv : AssetService,
-              private empserv   : EmployeeService
+              private empserv   : EmployeeService,
+              private router    : Router
                ) {
   }
 
@@ -42,7 +44,13 @@ deptlist   : Department[] = [];
 
   onSubmit()
   {
-    this.empserv.saveEmployee(this.employee).subscribe(data=>alert('emp saved successfully'))
+    this.empserv.saveEmployee(this.employee).subscribe(data=>
+      {
+        alert('emp saved successfully')
+        sessionStorage.setItem('response','Employee Saved successfully')
+        this.router.navigate(['viewemployee'])
+         
+    })
   }
 
   getdeptbycompid(comp : Company)

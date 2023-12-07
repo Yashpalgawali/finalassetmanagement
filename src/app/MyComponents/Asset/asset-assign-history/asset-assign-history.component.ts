@@ -27,7 +27,7 @@ export class AssetAssignHistoryComponent {
     this.eid = this.route.snapshot.params['id']
     this.dtOptions={
       pagingType : 'full_numbers'
-  }
+    }
   }
 
   ngOnInit(): void {
@@ -45,9 +45,6 @@ export class AssetAssignHistoryComponent {
                                         sessionStorage.setItem('reserr','No Employee Found for given ID')
                                         this.router.navigate(['viewassignedassets'])
                                       })
-    
   }
-
-  
 
 }

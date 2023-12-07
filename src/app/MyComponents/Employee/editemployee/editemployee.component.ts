@@ -29,13 +29,15 @@ export class EditemployeeComponent {
   assetlist  : any
   deptlist   : Department[] = [];
   employee  :  Employee = new Employee()
+  
   ngOnInit():  void {
     this.emp_id = this.route.snapshot.params['id']
-    this.empserv.getEmployeeById(this.emp_id).subscribe(data=>this.employee=data)
+    this.empserv.getEmployeeById(this.emp_id).subscribe(data=>{
+                                                              this.employee=data
+                                                            })
     this.assetserv.getAllAssets().subscribe(data=>this.assetlist=data)
     this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
     this.desigserv.getAllDesignations().subscribe(data=>this.desiglist=data)
-    
   }
 
   onSubmit()

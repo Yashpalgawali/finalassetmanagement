@@ -1,9 +1,7 @@
 <div class="container" >
-	
     <!-- start: PAGE HEADER -->
         <div class="row">
             <div class="col-sm-12">
-                
                 <!-- start: PAGE TITLE & BREADCRUMB -->
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -17,6 +15,8 @@
             <h4>View Employees 
                 <a routerLink="/addemployee" style="float:right;" class="btn btn-primary mb-3">Add Employee</a>
             </h4>
+            <div *ngIf="response" class="alert alert-success">{{response}}</div>
+            <div *ngIf="reserr" class="alert alert-danger">{{reserr}}</div>
     </div>
     <div class="card-body">
      <div class="table-responsive-sm">    
