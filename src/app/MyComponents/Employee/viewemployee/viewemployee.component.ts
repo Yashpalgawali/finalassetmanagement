@@ -25,11 +25,9 @@ export class ViewemployeeComponent implements OnInit{
       this.empserv.getAllEmployees().subscribe(data=>{ 
                                                   this.emplist=data 
                                                   this.response=sessionStorage.getItem('response')
-                                                 
-                                                    setTimeout(() => {
+                                                  setTimeout(() => {
                                                       sessionStorage.removeItem('response')
                                                     }, 3000);
-                                                
                                                   this.dtTrigger.next(null)
                                                 })
   } 
@@ -37,5 +35,10 @@ export class ViewemployeeComponent implements OnInit{
   getEmpById(empid : number)
   {
     this.router.navigate(['employees',empid])
+  }
+
+  retrieveassetsbyempid(empid : number)
+  {
+    this.router.navigate(['retrieveassetsbyempid',empid])
   }
 }

@@ -37,6 +37,7 @@ import { ForgotPasswordComponent } from './MyComponents/ForgotPassword/forgot-pa
 import { ConfirmOtpForgotPassComponent } from './MyComponents/confirm-otp-forgot-pass/confirm-otp-forgot-pass.component';
 import { UpdatePasswordComponent } from './MyComponents/update-password/update-password.component';
 import { ChangePasswordComponent } from './MyComponents/change-password/change-password.component';
+import { RetrieveAssetsComponent } from './MyComponents/Asset/retrieve-assets/retrieve-assets.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { ChangePasswordComponent } from './MyComponents/change-password/change-p
     ForgotPasswordComponent,
     ConfirmOtpForgotPassComponent,
     UpdatePasswordComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    RetrieveAssetsComponent
   ],
   imports: [
     BrowserModule,
