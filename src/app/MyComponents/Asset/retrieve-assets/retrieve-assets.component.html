@@ -26,7 +26,7 @@
                 
                 <div class="form-group">
                     <label for="emp_name">Employee Name</label>
-                        <input class="form-control mb-3" type="text" id="emp_name" name="emp_name" disabled required />
+                        <input class="form-control mb-3" type="text" id="emp_name" name="emp_name" [(ngModel)]="employee.emp_name" disabled required />
                 </div>
                 <div class="form-group mb-3">
                     <label for="multi_assets">Assets</label>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group  mb-3">
                     <label for="comments">Comment</label> 
-                         <textarea class="form-control mb-3" cols="3" rows="6"  id="comments" name="comments" >
+                         <textarea class="form-control mb-3" cols="3" rows="6"  id="comments"  [(ngModel)]="employee.comments" name="comments" >
                          </textarea>
                 </div>
                 

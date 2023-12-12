@@ -41,4 +41,9 @@ export class ViewemployeeComponent implements OnInit{
   {
     this.router.navigate(['retrieveassetsbyempid',empid])
   }
+
+  viewemployeehistbyid(empid : number)
+  {
+    this.router.navigate(['assetassignhist',empid])
+  }
 }
