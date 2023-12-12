@@ -43,8 +43,9 @@ export class AssetAssignHistoryComponent {
                                                                                   })
                                       },
                                       error=>{
-                                        sessionStorage.setItem('reserr','No Employee Found for given ID')
-                                        this.router.navigate(['viewassignedassets'])
+                                        alert('No history found')
+                                        sessionStorage.setItem('reserr','No history found')
+                                        this.router.navigate(['viewemployee']) 
                                       })
   }
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { data } from 'jquery';
 import { Subject } from 'rxjs';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
+import { AssignedAssetService } from 'src/app/Services/assigned-asset.service';
 import { EmployeeService } from 'src/app/Services/employee.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { EmployeeService } from 'src/app/Services/employee.service';
 export class AssignedassetsComponent {
 response : any
 reserr   : any
-  constructor(private empserv : EmployeeService,private router : Router) { }
+  constructor(private empserv : EmployeeService,private router : Router,private assignassetserv : AssignedAssetService) { }
 
   assigned_assets : any 
   assign_hist : AssetAssignHistory[] = []
@@ -21,6 +22,7 @@ reserr   : any
   dtOptions : DataTables.Settings={}  
   dtTrigger : Subject<any> = new Subject<any>
 
+  resserr : any
 
   ngOnInit(): void {
     this.dtOptions={
@@ -30,7 +32,13 @@ reserr   : any
                                             data=>
                                             {
                                               this.assigned_assets=data
-                                             this.dtTrigger.next(null)
+                                              if(sessionStorage.getItem('reserr')!=null)
+                                              {
+                                                setTimeout(() => {
+                                                  this.reserr = sessionStorage.getItem('resserr')
+                                                }, 3000);
+                                              }
+                                              this.dtTrigger.next(null)
                                             }) 
   }
 
@@ -43,4 +51,11 @@ reserr   : any
   {
     this.router.navigate(['assetassignhist',eid])
   }
+
+  exportAssignedAssetsReportToExcel()
+  {
+    alert()
+    this.assignassetserv.exportAssignedAssetsToExcel();
+  }
 }
+ 

@@ -12,9 +12,8 @@
     <div *ngIf="response"><h6 class="alert alert-success" ></h6></div>
     <div *ngIf="reserr"><h6 class="alert alert-danger" ></h6></div>
     <div class="card-header">
-            <h4>View Assigned Assets
-                <!-- <a th:href="@{/exportassignedassets/excel}" class="btn btn-primary" style="float:right;">Export to Excel</a> -->
-            </h4>
+        <!-- <h4>View Assigned Assets<a class="btn btn-primary" routerLink="" style="float:right;">Export to Excel</a></h4> -->
+        <button (click)="exportAssignedAssetsReportToExcel()" class="btn btn-primary"> <i class="fa fa-eye"></i> View History</button>
     </div>
         <div class="card-body">
             <div class="table-responsive-sm">

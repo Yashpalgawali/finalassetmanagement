@@ -28,6 +28,13 @@ export class ViewemployeeComponent implements OnInit{
                                                   setTimeout(() => {
                                                       sessionStorage.removeItem('response')
                                                     }, 3000);
+
+                                                    if(sessionStorage.getItem('reserr')!=null)
+                                                    {
+                                                      setTimeout(() => {
+                                                        this.reserr = sessionStorage.getItem('reserr')
+                                                      }, 3000);
+                                                    }
                                                   this.dtTrigger.next(null)
                                                 })
   } 

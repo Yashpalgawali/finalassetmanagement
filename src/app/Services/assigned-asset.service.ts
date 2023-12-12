@@ -19,4 +19,9 @@ export class AssignedAssetService {
     return this.http.get<AssignedAssets[]>(`${this.base_url}retrieveassetsbyempid/${empid}`)
   }
   
+  exportAssignedAssetsToExcel()
+  {
+    alert('exporting to excel \n URL is '+`${this.base_url}exportassignedassets/excel`)
+    return this.http.get(`${this.base_url}exportassignedassets/excel`);
+  }
 }

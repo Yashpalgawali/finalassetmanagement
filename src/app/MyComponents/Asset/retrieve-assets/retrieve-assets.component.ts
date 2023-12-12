@@ -49,10 +49,11 @@ export class RetrieveAssetsComponent {
                                                                   }
                                                                 }
                                                                
-                                                                
-                                                                alert(this.assigned)
                                                               },
-                                                              error=>alert('FAILED')
+                                                              error=>{
+                                                                  sessionStorage.setItem('reserr','No Assets are assigned to the employee')
+                                                                  this.router.navigate(['viewemployee'])
+                                                                }
                                                               )
   }
 }
