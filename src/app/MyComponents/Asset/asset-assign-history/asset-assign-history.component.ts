@@ -34,7 +34,7 @@ export class AssetAssignHistoryComponent {
   
   this.empserv.getAssetAssignHistByEmpId(this.eid)
                                       .subscribe(data=>
-                                      { 
+                                      {
                                         this.empserv.getAssetAssignHistByEmpId(this.eid).subscribe(data=>{
                                                                                     this.assign_hist=data
                                                                                     this.employee = data[0].employee

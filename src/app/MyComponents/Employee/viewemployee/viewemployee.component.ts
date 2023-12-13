@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { data } from 'jquery';
+import { data, error } from 'jquery';
 import { Subject } from 'rxjs';
 import { EmployeeService } from 'src/app/Services/employee.service';
 
@@ -23,18 +23,19 @@ export class ViewemployeeComponent implements OnInit{
       pagingType : 'full_numbers'
     }
       this.empserv.getAllEmployees().subscribe(data=>{ 
-                                                  this.emplist=data 
+                                                  
                                                   this.response=sessionStorage.getItem('response')
                                                   setTimeout(() => {
                                                       sessionStorage.removeItem('response')
                                                     }, 3000);
-
                                                     if(sessionStorage.getItem('reserr')!=null)
                                                     {
                                                       setTimeout(() => {
                                                         this.reserr = sessionStorage.getItem('reserr')
                                                       }, 3000);
+                                                     
                                                     }
+                                                    this.emplist=data 
                                                   this.dtTrigger.next(null)
                                                 })
   } 

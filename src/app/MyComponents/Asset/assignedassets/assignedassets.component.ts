@@ -42,11 +42,6 @@ reserr   : any
                                             }) 
   }
 
-  editemployeebyid(eid : any)
-  {
-    alert('employee ID = '+eid)
-  }
-
   viewemployeehistbyid(eid :any)
   {
     this.router.navigate(['assetassignhist',eid])
@@ -54,8 +49,12 @@ reserr   : any
 
   exportAssignedAssetsReportToExcel()
   {
-    alert()
-    this.assignassetserv.exportAssignedAssetsToExcel();
+    this.assignassetserv.exportAssignedAssetsToExcel().subscribe((response : any)=>{
+        let file = new Blob([response], { type : 'application/vnd.ms-excel'})
+        var fileUrl = URL.createObjectURL(file)
+
+        window.open(fileUrl)
+    });
   }
 }
  
