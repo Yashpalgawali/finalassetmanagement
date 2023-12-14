@@ -31,14 +31,14 @@ export class ViewcompanyComponent {
                                                         this.response=sessionStorage.getItem('response')
                                                         setTimeout(() => {
                                                           sessionStorage.removeItem('response')
-                                                        }, 4000);
+                                                        }, 300);
                                                       }
                                                       if(sessionStorage.getItem('reserr')!=null)
                                                       {
                                                         this.reserr=sessionStorage.getItem('reserr')
                                                         setTimeout(() => {
                                                           sessionStorage.removeItem('reserr')
-                                                        }, 4000);
+                                                        }, 300);
                                                       } 
                                                       // initiate our data table
                                                        this.dtTrigger.next(null)

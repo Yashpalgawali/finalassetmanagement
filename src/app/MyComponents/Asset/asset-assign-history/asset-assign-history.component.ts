@@ -36,15 +36,14 @@ export class AssetAssignHistoryComponent {
                                       .subscribe(data=>
                                       {
                                         this.empserv.getAssetAssignHistByEmpId(this.eid).subscribe(data=>{
-                                                                                    this.assign_hist=data
+                                                                                    this.assign_hist = data
                                                                                     this.employee = data[0].employee
                                                                                      // initiate our data table
                                                                                     this.dtTrigger.next(null)
                                                                                   })
                                       },
                                       error=>{
-                                        alert('No history found')
-                                        sessionStorage.setItem('reserr','No history found')
+                                        sessionStorage.setItem('reserr','No Asset Assing History Found ')
                                         this.router.navigate(['viewemployee']) 
                                       })
   }

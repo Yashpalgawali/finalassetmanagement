@@ -25,19 +25,19 @@ export class ViewdesignationComponent {
     this.desigserv.getAllDesignations().subscribe(data=>{
                                                           this.desiglist=data
                                                           if(sessionStorage.getItem('response')!=null)
-                                                      {
-                                                        this.response=sessionStorage.getItem('response')
-                                                        setTimeout(() => {
-                                                          sessionStorage.removeItem('response')
-                                                        }, 4000);
-                                                      }
-                                                      if(sessionStorage.getItem('reserr')!=null)
-                                                      {
-                                                        this.reserr=sessionStorage.getItem('reserr')
-                                                        setTimeout(() => {
-                                                          sessionStorage.removeItem('reserr')
-                                                        }, 4000);
-                                                      } 
+                                                          {
+                                                            this.response=sessionStorage.getItem('response')
+                                                            setTimeout(() => {
+                                                              sessionStorage.removeItem('response')
+                                                            }, 300);
+                                                          }
+                                                          if(sessionStorage.getItem('reserr')!=null)
+                                                          {
+                                                            this.reserr=sessionStorage.getItem('reserr')
+                                                            setTimeout(() => {
+                                                              sessionStorage.removeItem('reserr')
+                                                            }, 300);
+                                                          } 
                                                           this.dtTrigger.next(null)
                                                         });
     }

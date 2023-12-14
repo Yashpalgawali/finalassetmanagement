@@ -32,15 +32,15 @@ import { ChangePasswordComponent } from './MyComponents/change-password/change-p
 import { RetrieveAssetsComponent } from './MyComponents/Asset/retrieve-assets/retrieve-assets.component';
 
 const routes: Routes = [
-  { path : "company" ,  component : AddcompanyComponent , canActivate : [RouteGuardService]},
-  { path : "viewcompany" , component : ViewcompanyComponent , canActivate : [RouteGuardService]},
+  { path : "company" ,       component : AddcompanyComponent , canActivate : [RouteGuardService]},
+  { path : "viewcompany" ,   component : ViewcompanyComponent , canActivate : [RouteGuardService]},
   { path : "companies/:id" , component : EditcompanyComponent , canActivate : [RouteGuardService]},
-  { path : "adddepartment" ,    component : AdddepartmentComponent , canActivate : [RouteGuardService]},
-  { path : "viewdepartment" ,   component : ViewdepartmentComponent, canActivate : [RouteGuardService] },
-  { path : "departments/:id" , component : EditdepartmentComponent , canActivate : [RouteGuardService]},
+  { path : "adddepartment" , component : AdddepartmentComponent , canActivate : [RouteGuardService]},
+  { path : "viewdepartment", component : ViewdepartmentComponent, canActivate : [RouteGuardService] },
+  { path : "departments/:id",component : EditdepartmentComponent , canActivate : [RouteGuardService]},
  
-  { path : "adddesignation" , component : AdddesignationComponent , canActivate : [RouteGuardService]},
-  { path : "viewdesignation" ,component : ViewdesignationComponent, canActivate : [RouteGuardService]},
+  { path : "designation" , component : AdddesignationComponent , canActivate : [RouteGuardService]},
+  { path : "viewdesignation" ,    component : ViewdesignationComponent, canActivate : [RouteGuardService]},
   { path : "designations/:id",component : EditdesignationComponent, canActivate : [RouteGuardService]},
   { path : "addemployee" ,    component : AddemployeeComponent ,  canActivate : [RouteGuardService]},
   { path : "viewemployee" ,   component : ViewemployeeComponent , canActivate : [RouteGuardService]},
@@ -52,17 +52,17 @@ const routes: Routes = [
   { path : "addasset" ,   component : AddassetComponent ,  canActivate : [RouteGuardService]},
   { path : "viewassets" , component : ViewassetComponent , canActivate : [RouteGuardService]},
   { path : "assets/:id" , component : EditassetComponent , canActivate : [RouteGuardService]},
-  { path : "viewassignedassets" , component : AssignedassetsComponent ,   canActivate : [RouteGuardService]},
-  { path : "assetassignhist/:id", component : AssetAssignHistoryComponent,canActivate : [RouteGuardService]},
+  { path : "viewassignedassets" , component : AssignedassetsComponent ,   canActivate : [RouteGuardService] },
+  { path : "assetassignhist/:id", component : AssetAssignHistoryComponent,canActivate : [RouteGuardService] },
   { path : "login" , component : LoginComponent },
   { path : "" , component : LoginComponent },
-  { path : "logout" , component : LogoutComponent , canActivate : [RouteGuardService]},
-  { path : "adminhome" , component : AdminHomeComponent , canActivate : [RouteGuardService]},
+  { path : "logout" , component : LogoutComponent , canActivate : [RouteGuardService] },
+  { path : "adminhome" , component : AdminHomeComponent , canActivate : [RouteGuardService] },
   { path : "forgotpassword" , component : ForgotPasswordComponent },
   { path : "confirmotp" , component : ConfirmOtpForgotPassComponent },
   { path : "updatepassword" , component : UpdatePasswordComponent },
-  { path : "changepass" , component : ChangePasswordComponent ,canActivate : [RouteGuardService]},
-  { path : "retrieveassetsbyempid/:id" , component : RetrieveAssetsComponent ,canActivate : [RouteGuardService]}
+  { path : "changepass" , component : ChangePasswordComponent ,canActivate : [RouteGuardService] },
+  { path : "retrieveassetsbyempid/:id" , component : RetrieveAssetsComponent ,canActivate : [RouteGuardService] }
   
  
 ];

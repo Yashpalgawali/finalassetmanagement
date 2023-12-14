@@ -22,8 +22,6 @@ reserr   : any
   dtOptions : DataTables.Settings={}  
   dtTrigger : Subject<any> = new Subject<any>
 
-  resserr : any
-
   ngOnInit(): void {
     this.dtOptions={
       pagingType : 'full_numbers'
@@ -31,13 +29,21 @@ reserr   : any
     this.empserv.getAssignedAssets().subscribe(
                                             data=>
                                             {
+                                              if(sessionStorage.getItem('response')!=null)
+                                                  { 
+                                                    setTimeout(() => {
+                                                      this.response=sessionStorage.getItem('response')
+                                                      sessionStorage.removeItem('response')
+                                                    }, 500);
+                                                  }
+                                                  if(sessionStorage.getItem('reserr')!=null)
+                                                  {
+                                                    this.reserr=sessionStorage.getItem('reserr')
+                                                      setTimeout(() => {  
+                                                        sessionStorage.removeItem('reserr')
+                                                      }, 500);
+                                                  }
                                               this.assigned_assets=data
-                                              if(sessionStorage.getItem('reserr')!=null)
-                                              {
-                                                setTimeout(() => {
-                                                  this.reserr = sessionStorage.getItem('resserr')
-                                                }, 3000);
-                                              }
                                               this.dtTrigger.next(null)
                                             }) 
   }

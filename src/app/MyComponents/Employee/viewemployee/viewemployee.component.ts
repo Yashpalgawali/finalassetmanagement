@@ -24,21 +24,24 @@ export class ViewemployeeComponent implements OnInit{
     }
       this.empserv.getAllEmployees().subscribe(data=>{ 
                                                   
-                                                  this.response=sessionStorage.getItem('response')
-                                                  setTimeout(() => {
-                                                      sessionStorage.removeItem('response')
-                                                    }, 3000);
-                                                    if(sessionStorage.getItem('reserr')!=null)
-                                                    {
-                                                      setTimeout(() => {
-                                                        this.reserr = sessionStorage.getItem('reserr')
-                                                      }, 3000);
-                                                     
-                                                    }
-                                                    this.emplist=data 
+                                                  if(sessionStorage.getItem('response')!=null)
+                                                  { 
+                                                    setTimeout(() => {
+                                                      this.response=sessionStorage.getItem('response')
+                                                      sessionStorage.removeItem('response') 
+                                                    }, 300);
+                                                  }
+                                                  if(sessionStorage.getItem('reserr')!=null)
+                                                  {
+                                                    this.reserr=sessionStorage.getItem('reserr')
+                                                      setTimeout(() => {  
+                                                        sessionStorage.removeItem('reserr')
+                                                      }, 300);
+                                                  }
+                                                  this.emplist=data 
                                                   this.dtTrigger.next(null)
                                                 })
-  } 
+  }
 
   getEmpById(empid : number)
   {
