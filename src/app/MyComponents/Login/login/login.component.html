@@ -4,8 +4,8 @@
         <div class="col-md-6 offset-md-3">
           <div class="card">
               <div class="card-header"><h2 class="text-center">Login </h2></div>
-                <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
-                <div *ngIf="logoutsuccess" class="alert alert-success">{{logoutsuccess}}</div>
+                <div *ngIf="errorMessage" ><h6 class="alert alert-danger">{{errorMessage}}</h6></div>
+                <div *ngIf="logoutsuccess"><h6 class="alert alert-success">{{logoutsuccess}}</h6></div>
                 <div class="card-body">
                     <form (ngSubmit)="onSubmit()"  class="form-horizontal" >
                         <div class="form-group mb-3">

@@ -27,7 +27,10 @@ export class UpdatePasswordComponent {
                                           this.user = data
                                           this.user.cnf_pass = cpass
                                           this.userserv.updatePasswordWithEmail(this.user)
-                                                                                .subscribe(data=>this.router.navigate(['login']))
+                                                                                .subscribe(data=>{
+                                                                                  sessionStorage.setItem('response','Password updated Successfully')
+                                                                                    this.router.navigate(['login'])
+                                                                                })
                                         },error=>{
                                           this.router.navigate(['login'])
                                         })

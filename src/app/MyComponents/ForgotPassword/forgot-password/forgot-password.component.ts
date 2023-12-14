@@ -51,8 +51,7 @@ export class ForgotPasswordComponent {
           sessionStorage.setItem('otp',`${data}`)
           sessionStorage.setItem('user_email',email)
           sessionStorage.setItem('response','OTP sent to your Email ID')
-          alert('Otp successfully generated '+sessionStorage.getItem('otp'))
-          alert('Ouside the generateOtp')
+          
         this.router.navigate(['confirmotp'])  
         })
 

@@ -18,8 +18,7 @@ export class LoginComponent {
   constructor(private basicauthserv : BasicAuthenticationService,private router : Router) { }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    
     if(sessionStorage.getItem('authenticatedUser')!=null )
     {
       this.router.navigate(['adminhome'])
@@ -30,6 +29,7 @@ export class LoginComponent {
   {
       this.basicauthserv.executeAuthenticationService(this.login.username,this.login.password).subscribe(data=>
         {
+          //this.logoutsuccess = sessionStorage.getItem('response')
           this.router.navigate(['adminhome'])
         },
         error=>{
