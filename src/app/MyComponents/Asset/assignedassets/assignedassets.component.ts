@@ -25,11 +25,9 @@ reserr   : any
   ngOnInit(): void {
     this.dtOptions={
       pagingType : 'full_numbers',
-     
       responsive:true,
-      
-
     }
+
     this.empserv.getAssignedAssets().subscribe(
                                             data=>
                                             {
@@ -60,10 +58,12 @@ reserr   : any
   exportAssignedAssetsReportToExcel()
   {
     this.assignassetserv.exportAssignedAssetsToExcel().subscribe((response : any)=>{
-        let file = new Blob([response], { type : 'application/vnd.ms-excel'})
-        var fileUrl = URL.createObjectURL(file)
-
-        window.open(fileUrl)
+      const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'Assigned Assets.xlsx';
+      link.click();
+       
     });
   }
 }

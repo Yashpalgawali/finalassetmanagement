@@ -21,7 +21,6 @@ export class AssignedAssetService {
   
   exportAssignedAssetsToExcel()
   {
-    alert('exporting to excel \n URL is '+`${this.base_url}exportassignedassets/excel`)
     return this.http.get<any>(`${this.base_url}exportassignedassets/excel`, { responseType : 'arraybuffer' as 'json'});
   }
 }

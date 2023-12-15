@@ -4,6 +4,7 @@ import { data, error } from 'jquery';
 import { Subject } from 'rxjs';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
 import { Employee } from 'src/Models/Employee';
+import { AssetService } from 'src/app/Services/asset.service';
 import { EmployeeService } from 'src/app/Services/employee.service';
 
 @Component({
