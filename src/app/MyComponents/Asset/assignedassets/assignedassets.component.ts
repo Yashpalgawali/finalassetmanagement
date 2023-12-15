@@ -24,7 +24,11 @@ reserr   : any
 
   ngOnInit(): void {
     this.dtOptions={
-      pagingType : 'full_numbers'
+      pagingType : 'full_numbers',
+     
+      responsive:true,
+      
+
     }
     this.empserv.getAssignedAssets().subscribe(
                                             data=>
