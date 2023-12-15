@@ -21,6 +21,10 @@
     <div class="mb-2" style="margin:10px 0 0 10px;">
         <h6 style="float:left;">Company: {{employee.department.company.comp_name}}</h6>
     </div>	
+
+    <div class="card-header mb-2">
+        <button (click)="exportAssetAssignHistoryReportToExcel()" class="btn btn-primary "style="float : right;" > <i class="fa fa-eye"></i> Export to Excel</button>
+    </div>
     <div *ngIf="response"><h6 class="alert alert-success">{{response}}</h6></div>
     <div *ngIf="reserr">  <h6 class="alert alert-danger"> {{reserr}}  </h6></div>
     

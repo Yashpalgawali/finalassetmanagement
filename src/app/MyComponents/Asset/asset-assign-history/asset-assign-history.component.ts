@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
 import { Employee } from 'src/Models/Employee';
 import { AssetService } from 'src/app/Services/asset.service';
+import { AssignedAssetService } from 'src/app/Services/assigned-asset.service';
 import { EmployeeService } from 'src/app/Services/employee.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class AssetAssignHistoryComponent {
   eid : any
   employee : Employee = new Employee()
   assign_hist : AssetAssignHistory[] = []
-  constructor(private empserv : EmployeeService,private route : ActivatedRoute,private router : Router) {
+  constructor(private empserv : EmployeeService,private route : ActivatedRoute,private router : Router, private assignassetserv : AssignedAssetService) {
 
     this.eid = this.route.snapshot.params['id']
     this.dtOptions={
@@ -49,4 +50,14 @@ export class AssetAssignHistoryComponent {
                                       })
   }
 
+  exportAssetAssignHistoryReportToExcel() {
+    this.assignassetserv.exportAssignedAssetsHistoryToExcel().subscribe((response : any)=>{
+      const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'Assigned Assets History.xlsx';
+      link.click();
+       
+    });
+    }
 }

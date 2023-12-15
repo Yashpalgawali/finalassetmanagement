@@ -30,9 +30,9 @@ export class RetrieveAssetsComponent {
                                                               {
                                                                 this.assignedassets=data
                                                                 this.assetserv.getAllAssets().subscribe(data=>
-                                                                  {
-                                                                    this.assetlist=data
-                                                                  })
+                                                                                                            {
+                                                                                                              this.assetlist=data
+                                                                                                            })
                                                                 this.employee =this.assignedassets[0].employee
                                                                 for (let index = 0; index < this.assignedassets.length; index++) {
                                                                   this.assigned_assets = this.assignedassets[index];

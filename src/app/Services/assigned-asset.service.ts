@@ -23,4 +23,9 @@ export class AssignedAssetService {
   {
     return this.http.get<any>(`${this.base_url}exportassignedassets/excel`, { responseType : 'arraybuffer' as 'json'});
   }
+
+  exportAssignedAssetsHistoryToExcel(empid: number)
+  {
+    return this.http.get<any>(`${this.base_url}exportassignshistory/excel/${empid}`, { responseType : 'arraybuffer' as 'json'});
+  }
 }
