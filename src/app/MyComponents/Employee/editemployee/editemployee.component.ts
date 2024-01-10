@@ -29,7 +29,7 @@ export class EditemployeeComponent {
   assetlist  : any
   deptlist   : Department[] = [];
   employee  :  Employee = new Employee()
-  
+  // selectedItems : Department[] = [];
   ngOnInit():  void {
     this.emp_id = this.route.snapshot.params['id']
     this.empserv.getEmployeeById(this.emp_id).subscribe(data=>{

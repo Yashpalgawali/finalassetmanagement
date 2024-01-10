@@ -30,9 +30,9 @@ export class EmployeeService {
     return this.http.get<Employee>(`${this.base_url}editempassignassetbyempid/${eid}`);
    // return this.http.get<Employee>(`${this.base_url}${eid}`);
   }
-  public updateEmployee(desig : Employee):Observable<Employee[]>
+  public updateEmployee(emp : Employee):Observable<Employee[]>
   {
-    return this.http.put<Employee[]>(`${this.base_url}`,desig);
+    return this.http.put<Employee[]>(`${this.base_url}`,emp);
   }
 
   public getAssignedAssets():Observable<AssignedAssets[]>

@@ -23,37 +23,35 @@ export class RetrieveAssetsComponent {
   assigned : any
   emp_id !:  number
   assetlist  : any
-  matched !: Assets[]
+  matched : Assets[]= []
   ngOnInit(): void {
     this.emp_id= this.route.snapshot.params['id'];
     this.assignassetserv.getAssignedAssetsByEmpId(this.emp_id).subscribe(data=>
-                                                              {
-                                                                this.assignedassets=data
-                                                                this.assetserv.getAllAssets().subscribe(data=>
-                                                                                                            {
-                                                                                                              this.assetlist=data
-                                                                                                            })
-                                                                this.employee =this.assignedassets[0].employee
-                                                                for (let index = 0; index < this.assignedassets.length; index++) {
-                                                                  this.assigned_assets = this.assignedassets[index];
-                                                                  if(index==0)
-                                                                  {  
-                                                                    this.assigned = this.assignedassets[index].asset.asset_name
-                                                                    if(this.assetlist.asset_id==this.assignedassets[index].asset.asset_id) 
-                                                                    {
-                                                                      
-                                                                    }
-                                                                  }
-                                                                  else {
-                                                                  this.assigned = this.assigned +","+ this.assignedassets[index].asset.asset_name
-                                                                  }
-                                                                }
+                                                        {
+                                                          this.assignedassets=data
+                                                          this.employee =this.assignedassets[0].employee
+                                                          this.assetserv.getAllAssets().subscribe({
+                                                            next:(data)=>{
+                                                              this.assetlist=data
+                                                            }
+                                                          })
+                                                          // this.employee =this.assignedassets[0].employee
+                                                          // for (let index = 0; index < this.assignedassets.length; index++) {
+                                                          //   this.assigned_assets = this.assignedassets[index];
+                                                          //   if(index==0)
+                                                          //   {  
+                                                          //     this.assigned = this.assignedassets[index].asset.asset_name
+                                                          //     if(this.assetlist.asset_id==this.assignedassets[index].asset.asset_id) 
+                                                          //     {
+                                                                
+                                                          //     }
+                                                          //   }
+                                                          //   else {
+                                                          //   this.assigned = this.assigned +","+ this.assignedassets[index].asset.asset_name
+                                                          //   }
+                                                          // }
                                                                
                                                               },
-                                                              error=>{
-                                                                  sessionStorage.setItem('reserr','No Assets are assigned to the employee')
-                                                                  this.router.navigate(['viewemployee'])
-                                                                }
-                                                              )
+                                                          )
   }
 }

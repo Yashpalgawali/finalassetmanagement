@@ -20,28 +20,31 @@ export class ViewdepartmentComponent {
   ngOnInit(): void {
     this.dtOptions={
       pagingType : 'simple_numbers',
-     
   }
-    this.deptserv.getAllDepartments().subscribe(data=>{
-                                                        this.deptlist=data
-                                                        if(sessionStorage.getItem('response')!=null)
-                                                        {
-                                                          this.response=sessionStorage.getItem('response')
-                                                          setTimeout(() => {
-                                                            sessionStorage.removeItem('response')
-                                                          }, 300);
-                                                        }
-                                                        if(sessionStorage.getItem('reserr')!=null)
-                                                        {
-                                                          this.reserr=sessionStorage.getItem('reserr')
-                                                          setTimeout(() => {
-                                                            sessionStorage.removeItem('reserr')
-                                                          }, 300);
-                                                        } 
-                                                        // initiate our data table
-                                                        this.dtTrigger.next(null);
-                                                      }
-                                              );
+    this.deptserv.getAllDepartments().subscribe({
+      next:(data)=> {
+        this.deptlist=data
+                    if(sessionStorage.getItem('response')!=null)
+                    {
+                      this.response=sessionStorage.getItem('response')
+                      setTimeout(() => {
+                        sessionStorage.removeItem('response')
+                        this.response=""
+                      }, 3000);
+                    }
+                    if(sessionStorage.getItem('reserr')!=null)
+                    {
+                      this.reserr=sessionStorage.getItem('reserr')
+                      setTimeout(() => {
+                        sessionStorage.removeItem('reserr')
+                        this.reserr=""
+                      }, 3000); 
+                    } 
+                    // initiate our data table
+                    this.dtTrigger.next(null);
+      }
+    }
+    );
   }
 
   ngOnDestroy(): void {

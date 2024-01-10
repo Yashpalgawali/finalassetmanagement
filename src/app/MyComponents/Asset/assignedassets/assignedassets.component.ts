@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { data } from 'jquery';
 import { Subject } from 'rxjs';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
+import { AssignedAssets } from 'src/Models/AssignedAssets';
 import { AssignedAssetService } from 'src/app/Services/assigned-asset.service';
 import { EmployeeService } from 'src/app/Services/employee.service';
 
@@ -12,11 +13,14 @@ import { EmployeeService } from 'src/app/Services/employee.service';
   styleUrls: ['./assignedassets.component.css']
 })
 export class AssignedassetsComponent {
+mymethod() {
+  alert("my method called")
+}
 response : any
 reserr   : any
   constructor(private empserv : EmployeeService,private router : Router,private assignassetserv : AssignedAssetService) { }
 
-  assigned_assets : any 
+  assigned_assets : AssignedAssets[] = []
   assign_hist : AssetAssignHistory[] = []
 
   dtOptions : DataTables.Settings={}  
@@ -26,33 +30,35 @@ reserr   : any
     this.dtOptions={
       pagingType : 'full_numbers',
       responsive:true,
+     
     }
 
     this.empserv.getAssignedAssets().subscribe(
                                             data=>
                                             {
-                                              if(sessionStorage.getItem('response')!=null)
-                                                  { 
+                                              if(sessionStorage.getItem('response')!=null){
+                                                    this.response=sessionStorage.getItem('response')
                                                     setTimeout(() => {
-                                                      this.response=sessionStorage.getItem('response')
                                                       sessionStorage.removeItem('response')
-                                                    }, 500);
+                                                      this.response=""
+                                                    }, 3000);
                                                   }
                                                   if(sessionStorage.getItem('reserr')!=null)
                                                   {
                                                     this.reserr=sessionStorage.getItem('reserr')
                                                       setTimeout(() => {  
                                                         sessionStorage.removeItem('reserr')
-                                                      }, 500);
+                                                        this.reserr=""
+                                                      }, 3000);
                                                   }
                                               this.assigned_assets=data
                                               this.dtTrigger.next(null)
                                             }) 
   }
 
-  viewemployeehistbyid(eid :any)
+  viewemployeehistbyid(empid : any)
   {
-    this.router.navigate(['assetassignhist',eid])
+    this.router.navigate(['assetassignhist',empid])
   }
 
   exportAssignedAssetsReportToExcel()

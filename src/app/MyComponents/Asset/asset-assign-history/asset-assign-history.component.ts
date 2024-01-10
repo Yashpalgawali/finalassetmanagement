@@ -18,7 +18,8 @@ export class AssetAssignHistoryComponent {
   response  : any
   reserr    : any
   
-  dtOptions: DataTables.Settings = {};
+  //dtOptions: DataTables.Settings = {};
+  dtOptions: any;
   dtTrigger: Subject<any> = new Subject<any>();
 
   eid : any
@@ -26,15 +27,15 @@ export class AssetAssignHistoryComponent {
   assign_hist : AssetAssignHistory[] = []
   constructor(private empserv : EmployeeService,private route : ActivatedRoute,private router : Router,
               private assignassetserv : AssignedAssetService) {
-
-    this.eid = this.route.snapshot.params['id']
-    this.dtOptions={
-      pagingType : 'full_numbers'
-    }
   }
 
   ngOnInit(): void {
-  
+    this.eid = this.route.snapshot.params['id']
+    this.dtOptions={
+     pagingType : 'full_numbers',
+     responsive : true
+    
+    }
   this.empserv.getAssetAssignHistByEmpId(this.eid)
                                       .subscribe(data=>
                                       {
@@ -46,7 +47,7 @@ export class AssetAssignHistoryComponent {
                                                                                   })
                                       },
                                       error=>{
-                                            sessionStorage.setItem('reserr','No Asset Assing History Found ')
+                                            sessionStorage.setItem('reserr','No Asset Assigning History Found ')
                                             this.router.navigate(['viewemployee']) 
                                       })
   }

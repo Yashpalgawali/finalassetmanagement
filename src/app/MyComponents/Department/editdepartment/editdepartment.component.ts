@@ -16,19 +16,34 @@ export class EditdepartmentComponent {
 
   did : any;
   clist : any;
+  
   department : Department = new Department();
   ngOnInit(): void {
     this.did = this.route.snapshot.params['id'];
-    this.deptserv.getDepartmentById(this.did).subscribe(data=>this.department=data);
-    this.compserv.getAllCompanies().subscribe(data=>this.clist=data);
+   this.deptserv.getDepartmentById(this.did).subscribe({
+                                    next:(data)=>{
+                                        this.department = data;
+                                        this.compserv.getAllCompanies().subscribe(data=>this.clist=data);
+                                    },error : (e)=>{
+                                      sessionStorage.setItem('reserr','No Department Found by given ID')
+                                      this.router.navigate(['viewdepartment']);
+                                    }
+   });
+    
 
   }
 
   public onSubmit() {
-    this.deptserv.updateDepartment(this.department).subscribe(data=>{ 
-                                                                    sessionStorage.setItem('response','Company updated Successfully')
-                                                                    this.goToViewDepartments()
-                                                              });
+    this.deptserv.updateDepartment(this.department).subscribe({
+      complete:()=>{
+        sessionStorage.setItem('response','Department updated Successfully')
+        this.router.navigate(['viewdepartment']);
+      },
+      error:(e) =>{
+          sessionStorage.setItem('reserr','Department is not updated')
+          this.router.navigate(['viewdepartment']);
+       }
+    });
   }
   public goToViewDepartments()
   {
