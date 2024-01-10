@@ -23,23 +23,25 @@ export class ViewassetComponent {
       pagingType : 'full_numbers'
     }
     this.assetserv.getAllAssets().subscribe(data=>{
-      if(sessionStorage.getItem('response')!=null)
-                                                  { 
-                                                    setTimeout(() => {
-                                                      this.response=sessionStorage.getItem('response')
-                                                      sessionStorage.removeItem('response')
-                                                    }, 500);
-                                                  }
-                                                  if(sessionStorage.getItem('reserr')!=null)
-                                                  {
-                                                    this.reserr=sessionStorage.getItem('reserr')
-                                                      setTimeout(() => {  
-                                                        sessionStorage.removeItem('reserr')
-                                                      }, 500);
-                                                  }
-                                                  this.aslist=data
-                                                  this.dtTrigger.next(null) 
-                                                })
+                                            if(sessionStorage.getItem('response')!=null)
+                                              { 
+                                                this.response=sessionStorage.getItem('response')
+                                                setTimeout(() => {
+                                                  sessionStorage.removeItem('response')
+                                                  this.response=""
+                                                }, 3000);
+                                              }
+                                              if(sessionStorage.getItem('reserr')!=null)
+                                              {
+                                                this.reserr=sessionStorage.getItem('reserr')
+                                                  setTimeout(() => {  
+                                                    sessionStorage.removeItem('reserr')
+                                                    this.reserr=""
+                                                  }, 3000);
+                                              }
+                                              this.aslist=data
+                                              this.dtTrigger.next(null) 
+                                            })
   }
 
   getAssetById(aid : number)

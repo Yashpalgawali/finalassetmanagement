@@ -21,15 +21,14 @@ export class EditdesignationComponent {
 
   onSubmit()
   {
-    this.desigserv.updateDesignation(this.designation).subscribe(data=>{
-                                                                        sessionStorage.setItem('response','Designation is updated successfully')  
-                                                                        this.goToViewDesignations()},
-                                                                        error=>{
-                                                                          sessionStorage.setItem('reserr','Designation is not updated')
-                                                                        });
-  }
-  goToViewDesignations()
-  {
-    this.router.navigate(['viewdesignation']);
+    this.desigserv.updateDesignation(this.designation).subscribe({complete:()=> {
+          sessionStorage.setItem('response',this.designation.desig_name+' is updated successfully')
+          this.router.navigate(['viewdesignation'])
+        },
+        error:(e)=>{
+          sessionStorage.setItem('reserr',this.designation.desig_name+' is not updated')
+          this.router.navigate(['viewdesignation'])
+        }
+   });
   }
 }

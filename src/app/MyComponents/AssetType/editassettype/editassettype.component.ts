@@ -17,16 +17,19 @@ export class EditassettypeComponent {
 
   ngOnInit(): void {
     this.atid = this.route.snapshot.params['id']
-    this.atypeserv.getAssetTypeById(this.atid).subscribe(data=>{
-                                                                this.assettype=data
-                                                              })
+    this.atypeserv.getAssetTypeById(this.atid).subscribe(data=>{ this.assettype=data})
   }
 
   onSubmit()
   {
-    this.atypeserv.updateAssetType(this.assettype).subscribe(data=>{
-        sessionStorage.setItem('response','Asset Type updated successfully')        
-        this.router.navigate(['viewassettypes'])});
+    this.atypeserv.updateAssetType(this.assettype).subscribe({complete:()=>{
+        sessionStorage.setItem('response',this.assettype.type_name+' updated successfully')        
+        this.router.navigate(['viewassettypes'])
+      },
+      error:(e)=>{
+        sessionStorage.setItem('reserr',this.assettype.type_name+' is not updated successfully')        
+        this.router.navigate(['viewassettypes'])
+      }
+    });
   }
-
 }

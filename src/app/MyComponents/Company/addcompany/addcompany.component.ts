@@ -11,17 +11,15 @@ import { CompanyService } from 'src/app/Services/company.service';
 export class AddcompanyComponent {
 
   company : Company = new Company();
-  response : any;
   constructor(private compserv : CompanyService,private route : Router) { } 
 
   onSubmit() {
-    // this.compserv.saveCompany(this.company).subscribe(data=>this.goToViewCompany());
-     this.compserv.saveCompany(this.company).subscribe(data=>{
-                                                               this.response=true;
-                                                               this.goToViewCompany();
-                                                             }
-                                                      ),(error : any )=>console.error(error);
-    
+     this.compserv.saveCompany(this.company).subscribe({
+                                                complete:()=>{
+                                                  sessionStorage.setItem('response',this.company.comp_name+' is saved successfully')
+                                                  this.route.navigate(['viewcompany']);                                             
+                                                }
+                                              });
    }
    
    public goToViewCompany()

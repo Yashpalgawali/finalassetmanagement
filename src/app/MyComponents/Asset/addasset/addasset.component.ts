@@ -22,13 +22,15 @@ export class AddassetComponent {
   }
   onSubmit()
   {
-    this.assetserv.saveAsset(this.asset).subscribe(data=>{
-                                                  sessionStorage.setItem('response','Asset saved Successfully')
-                                                  this.router.navigate(['viewassets'])
-                                                  },
-                                                  error=>{
-                                                    sessionStorage.setItem('reserr','Asset is not saved')
-                                                    this.router.navigate(['viewassets'])
-                                                  })
+    this.assetserv.saveAsset(this.asset).subscribe({
+      complete:()=>{
+        sessionStorage.setItem('response',this.asset.asset_name+' Asset saved Successfully')
+        this.router.navigate(['viewassets'])
+      },
+      error:(e)=>{
+        sessionStorage.setItem('reserr',this.asset.asset_name+' Asset is not saved')
+        this.router.navigate(['viewassets'])
+      }
+    })
   }
 }

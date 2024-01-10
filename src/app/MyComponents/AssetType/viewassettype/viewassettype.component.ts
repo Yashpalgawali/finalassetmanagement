@@ -19,7 +19,8 @@ constructor(private atypeserv : AssettypeService,private router : Router) { }
 
 ngOnInit()
 {this.dtOptions={
-  pagingType : 'full_numbers'
+  pagingType : 'full_numbers',
+  responsive : true
 }
   this.atypeserv.getAllAssetTypes().subscribe(data=>{
                                                     this.atypelist=data

@@ -36,11 +36,11 @@ export class EditdepartmentComponent {
   public onSubmit() {
     this.deptserv.updateDepartment(this.department).subscribe({
       complete:()=>{
-        sessionStorage.setItem('response','Department updated Successfully')
+        sessionStorage.setItem('response',' Department '+this.department.dept_name+' is updated Successfully')
         this.router.navigate(['viewdepartment']);
       },
       error:(e) =>{
-          sessionStorage.setItem('reserr','Department is not updated')
+          sessionStorage.setItem('reserr','Department '+this.department.dept_name+' is not updated')
           this.router.navigate(['viewdepartment']);
        }
     });

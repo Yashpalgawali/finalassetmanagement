@@ -34,10 +34,10 @@ export class AssetAssignHistoryComponent {
     this.dtOptions={
      pagingType : 'full_numbers',
      responsive : true
-    
     }
   this.empserv.getAssetAssignHistByEmpId(this.eid)
-                                      .subscribe(data=>
+                                      .subscribe({
+                                      next:(data)=>
                                       {
                                         this.empserv.getAssetAssignHistByEmpId(this.eid).subscribe(data=>{
                                                                                     this.assign_hist = data
@@ -46,10 +46,11 @@ export class AssetAssignHistoryComponent {
                                                                                     this.dtTrigger.next(null)
                                                                                   })
                                       },
-                                      error=>{
+                                      error:(e)=>{
                                             sessionStorage.setItem('reserr','No Asset Assigning History Found ')
                                             this.router.navigate(['viewemployee']) 
-                                      })
+                                      }
+                                    })
   }
 
   exportAssetAssignHistoryReportToExcel(empid: number) {

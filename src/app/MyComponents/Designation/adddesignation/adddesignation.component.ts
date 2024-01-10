@@ -11,15 +11,24 @@ import { DesignationService } from 'src/app/Services/designation.service';
 export class AdddesignationComponent {
   designation : Designation = new Designation();
   
-  constructor(private desigserv : DesignationService ,private route : Router){ }
+  constructor(private desigserv : DesignationService ,private router : Router){ }
 
   onSubmit()
   {
-    this.desigserv.saveDesignation(this.designation).subscribe(data=>this.goToViewDesignations());
+    this.desigserv.saveDesignation(this.designation).subscribe({
+      complete:()=>{
+        sessionStorage.setItem('response',this.designation.desig_name+' is saved successfully' )
+        this.router.navigate(['viewdesignation']);
+      },
+      error:(e)=>{
+        sessionStorage.setItem('reserr',this.designation.desig_name+' is not saved' )
+        this.router.navigate(['viewdesignation']);
+      }
+    })
   }
 
   goToViewDesignations()
   {
-    this.route.navigate(['viewdesignation']);
+    this.router.navigate(['viewdesignation']);
   }
 }

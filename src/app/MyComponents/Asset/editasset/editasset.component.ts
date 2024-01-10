@@ -25,6 +25,16 @@ export class EditassetComponent {
 
   onSubmit()
   {
-    this.assetserv.saveAsset(this.asset).subscribe(data=>this.router.navigate(['viewassets']))
+    this.assetserv.saveAsset(this.asset).subscribe({
+      
+      complete:()=>{
+        sessionStorage.setItem('response',this.asset.asset_name+' is saved successfully')
+        this.router.navigate(['viewassets'])
+      },
+      error:(e) =>{
+        sessionStorage.setItem('reserr',this.asset.asset_name+' is not saved ')
+        this.router.navigate(['viewassets'])
+      }
+    })
   }
 }

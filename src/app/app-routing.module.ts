@@ -30,6 +30,8 @@ import { ConfirmOtpForgotPassComponent } from './MyComponents/confirm-otp-forgot
 import { UpdatePasswordComponent } from './MyComponents/update-password/update-password.component';
 import { ChangePasswordComponent } from './MyComponents/change-password/change-password.component';
 import { RetrieveAssetsComponent } from './MyComponents/Asset/retrieve-assets/retrieve-assets.component';
+import { ActivityService } from './Services/activity.service';
+import { ActivityComponent } from './MyComponents/activity/activity.component';
 
 const routes: Routes = [
   { path : "company" ,       component : AddcompanyComponent , canActivate : [RouteGuardService]},
@@ -62,8 +64,8 @@ const routes: Routes = [
   { path : "confirmotp" , component : ConfirmOtpForgotPassComponent },
   { path : "updatepassword" , component : UpdatePasswordComponent },
   { path : "changepass" , component : ChangePasswordComponent ,canActivate : [RouteGuardService] },
-  { path : "retrieveassetsbyempid/:id" , component : RetrieveAssetsComponent ,canActivate : [RouteGuardService] }
-  
+  { path : "retrieveassetsbyempid/:id" , component : RetrieveAssetsComponent ,canActivate : [RouteGuardService] },
+  { path : "activity" , component : ActivityComponent ,canActivate : [RouteGuardService] }
  
 ];
 
