@@ -34,8 +34,6 @@ deptlist   : Department[] = [];
               private router    : Router
                ) {
   }
-
-
   ngOnInit(): void {
         this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
         this.desigserv.getAllDesignations().subscribe(data=>{this.desiglist=data})

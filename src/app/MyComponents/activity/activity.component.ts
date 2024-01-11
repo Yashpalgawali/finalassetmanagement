@@ -25,6 +25,7 @@ export class ActivityComponent {
     this.activityserv.getAllActivities().subscribe({
       next:(data)=>{
         this.activities=data
+        this.dtTrigger.next(null)
       }
     })  
   }

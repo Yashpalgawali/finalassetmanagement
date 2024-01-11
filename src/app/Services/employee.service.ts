@@ -28,7 +28,6 @@ export class EmployeeService {
   public getEmployeeById(eid : any):Observable<Employee>
   {
     return this.http.get<Employee>(`${this.base_url}editempassignassetbyempid/${eid}`);
-   // return this.http.get<Employee>(`${this.base_url}${eid}`);
   }
   public updateEmployee(emp : Employee):Observable<Employee[]>
   {

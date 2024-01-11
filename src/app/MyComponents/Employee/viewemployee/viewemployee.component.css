@@ -1,0 +1,5 @@
+@media only screen and (max-width: 1280px) {
+    #emptable>tbody>tr>td>.btn {
+        margin-bottom: 5px !important;
+    }
+  }
