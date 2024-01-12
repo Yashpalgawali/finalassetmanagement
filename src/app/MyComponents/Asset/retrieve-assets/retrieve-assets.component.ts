@@ -50,8 +50,12 @@ export class RetrieveAssetsComponent {
                                                           //   this.assigned = this.assigned +","+ this.assignedassets[index].asset.asset_name
                                                           //   }
                                                           // }
-                                                               
                                                               },
                                                           )
+  }
+
+  onSubmit()
+  {
+    alert(this.assignedassets)
   }
 }

@@ -1,7 +1,6 @@
 export class GlobalComponent {
 
-    //   public static base_url = "http://3.112.245.99:8080/assetmanagement/";
-       public static base_url = "http://localhost:7979/";
-
-      // public static base_url = "https://mycodenet.jvmhost.net/assetmanagement/";
-  }
+       public static base_url = "http://57.181.39.84:8080/assetmanagementrest/";
+    //    public static base_url = "http://localhost:7979/";
+     //  public static base_url = "https://mycodenet.jvmhost.net/assetmanagementrest/";
+  } 
