@@ -13,9 +13,7 @@ import { EmployeeService } from 'src/app/Services/employee.service';
   styleUrls: ['./assignedassets.component.css']
 })
 export class AssignedassetsComponent {
-mymethod() {
-  alert("my method called")
-}
+
 response : any
 reserr   : any
   constructor(private empserv : EmployeeService,private router : Router,private assignassetserv : AssignedAssetService) { }
@@ -29,8 +27,7 @@ reserr   : any
   ngOnInit(): void {
     this.dtOptions={
       pagingType : 'full_numbers',
-      responsive:true,
-     
+      responsive:true
     }
 
     this.empserv.getAssignedAssets().subscribe(

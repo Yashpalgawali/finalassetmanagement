@@ -5,6 +5,7 @@ import { pipe } from 'rxjs';
 import { Assets } from 'src/Models/Assets';
 import { AssignedAssets } from 'src/Models/AssignedAssets';
 import { Employee } from 'src/Models/Employee';
+// import { Employee } from 'src/Models/Employee';
 import { AssetService } from 'src/app/Services/asset.service';
 import { AssignedAssetService } from 'src/app/Services/assigned-asset.service';
 
@@ -20,13 +21,15 @@ export class RetrieveAssetsComponent {
   assigned_assets :  AssignedAssets = new AssignedAssets();
   assignedassets  :  AssignedAssets[] = []
   employee : Employee = new Employee()
+ 
   assigned : any
   emp_id !:  number
   assetlist  : any
   matched : Assets[]= []
   ngOnInit(): void {
     this.emp_id= this.route.snapshot.params['id'];
-    this.assignassetserv.getAssignedAssetsByEmpId(this.emp_id).subscribe(data=>
+    this.assignassetserv.getAssignedAssetsByEmpId(this.emp_id).subscribe({
+                                                        next:(data)=>
                                                         {
                                                           this.assignedassets=data
                                                           this.employee =this.assignedassets[0].employee
@@ -43,15 +46,17 @@ export class RetrieveAssetsComponent {
                                                           //     this.assigned = this.assignedassets[index].asset.asset_name
                                                           //     if(this.assetlist.asset_id==this.assignedassets[index].asset.asset_id) 
                                                           //     {
-                                                                
                                                           //     }
                                                           //   }
                                                           //   else {
                                                           //   this.assigned = this.assigned +","+ this.assignedassets[index].asset.asset_name
                                                           //   }
                                                           // }
-                                                              },
-                                                          )
+                                                              },error:(e)=>{
+                                                                sessionStorage.setItem('reserr','No Assets Are assigned')
+                                                                this.router.navigate(['viewemployee'])
+                                                              }
+                                                            })
   }
 
   onSubmit()

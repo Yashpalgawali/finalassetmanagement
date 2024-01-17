@@ -13,9 +13,9 @@ export class ViewassetComponent {
 
   dtOptions : DataTables.Settings={}
   dtTrigger : Subject<any> = new Subject<any>
-  aslist : any
-  response : any
-  reserr : any
+  aslist    : any
+  response  : any
+  reserr    : any
   constructor(private assetserv : AssetService,private router : Router) {}
 
   ngOnInit(): void {

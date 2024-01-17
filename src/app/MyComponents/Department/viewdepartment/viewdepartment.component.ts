@@ -20,7 +20,7 @@ export class ViewdepartmentComponent {
   ngOnInit(): void {
     this.dtOptions={
       pagingType : 'simple_numbers',
-  }
+    }
     this.deptserv.getAllDepartments().subscribe({
       next:(data)=> {
         this.deptlist=data

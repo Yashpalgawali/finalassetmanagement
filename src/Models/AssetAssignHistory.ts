@@ -1,5 +1,5 @@
 import { Assets } from "./Assets"
-import { Employee } from "./Employee"
+// import { Employee } from "./Employee"
 
 export class AssetAssignHistory {
 
@@ -8,7 +8,8 @@ export class AssetAssignHistory {
     operation_time !: string
     operation      !: string
     asset_id !: number
-    employee : Employee = new Employee()
+    // employee : Employee = new Employee()
+    employee : any
     asset  : Assets  =new Assets()
     
 }

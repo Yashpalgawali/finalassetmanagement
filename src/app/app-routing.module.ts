@@ -8,10 +8,8 @@ import { ViewdepartmentComponent } from './MyComponents/Department/viewdepartmen
 import { EditdepartmentComponent } from './MyComponents/Department/editdepartment/editdepartment.component';
 import { AdddesignationComponent } from './MyComponents/Designation/adddesignation/adddesignation.component';
 import { EditdesignationComponent } from './MyComponents/Designation/editdesignation/editdesignation.component';
-import { ViewdesignationComponent } from './MyComponents/Designation/viewdesignation/viewdesignation.component';
-import { AddemployeeComponent } from './MyComponents/Employee/addemployee/addemployee.component';
-import { ViewemployeeComponent } from './MyComponents/Employee/viewemployee/viewemployee.component';
-import { EditemployeeComponent } from './MyComponents/Employee/editemployee/editemployee.component';
+ import { ViewdesignationComponent } from './MyComponents/Designation/viewdesignation/viewdesignation.component';
+
 import { AddassettypeComponent } from './MyComponents/AssetType/addassettype/addassettype.component';
 import { ViewassettypeComponent } from './MyComponents/AssetType/viewassettype/viewassettype.component';
 import { EditassettypeComponent } from './MyComponents/AssetType/editassettype/editassettype.component';
@@ -32,6 +30,9 @@ import { ChangePasswordComponent } from './MyComponents/change-password/change-p
 import { RetrieveAssetsComponent } from './MyComponents/Asset/retrieve-assets/retrieve-assets.component';
 import { ActivityService } from './Services/activity.service';
 import { ActivityComponent } from './MyComponents/activity/activity.component';
+import { AddemployeeComponent } from './MyComponents/Employee/addemployee/addemployee.component';
+import { ViewemployeeComponent } from './MyComponents/Employee/viewemployee/viewemployee.component';
+import { EditemployeeComponent } from './MyComponents/Employee/editemployee/editemployee.component';
 
 const routes: Routes = [
   { path : "company" ,       component : AddcompanyComponent , canActivate : [RouteGuardService]},
@@ -44,10 +45,10 @@ const routes: Routes = [
   { path : "designation" , component : AdddesignationComponent , canActivate : [RouteGuardService]},
   { path : "viewdesignation" ,    component : ViewdesignationComponent, canActivate : [RouteGuardService]},
   { path : "designations/:id",component : EditdesignationComponent, canActivate : [RouteGuardService]},
-  { path : "addemployee" ,    component : AddemployeeComponent ,  canActivate : [RouteGuardService]},
-  { path : "viewemployee" ,   component : ViewemployeeComponent , canActivate : [RouteGuardService]},
-  { path : "employees/:id" ,  component : EditemployeeComponent , canActivate : [RouteGuardService]},
- 
+  { path : "addemployee", component : AddemployeeComponent , canActivate : [RouteGuardService]},
+  { path : "viewemployee", component : ViewemployeeComponent , canActivate : [RouteGuardService]},
+  { path : "employee/:id", component : EditemployeeComponent , canActivate : [RouteGuardService]},
+
   { path : "addassettype" ,   component : AddassettypeComponent , canActivate : [RouteGuardService]},
   { path : "viewassettypes" , component : ViewassettypeComponent ,canActivate : [RouteGuardService]},
   { path : "assettypes/:id" , component : EditassettypeComponent, canActivate : [RouteGuardService]},

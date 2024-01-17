@@ -1,68 +1,76 @@
-<div class="container">
-	<!-- start: PAGE HEADER -->
-		<div class="row">
-			<div class="col-sm-12">
-				<!-- start: PAGE TITLE & BREADCRUMB -->
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a routerLink="/adminhome"><i class="fa fa-home"></i>&nbsp;Home</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Add Employee</li>
-				</ol>
-			</div>
-		</div>
-		<form  (submit)="onSubmit()" method="post">
-			<div class="card">
-				<div class="card-header"><h4>Assign Asset</h4></div>
-				
-				<div class="card-body">
-					<div class="form-group">
-						<label for="emp_name">Employee Name</label>
-							<input class="form-control mb-3" type="text" id="emp_name" name="emp_name" [(ngModel)]="employee.emp_name" placeholder="Enter Employee Name" required />
-					</div>
-					<div class="form-group">
-						<label for="emp_email">Email</label> 
-							<input class="form-control mb-3" type="email" id="emp_email" name="emp_email" [(ngModel)]="employee.emp_email" placeholder="Enter Email address" required />
-					</div>
-					<div class="form-group">
-						<label for="emp_contact">Contact</label> 
-							<input class="form-control mb-3" type="text" id="emp_contact" name="emp_contact" [(ngModel)]="employee.emp_contact" placeholder="Enter contact of the employee" required />
-					</div>
-					<div class="form-group">
-						<label for="designation">Designation</label> 
-						<select class="form-control mb-3"  id="designation" name="designation" [(ngModel)]="employee.designation" >
-						   <option selected disabled>Please Select Designation</option>
-                                <option *ngFor="let desig of desiglist" [ngValue]="desig">{{desig.desig_name}}</option>
-						</select>
-					</div>
-					<div class="form-group ">
-						<label for="company">Company</label> 
-							<select class="form-control mb-3" id="company" name="company" [(ngModel)]="employee.company" (ngModelChange)="getdeptbycompid($event)" >
-								<option selected disabled>Please Select Company</option>
-									<option *ngFor="let comp of clist" [ngValue]="comp">{{comp.comp_name}}</option>
-							</select>
-					</div>
-					<div class="form-group ">
-						<label for="department">Department</label> 
-							<select class="form-control mb-3" id="department" name="department" [(ngModel)]="employee.department">
-							   <option selected disabled>Please Select Department</option>
-                                <option *ngFor="let dept of deptlist" [ngValue]="dept">{{dept.dept_name}}</option>
-							</select>
-					</div>
-                    <div class="form-group mb-3">
-                        <label for="multi_assets">Assets</label>
-						<ng-select
-							[items]="assetlist"
-							[(ngModel)]="employee.asset_ids"
-							[multiple]="true"
-							[closeOnSelect]="false"
-							bindLabel="asset_name"
-							bindValue="asset_id"
-							placeholder="Select Assets"
-							name="multi_assets"
-						>
-						</ng-select>
-                    </div>
-                  <input type="submit" class="btn btn-primary" value="Submit" /><input type="reset" class="btn btn-primary" value="RESET" />
-				</div>
-			</div>
-		</form>
-	</div>
+<div class="container" >
+    <!-- start: PAGE HEADER -->
+           <div class="row">
+               <div class="col-sm-12">
+                   
+                   <!-- start: PAGE TITLE & BREADCRUMB -->
+                   <ol class="breadcrumb">
+                       <li class="breadcrumb-item">
+                           <a routerLink="/adminhome"> <i class="fa fa-home"></i>&nbsp;Home </a>
+                       </li>
+                       <li class="breadcrumb-item active" aria-current="page">
+                           Add Employee
+                       </li>
+                   </ol>
+               </div>
+           </div>
+   
+   <form (ngSubmit)="onSubmit()" method="POST" >	
+     
+       <div class="card">
+           <div class="card-header"><h4>Add Employee</h4></div>
+       <div class="card-body">
+       <div class="form-group">
+           <label for="emp_name"> Name:</label>
+               <input type="text" class="form-control mb-3" id="emp_name" placeholder="Enter Employee Name" [(ngModel)]="employee.emp_name" name="emp_name" required>
+          </div>    
+          
+          <div class="form-group">
+             <label for="emp_email"> Email:</label>
+               <input type="email" class="form-control mb-3" id="emp_email" placeholder="Enter Employee Email" [(ngModel)]="employee.emp_email" name="emp_email" required>
+          </div> 
+          
+          <div class="form-group">
+         <label for="designation">Designation:</label>
+           
+           <select class="form-control mb-3" style="width:100%;" id="designation"  name="designation" [(ngModel)]="employee.designation" required >
+               <option selected disabled>Select Designation</option>
+                <option *ngFor="let desig of desiglist" [ngValue]="desig">{{desig.desig_name}}</option>
+           </select>
+       </div> 
+            
+     <div class="form-group">
+         <label for="company">Company:</label>
+           <select class="form-control mb-3" style="width:100%;" id="company"  name="company" required (change)="getdeptbycompid($event)">
+               <option selected disabled="disabled">Select Company Name</option>
+               <option *ngFor="let comp of clist" [ngValue]="comp">{{comp.comp_name}}</option> 
+           </select>
+       </div>
+       
+        <div class="form-group">
+           <label for="department">Department:</label>
+               <select class="form-control  mb-3" style ="width:100%;" id="department" [(ngModel)]="employee.department" name="department" required >
+                   <option selected disabled> Select Department </option>
+                    <option *ngFor="let dept of deptlist" [ngValue]="dept">{{dept.dept_name}}</option> 
+               </select>
+       </div>
+       <div class="form-group mb-3">
+        <label for="multi_assets">Assets</label>
+        <ng-select
+            [items]="assetlist"
+            [(ngModel)]="employee.asset_ids"
+            [multiple]="true"
+            [closeOnSelect]="false"
+            bindLabel="asset_name"
+            bindValue="asset_id"
+            placeholder="Select Assets"
+            name="multi_assets"
+        >
+        </ng-select>
+    </div>
+   
+       <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;<button type="reset" class="btn btn-primary">Cancel</button>
+     </div>
+   </div>
+  </form>
+ </div>

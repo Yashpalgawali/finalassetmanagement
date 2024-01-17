@@ -1,5 +1,5 @@
 import { Assets } from "./Assets"
-import { Employee } from "./Employee"
+// import { Employee } from "./Employee"
 
 export class AssignedAssets {
     assigned_asset_id !: number
@@ -14,5 +14,6 @@ export class AssignedAssets {
     emp_id !: number
     multi_assets !:  string
     asset : Assets = new Assets()
-    employee : Employee = new Employee()
+    //employee : Employee = new Employee()
+    employee :any
 }

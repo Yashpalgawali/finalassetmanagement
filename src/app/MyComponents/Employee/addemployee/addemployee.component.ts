@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
-import { IDropdownSettings } from 'ng-multiselect-dropdown/public_api';
-
+import { Assets } from 'src/Models/Assets';
 import { Company } from 'src/Models/Company';
 import { Department } from 'src/Models/Department';
+import { Designation } from 'src/Models/Designation';
 import { Employee } from 'src/Models/Employee';
 import { AssetService } from 'src/app/Services/asset.service';
 import { CompanyService } from 'src/app/Services/company.service';
@@ -18,41 +18,43 @@ import { EmployeeService } from 'src/app/Services/employee.service';
   styleUrls: ['./addemployee.component.css']
 })
 export class AddemployeeComponent {
-employee   : Employee = new Employee();
-department : Department = new Department();
-clist      : any
-desiglist  : any
-assetlist  : any
-deptlist   : Department[] = [];
 
-
-  constructor(private compserv  : CompanyService,
+  constructor(private empserv : EmployeeService,
+              private router  : Router,
               private desigserv : DesignationService,
-              private deptserv  : DepartmentService,
-              private assetserv : AssetService,
-              private empserv   : EmployeeService,
-              private router    : Router
-               ) {
-  }
+              private compserv : CompanyService,
+              private deptserv : DepartmentService,
+              private assetserv: AssetService){}
+
+  desiglist : Designation[] = []
+  clist : Company [] = []
+  deptlist : Department[] = []
+  assetlist : Assets [] = []
+  employee : Employee = new Employee()
+
   ngOnInit(): void {
-        this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
-        this.desigserv.getAllDesignations().subscribe(data=>{this.desiglist=data})
-        this.assetserv.getAllAssets().subscribe(data=>this.assetlist=data)
+      this.desigserv.getAllDesignations().subscribe(data=>{this.desiglist=data })
+      this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
+      this.assetserv.getAllAssets().subscribe(data=>this.assetlist=data)
+
   }
 
   onSubmit()
   {
-    this.empserv.saveEmployee(this.employee).subscribe(data=>
-      {
-        alert('emp saved successfully')
-        sessionStorage.setItem('response','Employee Saved successfully')
-        this.router.navigate(['viewemployee'])
-         
+    this.empserv.saveEmployee(this.employee).subscribe({
+                              complete:()=>{
+                                alert('Employee is saved')
+                                this.router.navigate(['viewemployee'])
+                              },
+                              error :(e)=>{
+                                alert('Employee not saved')
+                                this.router.navigate(['viewemployee'])
+                              }
     })
   }
 
-  getdeptbycompid(comp : Company)
+  getdeptbycompid(cid : any)
   {
-    this.deptserv.getDepartmentByCompId(comp.comp_id).subscribe(data=>this.deptlist=data)
+    this.deptserv.getDepartmentByCompName(cid.target.value).subscribe(data=>this.deptlist=data)
   }
 }

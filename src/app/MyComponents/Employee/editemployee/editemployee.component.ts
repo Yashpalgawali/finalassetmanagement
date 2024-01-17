@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
+import { Assets } from 'src/Models/Assets';
 import { Company } from 'src/Models/Company';
 import { Department } from 'src/Models/Department';
+import { Designation } from 'src/Models/Designation';
 import { Employee } from 'src/Models/Employee';
 import { AssetService } from 'src/app/Services/asset.service';
 import { CompanyService } from 'src/app/Services/company.service';
@@ -16,37 +18,49 @@ import { EmployeeService } from 'src/app/Services/employee.service';
   styleUrls: ['./editemployee.component.css']
 })
 export class EditemployeeComponent {
+  constructor(private empserv : EmployeeService,
+    private router  : Router,
+    private desigserv : DesignationService,
+    private compserv : CompanyService,
+    private deptserv : DepartmentService,
+    private assetserv: AssetService,
+    private route : ActivatedRoute) { }
 
-  constructor(private empserv : EmployeeService,private router   : Router,
-              private route   : ActivatedRoute, private deptserv : DepartmentService,
-              private assetserv : AssetService, private compserv : CompanyService,
-              private desigserv : DesignationService
-              ) { }
-  emp_id    !: number
-  department : Department = new Department();
-  clist      : any
-  desiglist  : any
-  assetlist  : any
-  deptlist   : Department[] = [];
-  employee  :  Employee = new Employee()
-  // selectedItems : Department[] = [];
-  ngOnInit():  void {
+    desiglist : Designation[] = []
+    clist : Company [] = []
+    deptlist : Department[] = []
+    assetlist : Assets [] = []
+    employee : Employee = new Employee()
+    emp_id   !: number
+    selectedCompany : Company = new Company()
+  
+    ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+  
     this.emp_id = this.route.snapshot.params['id']
-    this.empserv.getEmployeeById(this.emp_id).subscribe(data=>{
-                                                              this.employee=data
-                                                            })
-    this.assetserv.getAllAssets().subscribe(data=>this.assetlist=data)
-    this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
-    this.desigserv.getAllDesignations().subscribe(data=>this.desiglist=data)
-  }
+    
+    this.empserv.getEmployeeById(this.emp_id).subscribe({
+      next:(data)=>{
+        this.employee=data
+        this.selectedCompany = this.employee.department.company
+        
+        this.desigserv.getAllDesignations().subscribe(data=>this.desiglist=data)
+        this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
+        this.assetserv.getAllAssets().subscribe(data=>this.assetlist=data)
+      },
+      error:(e) =>{
+        sessionStorage.setItem('reserr','No Employee Found for given ID ')
+        this.router.navigate(['viewemployee'])
+      }
+    })
+}
 
-  onSubmit()
-  {
-    alert(this.employee.asset_ids)
-  }
-
-  getdeptbycompid(comp : Company)
-  {
-    this.deptserv.getDepartmentByCompId(comp.comp_id).subscribe(data=>this.deptlist=data)
-  }
+onSubmit(){
+  
+}
+getdeptbycompid(cid : Company)
+{
+  this.deptserv.getDepartmentByCompId(cid.comp_id).subscribe(data=>this.deptlist=data)
+}
 }

@@ -15,9 +15,7 @@ import { EditdepartmentComponent }  from './MyComponents/Department/editdepartme
 import { AdddesignationComponent }  from './MyComponents/Designation/adddesignation/adddesignation.component';
 import { ViewdesignationComponent } from './MyComponents/Designation/viewdesignation/viewdesignation.component';
 import { EditdesignationComponent } from './MyComponents/Designation/editdesignation/editdesignation.component';
-import { AddemployeeComponent }  from './MyComponents/Employee/addemployee/addemployee.component';
-import { ViewemployeeComponent } from './MyComponents/Employee/viewemployee/viewemployee.component';
-import { EditemployeeComponent } from './MyComponents/Employee/editemployee/editemployee.component';
+
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AddassetComponent } from './MyComponents/Asset/addasset/addasset.component';
@@ -39,6 +37,9 @@ import { UpdatePasswordComponent } from './MyComponents/update-password/update-p
 import { ChangePasswordComponent } from './MyComponents/change-password/change-password.component';
 import { RetrieveAssetsComponent } from './MyComponents/Asset/retrieve-assets/retrieve-assets.component';
 import { ActivityComponent } from './MyComponents/activity/activity.component';
+import { AddemployeeComponent } from './MyComponents/Employee/addemployee/addemployee.component';
+import { ViewemployeeComponent } from './MyComponents/Employee/viewemployee/viewemployee.component';
+import { EditemployeeComponent } from './MyComponents/Employee/editemployee/editemployee.component';
 
 
 @NgModule({
@@ -53,9 +54,6 @@ import { ActivityComponent } from './MyComponents/activity/activity.component';
     AdddesignationComponent,
     ViewdesignationComponent,
     EditdesignationComponent,
-    AddemployeeComponent,
-    ViewemployeeComponent,
-    EditemployeeComponent,
     AddassetComponent,
     AddassettypeComponent,
     ViewassettypeComponent,
@@ -72,7 +70,10 @@ import { ActivityComponent } from './MyComponents/activity/activity.component';
     UpdatePasswordComponent,
     ChangePasswordComponent,
     RetrieveAssetsComponent,
-    ActivityComponent
+    ActivityComponent,
+    AddemployeeComponent,
+    ViewemployeeComponent,
+    EditemployeeComponent
   ],
   imports: [
     BrowserModule,

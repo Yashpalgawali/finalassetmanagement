@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { data, error } from 'jquery';
 import { Subject } from 'rxjs';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
-import { Employee } from 'src/Models/Employee';
+ import { Employee } from 'src/Models/Employee';
 import { AssetService } from 'src/app/Services/asset.service';
 import { AssignedAssetService } from 'src/app/Services/assigned-asset.service';
 import { EmployeeService } from 'src/app/Services/employee.service';
@@ -24,6 +24,7 @@ export class AssetAssignHistoryComponent {
 
   eid : any
   employee : Employee = new Employee()
+  
   assign_hist : AssetAssignHistory[] = []
   constructor(private empserv : EmployeeService,private route : ActivatedRoute,private router : Router,
               private assignassetserv : AssignedAssetService) {

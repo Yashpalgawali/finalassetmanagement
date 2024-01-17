@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GlobalComponent } from '../GlobalComponents';
 import { HttpClient } from '@angular/common/http';
-import { Employee } from 'src/Models/Employee';
+ import { Employee } from 'src/Models/Employee';
 import { Observable } from 'rxjs';
 import { AssignedAssets } from 'src/Models/AssignedAssets';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';

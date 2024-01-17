@@ -35,9 +35,9 @@
 					</div>
 					<div class="form-group ">
 						<label for="company">Company</label> 
-							<select class="form-control mb-3" id="company" name="company" [(ngModel)]="employee.company" (ngModelChange)="getdeptbycompid($event)" >
+							<select class="form-control mb-3" id="company" name="company" [(ngModel)]="selectedCompany" (ngModelChange)="getdeptbycompid($event)" >
 								<option selected disabled>Please Select Company</option>
-									<option *ngFor="let comp of clist" [ngValue]="comp">{{comp.comp_name}}</option>
+									<option *ngFor="let comp of clist" [ngValue]="comp"  >{{comp.comp_name}}</option>
 							</select>
 					</div>
 					<div class="form-group ">
