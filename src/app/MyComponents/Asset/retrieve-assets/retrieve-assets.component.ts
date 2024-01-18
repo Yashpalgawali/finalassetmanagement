@@ -20,12 +20,14 @@ export class RetrieveAssetsComponent {
               private assignassetserv : AssignedAssetService) { }
   assigned_assets :  AssignedAssets = new AssignedAssets();
   assignedassets  :  AssignedAssets[] = []
+  already_assigned : Assets[] = []
   employee : Employee = new Employee()
  
   assigned : any
   emp_id !:  number
   assetlist  : any
   matched : Assets[]= []
+  assets : Assets = new Assets()
   ngOnInit(): void {
     this.emp_id= this.route.snapshot.params['id'];
     this.assignassetserv.getAssignedAssetsByEmpId(this.emp_id).subscribe({
@@ -38,25 +40,16 @@ export class RetrieveAssetsComponent {
                                                               this.assetlist=data
                                                             }
                                                           })
-                                                          // this.employee =this.assignedassets[0].employee
-                                                          // for (let index = 0; index < this.assignedassets.length; index++) {
-                                                          //   this.assigned_assets = this.assignedassets[index];
-                                                          //   if(index==0)
-                                                          //   {  
-                                                          //     this.assigned = this.assignedassets[index].asset.asset_name
-                                                          //     if(this.assetlist.asset_id==this.assignedassets[index].asset.asset_id) 
-                                                          //     {
-                                                          //     }
-                                                          //   }
-                                                          //   else {
-                                                          //   this.assigned = this.assigned +","+ this.assignedassets[index].asset.asset_name
-                                                          //   }
-                                                          // }
-                                                              },error:(e)=>{
+                                                         
+                                                          for (let index = 0; index < this.assignedassets.length; index++) {
+                                                            this.already_assigned[index] = this.assignedassets[index].asset
+                                                            alert(this.already_assigned[index].asset_name)
+                                                          }
+                                                         },error:(e)=>{
                                                                 sessionStorage.setItem('reserr','No Assets Are assigned')
                                                                 this.router.navigate(['viewemployee'])
                                                               }
-                                                            })
+                                                        })
   }
 
   onSubmit()
