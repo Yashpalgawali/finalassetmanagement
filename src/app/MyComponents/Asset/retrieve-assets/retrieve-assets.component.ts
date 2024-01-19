@@ -8,6 +8,7 @@ import { Employee } from 'src/Models/Employee';
 // import { Employee } from 'src/Models/Employee';
 import { AssetService } from 'src/app/Services/asset.service';
 import { AssignedAssetService } from 'src/app/Services/assigned-asset.service';
+import { EmployeeService } from 'src/app/Services/employee.service';
 
 @Component({
   selector: 'app-retrieve-assets',
@@ -17,7 +18,7 @@ import { AssignedAssetService } from 'src/app/Services/assigned-asset.service';
 export class RetrieveAssetsComponent {
 
   constructor(private assetserv : AssetService,private route : ActivatedRoute, private router : Router,
-              private assignassetserv : AssignedAssetService) { }
+              private assignassetserv : AssignedAssetService,private empserv : EmployeeService) { }
   assigned_assets :  AssignedAssets = new AssignedAssets();
   assignedassets  :  AssignedAssets[] = []
   already_assigned : Assets[] = []
@@ -25,7 +26,7 @@ export class RetrieveAssetsComponent {
  
   assigned : any
   emp_id !:  number
-  assetlist  : any
+  assetlist  : Assets[] = []
   matched : Assets[]= []
   assets : Assets = new Assets()
   ngOnInit(): void {
@@ -42,10 +43,13 @@ export class RetrieveAssetsComponent {
                                                           })
                                                          
                                                           for (let index = 0; index < this.assignedassets.length; index++) {
+                                                            
                                                             this.already_assigned[index] = this.assignedassets[index].asset
-                                                            alert(this.already_assigned[index].asset_name)
                                                           }
-                                                         },error:(e)=>{
+                                                          for (let index = 0; index < this.already_assigned.length; index++) {
+                                                            alert(this.already_assigned[index])
+                                                          }
+                                                        },error:(e)=>{
                                                                 sessionStorage.setItem('reserr','No Assets Are assigned')
                                                                 this.router.navigate(['viewemployee'])
                                                               }
@@ -54,6 +58,7 @@ export class RetrieveAssetsComponent {
 
   onSubmit()
   {
-    alert(this.assignedassets)
+    alert('retrive assets called '+this.assigned_assets.employee.emp_id)
+    this.empserv.retrieveAllAssetsByEmpId(this.assigned_assets)
   }
 }

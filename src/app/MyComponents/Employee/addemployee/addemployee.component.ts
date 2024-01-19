@@ -27,10 +27,10 @@ export class AddemployeeComponent {
               private assetserv: AssetService){}
 
   desiglist : Designation[] = []
-  clist : Company [] = []
-  deptlist : Department[] = []
+  clist     : Company [] = []
+  deptlist  : Department[] = []
   assetlist : Assets [] = []
-  employee : Employee = new Employee()
+  employee  : Employee = new Employee()
 
   ngOnInit(): void {
       this.desigserv.getAllDesignations().subscribe(data=>{this.desiglist=data })
