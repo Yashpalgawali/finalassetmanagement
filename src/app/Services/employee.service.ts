@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GlobalComponent } from '../GlobalComponents';
 import { HttpClient } from '@angular/common/http';
- import { Employee } from 'src/Models/Employee';
+import { Employee } from 'src/Models/Employee';
 import { Observable } from 'rxjs';
 import { AssignedAssets } from 'src/Models/AssignedAssets';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
@@ -46,6 +46,13 @@ export class EmployeeService {
 
   public retrieveAllAssetsByEmpId(assigned : AssignedAssets)
   {
-    this.http.post(`${this.base_url}delete`,assigned)
+    this.http.put(`${this.base_url}delete`,assigned)
   }
+
+  
+  public getassignedassetsbyempid(eid : number)
+  {
+    return this.http.get(`${this.base_url}getassignedassetsbyempid/${eid}`)
+  }
+  
 }

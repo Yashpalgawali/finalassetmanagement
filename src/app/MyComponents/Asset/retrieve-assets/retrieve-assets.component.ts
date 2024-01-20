@@ -21,14 +21,15 @@ export class RetrieveAssetsComponent {
               private assignassetserv : AssignedAssetService,private empserv : EmployeeService) { }
   assigned_assets :  AssignedAssets = new AssignedAssets();
   assignedassets  :  AssignedAssets[] = []
-  already_assigned : Assets[] = []
+  already_assigned : any
+  ndata : any
   employee : Employee = new Employee()
  
-  assigned : any
-  emp_id !:  number
+  assigned   : any
+  emp_id    !: number
   assetlist  : Assets[] = []
-  matched : Assets[]= []
-  assets : Assets = new Assets()
+  matched    : any
+  assets     : Assets = new Assets()
   ngOnInit(): void {
     this.emp_id= this.route.snapshot.params['id'];
     this.assignassetserv.getAssignedAssetsByEmpId(this.emp_id).subscribe({
@@ -36,19 +37,15 @@ export class RetrieveAssetsComponent {
                                                         {
                                                           this.assignedassets=data
                                                           this.employee =this.assignedassets[0].employee
-                                                          this.assetserv.getAllAssets().subscribe({
-                                                            next:(data)=>{
-                                                              this.assetlist=data
-                                                            }
-                                                          })
-                                                         
+                                                      
                                                           for (let index = 0; index < this.assignedassets.length; index++) {
                                                             
-                                                            this.already_assigned[index] = this.assignedassets[index].asset
+                                                            this.matched= this.assignedassets[index].asset
+                                                            alert(this.matched.asset_id+" === "+this.matched.asset_name)
                                                           }
-                                                          for (let index = 0; index < this.already_assigned.length; index++) {
-                                                            alert(this.already_assigned[index])
-                                                          }
+                                                          // for (let index = 0; index < this.already_assigned.length; index++) {
+                                                          //   alert(this.matched.asset_id+"=>> "+this.matched.asset_name)
+                                                          // }
                                                         },error:(e)=>{
                                                                 sessionStorage.setItem('reserr','No Assets Are assigned')
                                                                 this.router.navigate(['viewemployee'])
@@ -58,7 +55,7 @@ export class RetrieveAssetsComponent {
 
   onSubmit()
   {
-    alert('retrive assets called '+this.assigned_assets.employee.emp_id)
+    alert('retrive assets called '+this.assignedassets[0].employee.emp_id)
     this.empserv.retrieveAllAssetsByEmpId(this.assigned_assets)
   }
 }

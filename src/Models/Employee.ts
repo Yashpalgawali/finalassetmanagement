@@ -12,5 +12,6 @@ export class Employee {
     department  : Department = new Department()
     company :Company = new Company()
     asset_ids !: string
+    multi_assets !: string
     comments !: string
 }

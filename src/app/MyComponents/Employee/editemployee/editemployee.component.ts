@@ -57,7 +57,16 @@ export class EditemployeeComponent {
 }
 
 onSubmit(){
-  
+  this.empserv.updateEmployee(this.employee).subscribe({
+                  complete:()=>{
+                    sessionStorage.setItem('response','Employee '+this.employee.emp_name+' is updated successfully')
+                    this.router.navigate(['viewemployee'])
+                  },
+                  error:(e) =>{
+                    sessionStorage.setItem('reserr','Employee '+this.employee.emp_name+' not updated')
+                    this.router.navigate(['viewemployee'])
+                  }
+  })
 }
 getdeptbycompid(cid : Company)
 {

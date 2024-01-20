@@ -19,16 +19,17 @@
         <div class="card">
             <div class="card-header"> <h4>Retrieve Asset(s)</h4> </div>
             <div class="card-body">
-                <input type="hidden" id="emp_id" name="emp_id" [(ngModel)]="employee.emp_id"/>
+                <input type="hidden" id="emp_id" name="emp_id" [(ngModel)]="assignedassets[0].employee.emp_id"/>
                 <div class="form-group">
                     <label for="emp_name">Employee Name</label>
-                        <input class="form-control mb-3" type="text" id="emp_name" name="emp_name" [(ngModel)]="employee.emp_name" disabled required />
+                        <input class="form-control mb-3" type="text" id="emp_name" name="emp_name" [(ngModel)]="assignedassets[0].employee.emp_name" disabled required />
                 </div>
                 <div class="form-group mb-3">
                     <label for="multi_assets">Assets</label>
                     <ng-select
-                        [items]="assetlist"
-                        [(ngModel)]="already_assigned"
+                        [items]="matched"
+                        [(ngModel)]="matched"
+                        
                         [multiple]="true"
                         [closeOnSelect]="false"
                         bindLabel="asset_name"

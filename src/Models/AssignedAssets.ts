@@ -15,5 +15,5 @@ export class AssignedAssets {
     multi_assets !:  string
     asset : Assets = new Assets()
     employee : Employee = new Employee()
-    
+    comments : any
 }
