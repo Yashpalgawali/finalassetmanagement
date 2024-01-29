@@ -20,37 +20,41 @@ export class BasicAuthenticationService {
     let headers = new HttpHeaders({
         Authorization: `${basicAuthHeaderString}`
       })
-     
-      sessionStorage.setItem('token',basicAuthHeaderString)
+    sessionStorage.setItem('token',basicAuthHeaderString)
+    localStorage.setItem('token',basicAuthHeaderString)
       
-      return this.http.get<AuthenticationBean>(`${this.base_url}basicauth`,{ headers : headers }).pipe(
-        map(
-          data=>{
-                  sessionStorage.setItem('token',basicAuthHeaderString);
-                  sessionStorage.setItem('authenticatedUser',username);
-                  return data;
-            }
-        ));
+    return this.http.get<AuthenticationBean>(`${this.base_url}basicauth`,{ headers : headers }).pipe(
+      map(
+        data=>{
+                sessionStorage.setItem('token',basicAuthHeaderString);
+                sessionStorage.setItem('authenticatedUser',username);
+                localStorage.setItem('token',basicAuthHeaderString);
+                localStorage.setItem('authenticatedUser',username);
+                return data;
+          }
+      ));
   }
 
   getAuthenticatedUser() {
-    return sessionStorage.getItem('authenticatedUser')
+    return localStorage.getItem('authenticatedUser')
   }
 
   getAuthenticatedToken() {
     if(this.getAuthenticatedUser())
-      return sessionStorage.getItem('token')
+      return localStorage.getItem('token')
     else
-      return
+      return null
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('token')
+    let user = localStorage.getItem('token')
         return !(user === null)
   }
 
   logout() {
     sessionStorage.removeItem('authenticatedUser')
     sessionStorage.removeItem('token')
+    localStorage.removeItem('authenticatedUser')
+    localStorage.removeItem('token')
   }
 }

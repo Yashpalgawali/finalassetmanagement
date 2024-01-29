@@ -48,20 +48,13 @@
                                 <option *ngFor="let dept of deptlist" [ngValue]="dept">{{dept.dept_name}}</option>
 							</select>
 					</div>
+
+					<div class="form-group ">
+						<label for="assigned_assets">Assigned Assets</label> 
+							<input type="text" class="form-control mb-3 " readonly id="assigned_assets" name="assigned_assets" [(ngModel)]="employee.assigned_assets" />
+					</div>
                     <div class="form-group mb-3">
                         <label for="multi_assets">Assets</label>
-						<ng-select
-							[items]="assetlist"
-							[(ngModel)]="employee.asset_ids"
-							[multiple]="true"
-							[closeOnSelect]="false"
-							bindLabel="asset_name"
-							bindValue="asset_id"
-							placeholder="Select Assets"
-							name="multi_assets"
-                            id  ="multi_assets"
-						>
-						</ng-select>
 						<!-- <ng-select
 							[items]="assetlist"
 							[(ngModel)]="employee.asset_ids"
@@ -72,8 +65,23 @@
 							placeholder="Select Assets"
 							name="multi_assets"
                             id  ="multi_assets"
+						> -->
+						<ng-select
+							[items]="assetlist"
+							[(ngModel)]="employee.asset_ids"
+							[multiple]="true"
+							[closeOnSelect]="false"
+							bindLabel="asset_name"
+							bindValue="asset_id"
+							placeholder="Select Assets"
+							name="multi_assets"
+							id  ="multi_assets"
 						>
-						</ng-select> -->
+						<ng-template ng-label-tmp let-item="item">
+							<span>{{ item.asset_name+"("+item.model_number +")" }}</span>
+						</ng-template>
+					  </ng-select>
+						
                     </div>
                   <input type="submit" class="btn btn-primary" value="Submit" />
                   <input type="reset"  class="btn btn-primary" value="RESET" />

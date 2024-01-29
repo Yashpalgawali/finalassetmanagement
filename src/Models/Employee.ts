@@ -14,4 +14,5 @@ export class Employee {
     asset_ids !: string
     multi_assets !: string
     comments !: string
+    assigned_assets !: string
 }

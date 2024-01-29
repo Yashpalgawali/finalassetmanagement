@@ -19,8 +19,7 @@ export class LoginComponent {
 
   ngOnInit(): void {
     
-    if(sessionStorage.getItem('authenticatedUser')!=null )
-    {
+    if(sessionStorage.getItem('authenticatedUser')!=null ) {
       this.router.navigate(['adminhome'])
     } 
   }

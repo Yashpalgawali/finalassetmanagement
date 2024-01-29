@@ -43,11 +43,11 @@ export class AddemployeeComponent {
   {
     this.empserv.saveEmployee(this.employee).subscribe({
                               complete:()=>{
-                                alert('Employee is saved')
+                                alert('Employee '+this.employee.emp_name+' is saved')
                                 this.router.navigate(['viewemployee'])
                               },
                               error :(e)=>{
-                                alert('Employee not saved')
+                                alert('Employee '+this.employee.emp_name+' employee not saved')
                                 this.router.navigate(['viewemployee'])
                               }
     })

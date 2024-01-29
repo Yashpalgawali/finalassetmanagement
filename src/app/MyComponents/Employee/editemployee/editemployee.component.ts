@@ -33,11 +33,11 @@ export class EditemployeeComponent {
     employee : Employee = new Employee()
     emp_id   !: number
     selectedCompany : Company = new Company()
-  
+    assigned_assets !: string
+    bindlables : any
+    
     ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-  
+   
     this.emp_id = this.route.snapshot.params['id']
     
     this.empserv.getEmployeeById(this.emp_id).subscribe({
@@ -45,6 +45,8 @@ export class EditemployeeComponent {
         this.employee=data
         this.selectedCompany = this.employee.department.company
         
+        this.assigned_assets = this.employee.assigned_assets
+       
         this.desigserv.getAllDesignations().subscribe(data=>this.desiglist=data)
         this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
         this.assetserv.getAllAssets().subscribe(data=>this.assetlist=data)

@@ -29,7 +29,8 @@ reserr   : any
       pagingType : 'full_numbers',
       responsive:true
     }
-
+    alert(sessionStorage.getItem('authenticatedUser'))
+    
     this.empserv.getAssignedAssets().subscribe(
                                             data=>
                                             {
