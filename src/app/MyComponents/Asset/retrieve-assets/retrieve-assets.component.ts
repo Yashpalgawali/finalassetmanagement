@@ -39,13 +39,15 @@ export class RetrieveAssetsComponent {
                                                           this.employee =this.assignedassets[0].employee
                                                       
                                                           for (let index = 0; index < this.assignedassets.length; index++) {
-                                                            
-                                                            this.matched= this.assignedassets[index].asset
-                                                            alert(this.matched.asset_id+" === "+this.matched.asset_name)
+                                                            if(index==0)
+                                                            {
+                                                              this.already_assigned = this.assignedassets[index].asset.asset_name+"("+this.assignedassets[index].asset.model_number+")"
+                                                            }
+                                                            else{
+                                                              this.already_assigned = this.already_assigned +","+ this.assignedassets[index].asset.asset_name+"("+this.assignedassets[index].asset.model_number+")"
+                                                            }
                                                           }
-                                                          // for (let index = 0; index < this.already_assigned.length; index++) {
-                                                          //   alert(this.matched.asset_id+"=>> "+this.matched.asset_name)
-                                                          // }
+                                                          
                                                         },error:(e)=>{
                                                                 sessionStorage.setItem('reserr','No Assets Are assigned')
                                                                 this.router.navigate(['viewemployee'])
@@ -56,6 +58,6 @@ export class RetrieveAssetsComponent {
   onSubmit()
   {
     alert('retrive assets called '+this.assignedassets[0].employee.emp_id)
-    this.empserv.retrieveAllAssetsByEmpId(this.assigned_assets)
+   this.empserv.retrieveAllAssetsByEmpId(this.assignedassets[0].employee.emp_id).subscribe(data=>alert(data))
   }
 }

@@ -31,7 +31,7 @@
                 <th>Company</th>
                 <th>Action</th>
             </tr>
-        </thead>
+        </thead> 
         <tbody>
             <tr *ngFor="let emp of emplist;let i = index ">
                 <td>{{emp.emp_id}}</td>
@@ -41,9 +41,9 @@
                 <td>{{emp.department.dept_name}}</td>
                 <td>{{emp.department.company.comp_name}}</td>
                 <td>
-                    <button (click)="getEmpById(emp.emp_id)" class="btn btn-primary " style="margin-right: 5px;"> <i class="fa fa-edit"></i> Edit</button> 
-                    <button (click)="retrieveassetsbyempid(emp.emp_id)" class="btn btn-primary" style="margin-right: 5px;"> <i class="fa fa-edit"></i> Retrieve</button>
-                    <button (click)="viewemployeehistbyid(emp.emp_id)" class="btn btn-primary" > <i class="fa fa-eye"></i> History</button> 
+                    <button data-action="edit" (click)="getEmpById(emp.emp_id)" (touchstart)="getEmpById(emp.emp_id)" class="btn btn-primary " style="margin-right: 5px;"> <i class="fa fa-edit"></i> Edit</button> 
+                    <button (click)="retrieveassetsbyempid(emp.emp_id)" (touchstart)="getEmpById(emp.emp_id)" class="btn btn-primary" style="margin-right: 5px;"> <i class="fa fa-edit"></i> Retrieve</button>
+                    <button (click)="viewemployeehistbyid(emp.emp_id)" (touchstart)="getEmpById(emp.emp_id)" class="btn btn-primary" > <i class="fa fa-eye"></i> History</button> 
                 </td>
             </tr> 
         </tbody>

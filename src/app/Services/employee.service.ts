@@ -44,9 +44,9 @@ export class EmployeeService {
     return this.http.get<AssetAssignHistory[]>(`${this.base_url}viewemphistbyempid/${eid}`); 
   }
 
-  public retrieveAllAssetsByEmpId(assigned : AssignedAssets)
-  {
-    this.http.put(`${this.base_url}delete`,assigned)
+  public retrieveAllAssetsByEmpId(empid : number)
+  {alert("inside service ID= "+empid)
+    return this.http.delete(`${this.base_url}delete/${empid}`)
   }
 
   
