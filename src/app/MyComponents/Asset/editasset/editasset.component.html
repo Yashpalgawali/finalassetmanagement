@@ -17,7 +17,7 @@
        <div class="card-body">
           <div class="form-group">
               <label for="company">Asset Type</label>
-                <select class="form-control mb-3" id="assettype"  name="assettype" [(ngModel)]="asset.atype">
+                <select class="form-control mb-3" id="assettype"  name="assettype" [(ngModel)]="selectedAssetType" (ngModelChange)="onDropdownChange($event)">
                     <option selected disabled>Please Select Asset Type </option>
                         <option *ngFor="let type of atypelist" [ngValue]="type">{{type.type_name}}</option>
                 </select>

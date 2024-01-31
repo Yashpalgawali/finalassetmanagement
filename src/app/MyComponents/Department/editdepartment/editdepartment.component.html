@@ -5,7 +5,7 @@
                <!-- start: PAGE TITLE & BREADCRUMB -->
                <ol class="breadcrumb">
                    <li class="breadcrumb-item">
-                       <a href="/adminhome"><i class="fa fa-home"></i>&nbsp;Home</a>
+                       <a routerLink="/adminhome"><i class="fa fa-home"></i>&nbsp;Home</a>
                    </li>
                    <li class="breadcrumb-item active" aria-current="page">Edit Department</li>
                </ol>
@@ -17,11 +17,13 @@
          <div class="card-body">
             <div class="form-group">
                 <label for="company">Company</label>
-                  <select class="form-control mb-3" id="company"  name="company" [(ngModel)]="department.company">
-                      <option selected disabled>Please Select Company Name</option>
+                
+                  <select class="form-control mb-3" id="company"  name="company" [(ngModel)]="selectedValue" (ngModelChange)="onDropdownChange($event)">
+                      <option disabled>Please Select Company </option>
                        <option *ngFor="let comp of clist"  [ngValue]="comp">{{comp.comp_name}}</option>  
                   </select>
               </div>
+              
            <div class="form-group">
              <label for="dept_name">Department</label>
                <input type="text" class="form-control  mb-3" id="dept_name" placeholder="Enter Department" [(ngModel)]="department.dept_name" name="dept_name" required>
