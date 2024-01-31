@@ -45,10 +45,9 @@ export class EmployeeService {
   }
 
   public retrieveAllAssetsByEmpId(empid : number)
-  {alert("inside service ID= "+empid)
+  {
     return this.http.delete(`${this.base_url}delete/${empid}`)
   }
-
   
   public getassignedassetsbyempid(eid : number)
   {

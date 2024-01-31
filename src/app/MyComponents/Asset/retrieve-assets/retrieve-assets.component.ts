@@ -5,7 +5,6 @@ import { pipe } from 'rxjs';
 import { Assets } from 'src/Models/Assets';
 import { AssignedAssets } from 'src/Models/AssignedAssets';
 import { Employee } from 'src/Models/Employee';
-// import { Employee } from 'src/Models/Employee';
 import { AssetService } from 'src/app/Services/asset.service';
 import { AssignedAssetService } from 'src/app/Services/assigned-asset.service';
 import { EmployeeService } from 'src/app/Services/employee.service';
@@ -57,7 +56,6 @@ export class RetrieveAssetsComponent {
 
   onSubmit()
   {
-    alert('retrive assets called '+this.assignedassets[0].employee.emp_id)
-   this.empserv.retrieveAllAssetsByEmpId(this.assignedassets[0].employee.emp_id).subscribe(data=>alert(data))
+    this.empserv.retrieveAllAssetsByEmpId(this.employee.emp_id).subscribe(data=>alert(data))
   }
 }

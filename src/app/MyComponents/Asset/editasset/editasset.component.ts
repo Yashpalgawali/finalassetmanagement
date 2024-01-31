@@ -12,8 +12,8 @@ import { AssettypeService } from 'src/app/Services/assettype.service';
 })
 export class EditassetComponent {
 
-  constructor(private assetserv : AssetService, private router : Router,
-              private atypeserv : AssettypeService,private route : ActivatedRoute) { }
+  constructor(private assetserv : AssetService,    private router : Router,
+              private atypeserv : AssettypeService,private route  : ActivatedRoute) { }
   
   asset : Assets = new Assets();
   atypelist : any
@@ -55,7 +55,6 @@ export class EditassetComponent {
   {
     this.asset.atype=this.selectedAssetType
     this.assetserv.updateAssets(this.asset).subscribe({
-      
       complete:()=>{
         sessionStorage.setItem('response',this.asset.asset_name+' is updated successfully')
         this.router.navigate(['viewassets'])
