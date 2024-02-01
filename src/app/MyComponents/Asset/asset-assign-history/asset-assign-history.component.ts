@@ -58,11 +58,11 @@ export class AssetAssignHistoryComponent {
   exportAssetAssignHistoryReportToExcel(empid: number) {
    
     this.assignassetserv.exportAssignedAssetsHistoryToExcel(empid).subscribe((response : any)=>{
-      const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = 'Assigned Assets History.xlsx';
-      link.click();
-    });
+        const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'Assigned Assets History.xlsx';
+        link.click();
+      });
     }
 }

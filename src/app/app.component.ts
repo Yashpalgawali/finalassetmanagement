@@ -13,9 +13,9 @@ export class AppComponent {
   constructor(private basicauthserv : BasicAuthenticationService) { }
 
   isUserLoggedIn() {
-    if(this.basicauthserv.getAuthenticatedUser()!=null && (sessionStorage.getItem('authenticatedUser')!=null)|| localStorage.getItem('authenticatedUser')!=null)
-      return true 
-    else  
+    if(this.basicauthserv.getAuthenticatedUser()!=null && sessionStorage.getItem('authenticatedUser')!=null || localStorage.getItem('authenticatedUser') )
+      return true
+    else
       return false
   }
   ngOnInit(): void {

@@ -19,6 +19,11 @@ export class LoginComponent {
 
   ngOnInit(): void {
     
+    this.logoutsuccess = sessionStorage.getItem('response')
+    setTimeout(() => {
+        this.logoutsuccess=""
+    }, 5000);
+    
     if(sessionStorage.getItem('authenticatedUser')!=null ) {
       this.router.navigate(['adminhome'])
     } 
@@ -27,13 +32,13 @@ export class LoginComponent {
   onSubmit()
   {
       this.basicauthserv.executeAuthenticationService(this.login.username,this.login.password).subscribe(data=>
-        {
-          //this.logoutsuccess = sessionStorage.getItem('response')
-          this.router.navigate(['adminhome'])
-        },
-        error=>{
-          this.errorMessage="Invalid Credentials"
-          this.router.navigate(['login'])
+      {
+        sessionStorage.removeItem('response')
+        this.router.navigate(['adminhome'])
+      },
+      error=>{
+        this.errorMessage="Invalid Credentials"
+        this.router.navigate(['login'])
     })
   }
   

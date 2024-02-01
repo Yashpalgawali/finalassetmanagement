@@ -24,24 +24,34 @@ export class ForgotPasswordComponent {
 
   changepassword() {
 
-    this.userserv.getUserByUserEmail(this.user.email).subscribe(data=>
-                                                        {
-                                                          this.user=data
-                                                          this.reserr=""
-                                                          this.generateOtp(this.user.email)
-                                                          // this.userserv.generateOtp(this.user.email).subscribe(data=>
-                                                          //   {
-                                                          //     sessionStorage.setItem('otp',`${data}`)
-                                                          //     sessionStorage.setItem('user_email',this.user.email)
-                                                          //     sessionStorage.setItem('response','OTP sent to your Email ID')
-                                                          //     alert('Otp successfully generated '+sessionStorage.getItem('otp'))
-                                                          //     alert('Ouside the generateOtp')
-                                                          //   this.router.navigate(['confirmotpforgotpass'])  
-                                                          //   })
-                                                          //  this.router.navigate(['confirmotpforgotpass'])
-                                                        },error=>{
-                                                            this.reserr="No User found for given Email"
-                                                        })
+    this.userserv.getUserByUserEmail(this.user.email).subscribe({
+      next:(data)=>{
+        this.user=data
+                      this.reserr=""
+                      this.generateOtp(this.user.email)
+      },
+      error :(e) =>{
+        this.reserr="No User found for given Email"
+      }
+    })
+    // this.userserv.getUserByUserEmail(this.user.email).subscribe(data=>
+    //                                                     {
+    //                                                       this.user=data
+    //                                                       this.reserr=""
+    //                                                       this.generateOtp(this.user.email)
+    //                                                       // this.userserv.generateOtp(this.user.email).subscribe(data=>
+    //                                                       //   {
+    //                                                       //     sessionStorage.setItem('otp',`${data}`)
+    //                                                       //     sessionStorage.setItem('user_email',this.user.email)
+    //                                                       //     sessionStorage.setItem('response','OTP sent to your Email ID')
+    //                                                       //     alert('Otp successfully generated '+sessionStorage.getItem('otp'))
+    //                                                       //     alert('Ouside the generateOtp')
+    //                                                       //   this.router.navigate(['confirmotpforgotpass'])  
+    //                                                       //   })
+    //                                                       //  this.router.navigate(['confirmotpforgotpass'])
+    //                                                     },error=>{
+    //                                                         this.reserr="No User found for given Email"
+    //                                                     })
                     }
 
     generateOtp(email : string)

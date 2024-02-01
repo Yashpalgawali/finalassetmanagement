@@ -18,6 +18,7 @@ import { EmployeeService } from 'src/app/Services/employee.service';
   styleUrls: ['./editemployee.component.css']
 })
 export class EditemployeeComponent {
+
   constructor(private empserv : EmployeeService,
     private router  : Router,
     private desigserv : DesignationService,
@@ -35,7 +36,8 @@ export class EditemployeeComponent {
     selectedCompany : Company = new Company()
     assigned_assets !: string
     bindlables : any
-    
+    selectedDesignation : any
+
     ngOnInit(): void {
    
     this.emp_id = this.route.snapshot.params['id']
@@ -47,7 +49,15 @@ export class EditemployeeComponent {
         
         this.assigned_assets = this.employee.assigned_assets
        
-        this.desigserv.getAllDesignations().subscribe(data=>this.desiglist=data)
+        this.desigserv.getAllDesignations().subscribe(data=>{this.desiglist=data
+          for(let i=0;i<this.desiglist.length;i++)
+          {
+            if(this.desiglist[i].desig_id==this.employee.designation.desig_id)
+            {
+              this.selectedDesignation=this.desiglist[i]
+            }
+          }
+        })
         this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
         this.assetserv.getAllAssets().subscribe(data=>this.assetlist=data)
       },
@@ -58,7 +68,21 @@ export class EditemployeeComponent {
     })
 }
 
+dropDownValueChange(newValue: any) {
+  this.desigserv.getAllDesignations().subscribe(data=>{this.desiglist=data
+    for(let i=0;i<this.desiglist.length;i++)
+    {
+      if(this.desiglist[i].desig_id==newValue.desig_id)
+      {
+        this.selectedDesignation=this.desiglist[i]
+      }
+    }
+  })
+}
+
 onSubmit(){
+  this.employee.designation=this.selectedDesignation
+ 
   this.empserv.updateEmployee(this.employee).subscribe({
                   complete:()=>{
                     sessionStorage.setItem('response','Employee '+this.employee.emp_name+' is updated successfully')

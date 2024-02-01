@@ -28,7 +28,7 @@
 					</div>
 					<div class="form-group">
 						<label for="designation">Designation</label> 
-						<select class="form-control mb-3"  id="designation" name="designation" [(ngModel)]="employee.designation" >
+						<select class="form-control mb-3"  id="designation" name="designation" [(ngModel)]="selectedDesignation" (ngModelChange)="dropDownValueChange($event)">
 						   <option selected disabled>Please Select Designation</option>
                                 <option *ngFor="let desig of desiglist" [ngValue]="desig">{{desig.desig_name}}</option>
 						</select>
