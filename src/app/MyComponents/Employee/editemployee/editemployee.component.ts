@@ -37,7 +37,7 @@ export class EditemployeeComponent {
     assigned_assets !: string
     bindlables : any
     selectedDesignation : any
-
+    matchedAssets : any
     ngOnInit(): void {
    
     this.emp_id = this.route.snapshot.params['id']
@@ -48,7 +48,7 @@ export class EditemployeeComponent {
         this.selectedCompany = this.employee.department.company
         
         this.assigned_assets = this.employee.assigned_assets
-       
+        
         this.desigserv.getAllDesignations().subscribe(data=>{this.desiglist=data
           for(let i=0;i<this.desiglist.length;i++)
           {
@@ -59,7 +59,9 @@ export class EditemployeeComponent {
           }
         })
         this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
-        this.assetserv.getAllAssets().subscribe(data=>this.assetlist=data)
+        this.assetserv.getAllAssets().subscribe(data=>{
+                                                    this.assetlist=data
+                                                })
       },
       error:(e) =>{
         sessionStorage.setItem('reserr','No Employee Found for given ID ')

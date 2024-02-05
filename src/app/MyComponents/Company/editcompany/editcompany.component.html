@@ -5,18 +5,16 @@
                 <!-- start: PAGE TITLE & BREADCRUMB -->
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="adminhome"> <i class="fa fa-home"></i>&nbsp;Home</a>
+                        <a routerLink="/adminhome"> <i class="fa fa-home"></i>&nbsp;Home</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Edit Company</li>
                 </ol>
             </div>
         </div>
-           
       <form (ngSubmit)="onSubmit()" method="POST">
      
        <div class="card">
            <div class="card-header"><h4>Edit Company</h4> </div>
-     
        <div class="card-body">
         <div class="form-group">
             <input type="hidden" name="comp_id" [(ngModel)]="company.comp_id"/>
