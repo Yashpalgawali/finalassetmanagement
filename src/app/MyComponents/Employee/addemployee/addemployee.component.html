@@ -54,7 +54,7 @@
       <div class="form-group">
             <label for="department">Department:</label>
                 <select class="form-control  mb-3" style ="width:100%;" id="department" [(ngModel)]="employee.department" name="department" required >
-                    <option selected disabled> Select Department </option>
+                    <option selected disabled> Select Departmentssss </option>
                     <option *ngFor="let dept of deptlist" [ngValue]="dept">{{dept.dept_name}}</option> 
                 </select>
       </div>
@@ -71,9 +71,9 @@
             placeholder="Select Assets"
             name="multi_assets"
         >
-        <ng-template ng-label-tmp let-item="item">
+        <!-- <ng-template ng-label-tmp let-item="item">
             <span>{{ item.asset_name+"("+item.model_number +")" }}</span>
-        </ng-template>
+        </ng-template> -->
      
         </ng-select>
     </div>

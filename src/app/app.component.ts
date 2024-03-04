@@ -13,8 +13,8 @@ export class AppComponent {
   constructor(private basicauthserv : BasicAuthenticationService) { }
 
   isUserLoggedIn() {
-    
-    if(this.basicauthserv.getAuthenticatedUser()!=null && sessionStorage.getItem('authenticatedUser')!=null )
+   // alert('Basic AUth User = '+this.basicauthserv.getAuthenticatedUser()+'')
+    if(this.basicauthserv.getAuthenticatedUser()!=null && (sessionStorage.getItem('authenticatedUser')!=null || localStorage.getItem('authenticatedUser')))
       return true
     else
       return false

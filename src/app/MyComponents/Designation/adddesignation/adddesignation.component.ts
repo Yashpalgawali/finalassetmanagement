@@ -11,10 +11,15 @@ import { DesignationService } from 'src/app/Services/designation.service';
 export class AdddesignationComponent {
   designation : Designation = new Designation();
   
-  constructor(private desigserv : DesignationService ,private router : Router){ }
+  constructor(private desigserv : DesignationService ,private router : Router){  }
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+
+  } 
   onSubmit()
-  {
+  { 
     this.desigserv.saveDesignation(this.designation).subscribe({
       complete:()=>{
         sessionStorage.setItem('response',this.designation.desig_name+' is saved successfully' )

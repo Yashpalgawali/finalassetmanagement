@@ -59,9 +59,15 @@ export class EditemployeeComponent {
           }
         })
         this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
-        this.assetserv.getAllAssets().subscribe(data=>{
+        this.assetserv.getAllAssets().subscribe({
+                                                  next:(data)=>
+                                                  {
                                                     this.assetlist=data
-                                                })
+                                                    this.assetlist.map(e=>{
+                                                      e.asset_name=`${e.asset_name} (${e.model_number})`
+                                                    })
+                                                  }
+                                              })
       },
       error:(e) =>{
         sessionStorage.setItem('reserr','No Employee Found for given ID ')

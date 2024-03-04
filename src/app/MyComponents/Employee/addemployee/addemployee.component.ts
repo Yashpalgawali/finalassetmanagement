@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
+import { map } from 'rxjs';
 import { Assets } from 'src/Models/Assets';
 import { Company } from 'src/Models/Company';
 import { Department } from 'src/Models/Department';
@@ -35,7 +36,16 @@ export class AddemployeeComponent {
   ngOnInit(): void {
       this.desigserv.getAllDesignations().subscribe(data=>{this.desiglist=data })
       this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
-      this.assetserv.getAllAssets().subscribe(data=>this.assetlist=data)
+      this.assetserv.getAllAssets().subscribe({
+          next:(data)=>{
+              this.assetlist=data
+              this.assetlist.map(
+                e=>{
+                  e.asset_name = `${e.asset_name} (${e.model_number})`
+                }
+              )
+            }
+        })
 
   }
 
