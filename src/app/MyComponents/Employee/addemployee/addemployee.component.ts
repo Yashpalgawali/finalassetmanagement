@@ -49,6 +49,16 @@ export class AddemployeeComponent {
 
   }
 
+  get availableAssets()
+  {
+    return this.assetlist
+    .filter(asset => asset.quantity > 0)
+    .map(asset => ({ ...asset, disabled: asset.quantity === 0 }));
+  }
+
+  isAssetDisabled(asset: any): boolean {
+    return asset.quantity === 0;
+  }
   onSubmit()
   {
     this.empserv.saveEmployee(this.employee).subscribe({

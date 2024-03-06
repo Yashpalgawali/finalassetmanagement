@@ -5,6 +5,6 @@ export class Assets {
     asset_name  !: string
     asset_number!: string
     model_number!: string
-    quantity    !: string
+    quantity    !: number
     atype        : AssetType = new AssetType()
 }
