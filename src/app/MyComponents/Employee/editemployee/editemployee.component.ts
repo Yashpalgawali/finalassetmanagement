@@ -62,9 +62,9 @@ export class EditemployeeComponent {
         this.assetserv.getAllAssets().subscribe({
                                                   next:(data)=>
                                                   {
-                                                    this.assetlist=data
-                                                    this.assetlist.map(e=>{
-                                                      e.asset_name=`${e.asset_name} (${e.model_number})`
+                                                   this.assetlist = data.filter(ast => ast.quantity>0).map(e=>{
+                                                      e.asset_name = `${e.asset_name} (${e.model_number})`
+                                                      return e
                                                     })
                                                   }
                                               })
@@ -102,8 +102,9 @@ onSubmit(){
                   }
   })
 }
-getdeptbycompid(cid : Company)
-{
-  this.deptserv.getDepartmentByCompId(cid.comp_id).subscribe(data=>this.deptlist=data)
-}
+
+  getdeptbycompid(cid : Company)
+  {
+    this.deptserv.getDepartmentByCompId(cid.comp_id).subscribe(data=>this.deptlist=data)
+  }
 }

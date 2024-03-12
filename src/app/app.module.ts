@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -82,7 +82,11 @@ import { EditemployeeComponent } from './MyComponents/Employee/editemployee/edit
     HttpClientModule,
     DataTablesModule,
     NgMultiSelectDropDownModule,
-    NgSelectModule
+    NgSelectModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName : 'X-XSRF-TOKEN'
+    })
     
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorBasicAuthService,multi : true}],

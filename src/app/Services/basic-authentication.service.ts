@@ -16,9 +16,9 @@ export class BasicAuthenticationService {
 
   executeAuthenticationService(username:any, password:any) {
     let basicAuthHeaderString = 'Basic ' + btoa(username + ':' + password);
-
+    
     let headers = new HttpHeaders({
-        Authorization: `${basicAuthHeaderString}`
+        Authorization  : `${basicAuthHeaderString}`
       })
     sessionStorage.setItem('token',basicAuthHeaderString)
     localStorage.setItem('token',basicAuthHeaderString)
@@ -35,6 +35,7 @@ export class BasicAuthenticationService {
       ));
   }
 
+ 
   getAuthenticatedUser() {
     return localStorage.getItem('authenticatedUser')
   }

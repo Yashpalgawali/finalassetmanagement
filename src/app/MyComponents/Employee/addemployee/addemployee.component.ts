@@ -31,6 +31,7 @@ export class AddemployeeComponent {
   clist     : Company [] = []
   deptlist  : Department[] = []
   assetlist : Assets [] = []
+  
   employee  : Employee = new Employee()
 
   ngOnInit(): void {
@@ -38,10 +39,10 @@ export class AddemployeeComponent {
       this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
       this.assetserv.getAllAssets().subscribe({
           next:(data)=>{
-              this.assetlist=data
-              this.assetlist.map(
+              this.assetlist = data.filter(ast => ast.quantity>=1).map(
                 e=>{
-                  e.asset_name = `${e.asset_name} (${e.model_number})`
+                   e.asset_name = `${e.asset_name} (${e.model_number})`
+                  return e
                 }
               )
             }

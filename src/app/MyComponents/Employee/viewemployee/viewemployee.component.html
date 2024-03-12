@@ -41,9 +41,9 @@
                 <td>{{emp.department.dept_name}}</td>
                 <td>{{emp.department.company.comp_name}}</td>
                 <td>
-                    <button data-action="edit" (click)="getEmpById(emp.emp_id)" (touchstart)="getEmpById(emp.emp_id)" class="btn btn-primary " style="margin-right: 5px;"> <i class="fa fa-edit"></i> Edit</button> 
-                    <button (click)="retrieveassetsbyempid(emp.emp_id)" (touchstart)="getEmpById(emp.emp_id)" class="btn btn-primary" style="margin-right: 5px;"> <i class="fa fa-edit"></i> Retrieve</button>
-                    <button (click)="viewemployeehistbyid(emp.emp_id)" (touchstart)="getEmpById(emp.emp_id)" class="btn btn-primary" > <i class="fa fa-eye"></i> History</button> 
+                    <button data-action="edit" (click)="getEmpById(emp.emp_id)"  class="btn btn-primary " style="margin-right: 5px;"> <i class="fa fa-edit"></i> Edit</button> 
+                    <button (click)="retrieveassetsbyempid(emp.emp_id)" class="btn btn-primary" style="margin-right: 5px;"> <i class="fa fa-edit"></i> Retrieve</button>
+                    <button (click)="viewemployeehistbyid(emp.emp_id)"  class="btn btn-primary" > <i class="fa fa-eye"></i> History</button> 
                 </td>
             </tr> 
         </tbody>
