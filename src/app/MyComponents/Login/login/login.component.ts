@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { data, error } from 'jquery';
 import { Login } from 'src/Models/Login';
+import { JwtAuthenticationService } from 'src/app/Services/Authentication/jwt-authentication.service';
 import { BasicAuthenticationService } from 'src/app/Services/basic-authentication.service';
 
 @Component({
@@ -15,7 +16,9 @@ export class LoginComponent {
   errorMessage  : any
   logoutsuccess : any
 
-  constructor(private basicauthserv : BasicAuthenticationService,private router : Router) { }
+  constructor(private basicauthserv : BasicAuthenticationService,private router : Router,
+              private jwtauthserv : JwtAuthenticationService
+  ) { }
 
   ngOnInit(): void {
     
@@ -31,15 +34,26 @@ export class LoginComponent {
 
   onSubmit()
   {
-      this.basicauthserv.executeAuthenticationService(this.login.username,this.login.password).subscribe(data=>
-      {
-        sessionStorage.removeItem('response')
-        this.router.navigate(['adminhome'])
+    this.jwtauthserv.executeJwtAuthenticationService(this.login.username,this.login.password).subscribe({
+      next:(data)=> {
+        
+          sessionStorage.removeItem('response')
+          this.router.navigate(['adminhome'])
       },
-      error=>{
-        this.errorMessage="Invalid Credentials"
-        this.router.navigate(['login'])
-    })
+        error:(err)=>{
+          this.errorMessage="Invalid Credentials"
+          this.router.navigate(['login'])
+      } 
+      })
+    //   this.basicauthserv.executeAuthenticationService(this.login.username,this.login.password).subscribe(data=>
+    //   {
+    //     sessionStorage.removeItem('response')
+    //     this.router.navigate(['adminhome'])
+    //   },
+    //   error=>{
+    //     this.errorMessage="Invalid Credentials"
+    //     this.router.navigate(['login'])
+    // })
   }
   
 }

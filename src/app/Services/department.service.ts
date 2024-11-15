@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { GlobalComponent } from '../GlobalComponents';
+import { GlobalComponents } from '../GlobalComponents';
 import { Department } from 'src/Models/Department';
 
 
@@ -10,7 +10,7 @@ import { Department } from 'src/Models/Department';
   providedIn: 'root'
 })
 export class DepartmentService {
-  app_url = GlobalComponent.base_url;
+  app_url = GlobalComponents.base_url;
   base_url= this.app_url+"department/";
   constructor(private http : HttpClient) { }
 

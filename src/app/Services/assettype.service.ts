@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GlobalComponent } from '../GlobalComponents';
+import { GlobalComponents } from '../GlobalComponents';
 import { HttpClient } from '@angular/common/http';
 import { AssetType } from 'src/Models/AssetType';
 import { Observable, ObservableNotification } from 'rxjs';
@@ -9,7 +9,7 @@ import { Observable, ObservableNotification } from 'rxjs';
 })
 export class AssettypeService {
 
-  app_url = GlobalComponent.base_url;
+  app_url = GlobalComponents.base_url;
   base_url= this.app_url+"assettype/";
   
   constructor(private http : HttpClient) { }

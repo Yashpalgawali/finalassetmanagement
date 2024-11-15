@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Users } from 'src/Models/Users';
-import { GlobalComponent } from '../GlobalComponents';
+import { GlobalComponents } from '../GlobalComponents';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PasswordService {
 
-  app_url = GlobalComponent.base_url;
+  app_url = GlobalComponents.base_url;
   base_url= this.app_url+"users/";
 
   constructor(private http : HttpClient) { }

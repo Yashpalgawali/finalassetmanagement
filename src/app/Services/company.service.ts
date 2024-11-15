@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Company } from 'src/Models/Company';
-import { GlobalComponent } from '../GlobalComponents';
+import { GlobalComponents } from '../GlobalComponents';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
 
-  app_url = GlobalComponent.base_url;
+  app_url = GlobalComponents.base_url;
   base_url= this.app_url+"company/";
   
   constructor(private http : HttpClient) { }

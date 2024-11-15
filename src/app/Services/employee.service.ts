@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GlobalComponent } from '../GlobalComponents';
+import { GlobalComponents } from '../GlobalComponents';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from 'src/Models/Employee';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
 })
 export class EmployeeService {
 
-  app_url = GlobalComponent.base_url;
+  app_url = GlobalComponents.base_url;
   base_url = this.app_url+"employee/"
   constructor(private http : HttpClient) { }
 

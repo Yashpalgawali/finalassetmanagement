@@ -58,7 +58,11 @@ export class EditemployeeComponent {
             }
           }
         })
-        this.compserv.getAllCompanies().subscribe(data=>this.clist=data)
+        this.compserv.getAllCompanies().subscribe({
+          next:(data)=>{
+             this.clist=data
+          }
+        })
         this.assetserv.getAllAssets().subscribe({
                                                   next:(data)=>
                                                   {

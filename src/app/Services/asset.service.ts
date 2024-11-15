@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GlobalComponent } from '../GlobalComponents';
+import { GlobalComponents } from '../GlobalComponents';
 import { HttpClient } from '@angular/common/http';
 import { Assets } from 'src/Models/Assets';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class AssetService {
 
 
-  app_url = GlobalComponent.base_url;
+  app_url = GlobalComponents.base_url;
   base_url= this.app_url+"asset/";
   
   constructor(private http : HttpClient) { }

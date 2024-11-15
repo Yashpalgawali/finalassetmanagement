@@ -13,13 +13,15 @@ export class AppComponent {
   constructor(private basicauthserv : BasicAuthenticationService) { }
 
   isUserLoggedIn() {
-  //  alert('Basic AUth User = '+this.basicauthserv.getAuthenticatedUser()+'\n session User '+sessionStorage.getItem('authenticatedUser'))
+    // alert('Basic AUth User = '+this.basicauthserv.getAuthenticatedUser()+'\n session User '+sessionStorage.getItem('authenticatedUser'))
     if(this.basicauthserv.getAuthenticatedUser()!=null && (sessionStorage.getItem('authenticatedUser')!=null || localStorage.getItem('authenticatedUser')))
-      return true
+    {  return true }
     else
-      return false
+    { return false }
   }
+
   ngOnInit(): void {
     this.loggedUser = sessionStorage.getItem('authenticatedUser')
   }
 }
+ 

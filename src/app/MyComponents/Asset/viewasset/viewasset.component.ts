@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { data } from 'jquery';
 import { Subject } from 'rxjs';
 import { AssetService } from 'src/app/Services/asset.service';
 

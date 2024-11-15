@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { GlobalComponent } from '../GlobalComponents';
+import { GlobalComponents } from '../GlobalComponents';
 import { Designation } from 'src/Models/Designation';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { Designation } from 'src/Models/Designation';
 })
 export class DesignationService {
 
-  app_url = GlobalComponent.base_url;
+  app_url = GlobalComponents.base_url;
   base_url = this.app_url+"designation/"
   constructor(private http : HttpClient) { }
 
