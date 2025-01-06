@@ -36,7 +36,7 @@
                 <td>{{dept.dept_name}}</td>
                 <td>{{dept.company.comp_name}}</td>
                 <td>
-                    <button (click)="getDeptById(dept.dept_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button> 
+                    <button (click)="getDeptById(dept.dept_id)" class="btn btn-primary btn-edit" [attr.data-dept-id]="dept.dept_id" > <i class="fa fa-edit"></i> Edit</button> 
                 </td>
             </tr> 
         </tbody>

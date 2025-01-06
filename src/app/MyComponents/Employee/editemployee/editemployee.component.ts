@@ -33,34 +33,56 @@ export class EditemployeeComponent {
     assetlist : Assets [] = []
     employee : Employee = new Employee()
     emp_id   !: number
-    selectedCompany : Company = new Company()
+    dept_id !: number
+    selectedCompany : any
+    selectedDepartment : any
     assigned_assets !: string
     bindlables : any
     selectedDesignation : any
     matchedAssets : any
+
     ngOnInit(): void {
    
     this.emp_id = this.route.snapshot.params['id']
     
     this.empserv.getEmployeeById(this.emp_id).subscribe({
-      next:(data)=>{
-        this.employee=data
-        this.selectedCompany = this.employee.department.company
+      next:(data)=> {
         
+        this.employee = data
+        
+        this.selectedCompany = this.employee.department.company
+       
         this.assigned_assets = this.employee.assigned_assets
         
-        this.desigserv.getAllDesignations().subscribe(data=>{this.desiglist=data
-          for(let i=0;i<this.desiglist.length;i++)
-          {
-            if(this.desiglist[i].desig_id==this.employee.designation.desig_id)
+        this.desigserv.getAllDesignations().subscribe({
+          next:(data) =>
             {
-              this.selectedDesignation=this.desiglist[i]
+              this.desiglist=data
+              this.desiglist.map(desig => {
+                  if(desig.desig_id==this.employee.designation.desig_id)
+                    this.selectedDesignation=desig
+                }
+              )
+              // for(let i=0;i<this.desiglist.length;i++)
+              // {
+              //   if(this.desiglist[i].desig_id==this.employee.designation.desig_id)
+              //   {
+              //     this.selectedDesignation=this.desiglist[i]
+              //   }
+              // }
             }
-          }
         })
+        
         this.compserv.getAllCompanies().subscribe({
-          next:(data)=>{
+          next:(data)=> {
              this.clist=data
+             this.clist.map(company => {
+              if(company.comp_id==this.selectedCompany.comp_id) {
+                this.selectedCompany = company               
+                this.getdeptbycompid(company)
+               
+              }
+             })
           }
         })
         this.assetserv.getAllAssets().subscribe({
@@ -92,15 +114,15 @@ dropDownValueChange(newValue: any) {
   })
 }
 
-onSubmit(){
+onSubmit() {
   this.employee.designation=this.selectedDesignation
  
   this.empserv.updateEmployee(this.employee).subscribe({
-                  complete:()=>{
+                  complete:()=> {
                     sessionStorage.setItem('response','Employee '+this.employee.emp_name+' is updated successfully')
                     this.router.navigate(['viewemployee'])
                   },
-                  error:(e) =>{
+                  error:(e) => {
                     sessionStorage.setItem('reserr','Employee '+this.employee.emp_name+' not updated')
                     this.router.navigate(['viewemployee'])
                   }
@@ -109,6 +131,8 @@ onSubmit(){
 
   getdeptbycompid(cid : Company)
   {
-    this.deptserv.getDepartmentByCompId(cid.comp_id).subscribe(data=>this.deptlist=data)
+    this.deptserv.getDepartmentByCompId(cid.comp_id).subscribe({
+      next:(data)=> this.deptlist=data
+    })
   }
 }

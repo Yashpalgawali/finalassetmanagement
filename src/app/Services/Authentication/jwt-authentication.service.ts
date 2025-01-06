@@ -10,15 +10,14 @@ import { JwtToken } from 'src/Models/JwtToken';
 export class JwtAuthenticationService  {
 
   constructor(private http: HttpClient) { }
-  app_url = GlobalComponents.base_url;
+    app_url = GlobalComponents.base_url;
 
   executeJwtAuthenticationService(username:any, password:any):Observable<JwtToken> {
     let basicAuthHeaderString = 'Basic ' + btoa(username + ':' + password);
-    
+
     let headers = new HttpHeaders({
         Authorization: `${basicAuthHeaderString}`
     })
-     
    return this.http.post<JwtToken>(`${this.app_url}authenticate`, 
                                     {},{ headers: headers, withCredentials: true }).pipe(
                                   map(
@@ -44,7 +43,7 @@ export class JwtAuthenticationService  {
       return localStorage.getItem('authenticatedUser') 
     }
   }
-  
+
   getAuthenticatedToken() {
     if(this.getAuthenticatedUser()!=null) {
       return sessionStorage.getItem('token') 
@@ -66,7 +65,7 @@ export class JwtAuthenticationService  {
   }
 
   logout() {
-    
+
     this.http.post(`${this.app_url}logout`,  {  withCredentials: true })
     .subscribe({
         complete: () => {

@@ -1,0 +1,15 @@
+@media (max-width: 600px) {
+    .ngx-datatable {
+      font-size: 12px;
+    }
+    
+    .ngx-datatable .datatable-body-cell {
+      padding: 5px;
+    }
+  
+    .btn-primary {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  }
+  

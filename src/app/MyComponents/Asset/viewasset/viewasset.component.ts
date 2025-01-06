@@ -19,7 +19,7 @@ export class ViewassetComponent {
 
   ngOnInit(): void {
     this.dtOptions={
-      pagingType : 'full_numbers'
+      pagingType : 'full_numbers',responsive:true
     }
     this.assetserv.getAllAssets().subscribe(data=>{
                                             if(sessionStorage.getItem('response')!=null)
@@ -43,6 +43,14 @@ export class ViewassetComponent {
                                             })
   }
 
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    $(document).on('click','.btn-edit',(event)=>{
+      const assetId = $(event.target).closest('button').data('asset-id')
+      this.getAssetById(assetId)
+    })
+  }
   getAssetById(aid : number)
   {
     this.router.navigate(['assets',aid])

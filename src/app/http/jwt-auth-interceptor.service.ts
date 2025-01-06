@@ -7,15 +7,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class JwtAuthInterceptorService implements HttpInterceptor{
-
+ 
   constructor(private jwtauth : JwtAuthenticationService) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     let rawToken = this.jwtauth.getAuthenticatedToken()
+    
     if(rawToken!=null)
     { 
       let jwttoken = 'Bearer '+this.jwtauth.getAuthenticatedToken()
-      alert(jwttoken)
+    
       request = request.clone({
         setHeaders : {
             Authorization : `${jwttoken}`

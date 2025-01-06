@@ -46,5 +46,13 @@ getAssetTypeById(atid : any)
 {
   this.router.navigate(['assettypes',atid])
 }
-
+ngAfterViewInit(): void {
+  //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+  //Add 'implements AfterViewInit' to the class.
+  
+  $(document).on('click','.btn-edit',(event)=>{
+    const typeId = $(event.target).closest('button').data('type-id')
+    this.getAssetTypeById(typeId)
+  })
+}
 }

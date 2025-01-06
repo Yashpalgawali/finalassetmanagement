@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { DesignationService } from 'src/app/Services/designation.service';
@@ -8,7 +8,7 @@ import { DesignationService } from 'src/app/Services/designation.service';
   templateUrl: './viewdesignation.component.html',
   styleUrls: ['./viewdesignation.component.css']
 })
-export class ViewdesignationComponent {
+export class ViewdesignationComponent implements OnInit,AfterViewInit {
 
   constructor(private desigserv : DesignationService,private router : Router) { }
   desiglist : any;
@@ -45,6 +45,14 @@ export class ViewdesignationComponent {
   {
     this.router.navigate(['designations',did]);
   }
+
+  ngAfterViewInit(): void {
+      $(document).on('click','.btn-edit',(event)=> {
+          const desigId = $(event.target).closest('button').data('desig-id')
+          this.getDesigById(desigId)
+      })
+  }
+
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }

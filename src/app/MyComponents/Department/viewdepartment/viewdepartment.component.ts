@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { event } from 'jquery';
 import { Subject } from 'rxjs';
 import { DepartmentService } from 'src/app/Services/department.service';
 
@@ -20,6 +21,8 @@ export class ViewdepartmentComponent {
   ngOnInit(): void {
     this.dtOptions={
       pagingType : 'simple_numbers',
+      responsive : true,
+      processing : true
     }
     this.deptserv.getAllDepartments().subscribe({
       next:(data)=> {
@@ -51,6 +54,14 @@ export class ViewdepartmentComponent {
     this.dtTrigger.unsubscribe();
   }
 
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    $(document).on('click' ,'.btn-edit',(event) => {
+        const deptId = $(event.target).closest('button').data('dept-id')
+        this.getDeptById(deptId)
+    })
+  }
   getDeptById(did : number)
   {
     this.router.navigate(['departments',did]);

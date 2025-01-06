@@ -43,7 +43,7 @@
                 <td>{{asset.model_number}}</td>
                 <td>{{asset.quantity}}</td>
                 <td>
-                    <button (click)="getAssetById(asset.asset_id)" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+                    <button (click)="getAssetById(asset.asset_id)" class="btn btn-primary btn-edit" [attr.data-asset-id]="asset.asset_id"><i class="fa fa-edit"></i> Edit</button>
                 </td>
             </tr> 
         </tbody>
