@@ -1,0 +1,14 @@
+
+
+.carding {
+    height:  300px ; width: 300px ;background-color: rgb(145, 219, 238); margin : 10px;
+    border-radius: 10px;
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    
+}

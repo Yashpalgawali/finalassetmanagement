@@ -116,7 +116,8 @@ dropDownValueChange(newValue: any) {
 
 onSubmit() {
   this.employee.designation=this.selectedDesignation
- 
+  this.employee.department=this.selectedDepartment
+  
   this.empserv.updateEmployee(this.employee).subscribe({
                   complete:()=> {
                     sessionStorage.setItem('response','Employee '+this.employee.emp_name+' is updated successfully')
