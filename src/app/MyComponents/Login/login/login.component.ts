@@ -1,27 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { data, error } from 'jquery';
 import { Login } from 'src/Models/Login';
 import { JwtAuthenticationService } from 'src/app/Services/Authentication/jwt-authentication.service';
 import { BasicAuthenticationService } from 'src/app/Services/basic-authentication.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   login : Login = new Login()
   errorMessage  : any
   logoutsuccess : any
+  
 
   constructor(private basicauthserv : BasicAuthenticationService,private router : Router,
-              private jwtauthserv : JwtAuthenticationService
+              private jwtauthserv : JwtAuthenticationService, private appcomp : AppComponent
   ) { }
 
   ngOnInit(): void {
-    
+    sessionStorage.setItem('title',AppComponent.title)
     this.logoutsuccess = sessionStorage.getItem('response')
     setTimeout(() => {
         this.logoutsuccess=""

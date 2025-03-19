@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BasicAuthenticationService } from './Services/basic-authentication.service';
 
 @Component({
@@ -6,8 +6,8 @@ import { BasicAuthenticationService } from './Services/basic-authentication.serv
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'finalassetmanagement';
+export class AppComponent  implements OnInit{
+  static title = 'Asset Management';
   
   loggedUser : any
   constructor(private basicauthserv : BasicAuthenticationService) { }
@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.loggedUser = sessionStorage.getItem('authenticatedUser')
+    this.loggedUser = sessionStorage.getItem('authenticatedUser') || localStorage.getItem('authenticatedUser')
   }
 }
  

@@ -95,8 +95,9 @@ export class EditemployeeComponent {
                                                   }
                                               })
       },
-      error:(e) =>{
-        sessionStorage.setItem('reserr','No Employee Found for given ID ')
+      error:(e) => {
+        
+        sessionStorage.setItem('reserr', e.error.errorMessage )
         this.router.navigate(['viewemployee'])
       }
     })

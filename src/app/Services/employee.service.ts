@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { GlobalComponents } from '../GlobalComponents';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Employee } from 'src/Models/Employee';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { AssignedAssets } from 'src/Models/AssignedAssets';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
 
@@ -27,7 +27,8 @@ export class EmployeeService {
 
   public getEmployeeById(eid : any):Observable<Employee>
   {
-    return this.http.get<Employee>(`${this.base_url}editempassignassetbyempid/${eid}`);
+    return this.http.get<Employee>(`${this.base_url}editempassignassetbyempid/${eid}`)
+                                  .pipe(catchError(this.handleError));
   }
   public updateEmployee(emp : Employee):Observable<Employee[]>
   {
@@ -54,4 +55,14 @@ export class EmployeeService {
     return this.http.get(`${this.base_url}getassignedassetsbyempid/${eid}`)
   }
   
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    if (error.status === 404) {
+       
+      console.log(error.error.errorMessage);
+    } else {
+      console.log('An unexpected error occurred!');
+    }
+    throw error;
+  }
 }

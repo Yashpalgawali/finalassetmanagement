@@ -46,13 +46,14 @@ export class JwtAuthenticationService  {
 
   getAuthenticatedToken() {
     if(this.getAuthenticatedUser()!=null) {
-      return sessionStorage.getItem('token') 
+       return sessionStorage.getItem('token') 
     }
     else
       return
   }
 
   isUserLoggedIn() {
+    
     if(sessionStorage.getItem('authenticatedUser')!=null || localStorage.getItem('authenticatedUser')!='')
     {
       let user = sessionStorage.getItem('token')
@@ -65,7 +66,7 @@ export class JwtAuthenticationService  {
   }
 
   logout() {
-
+  
     this.http.post(`${this.app_url}logout`,  {  withCredentials: true })
     .subscribe({
         complete: () => {
