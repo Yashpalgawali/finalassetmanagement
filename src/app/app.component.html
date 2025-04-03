@@ -32,13 +32,7 @@
              <li><a ngbDropdownItem class="dropdown-item" routerLink="designation/viewdesignations">View Designations</a></li>
            </ul>
         </li>
-        <li ngbDropdown class="nav-item ">
-          <a ngbDropdownToggle class="nav-link " routerLink="viewassignedassets" >View Assigned Assets</a>
-        </li>
-        <li ngbDropdown class="nav-item ">
-          <a ngbDropdownToggle class="nav-link " routerLink="activity" >View Activities</a>
-        </li>
-      
+             
         <li ngbDropdown class="nav-item dropdown">
           <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Employee</a>
            <ul ngbDropdownMenu class="dropdown-menu">
@@ -61,7 +55,12 @@
               <li><a ngbDropdownItem class="dropdown-item" routerLink="asset/viewassets">View Assets</a></li>
            </ul>
         </li>
-      
+        <li ngbDropdown class="nav-item ">
+          <a ngbDropdownToggle class="nav-link " routerLink="viewassignedassets" >View Assigned Assets</a>
+        </li>
+        <li ngbDropdown class="nav-item ">
+          <a ngbDropdownToggle class="nav-link " routerLink="activity" >View Activities</a>
+        </li>
         <li ngbDropdown class="nav-item dropdown" >
           <a ngbDropdownToggle class="nav-link dropdown-toggle" style="float : right !important;" id="welcome" data-bs-toggle="dropdown">Welcome&nbsp;{{loggedUser}}</a>
            <ul ngbDropdownMenu class="dropdown-menu">

@@ -55,12 +55,14 @@ const routes: Routes = [
   { path : "updatepassword" , component : UpdatePasswordComponent },
   { path : "changepass" , component : ChangePasswordComponent ,canActivate : [RouteGuardService] },
   { path : "retrieveassetsbyempid/:id" , component : RetrieveAssetsComponent ,canActivate : [RouteGuardService] },
-  { path : "activity" , component : ActivityComponent ,canActivate : [RouteGuardService] },
-  { path: 'company', loadChildren: () => import('./MyComponents/Company/company.module').then(m => m.CompanyModule) },
+  // { path : "activity" , component : ActivityComponent ,canActivate : [RouteGuardService] },
+
+ { path: 'company', loadChildren: () => import('./MyComponents/Company/company.module').then(m => m.CompanyModule) },
  { path: 'assettype', loadChildren: () => import('./MyComponents/AssetType/assettype.module').then(m => m.AssettypeModule) },
  { path: 'department', loadChildren: () => import('./MyComponents/Department/department.module').then(m => m.DepartmentModule) },
  { path: 'designation', loadChildren: () => import('./MyComponents/Designation/designation.module').then(m => m.DesignationModule) },
- { path: 'asset', loadChildren: () => import('./MyComponents/Asset/asset.module').then(m => m.AssetModule) } 
+ { path: 'asset', loadChildren: () => import('./MyComponents/Asset/asset.module').then(m => m.AssetModule) },
+ { path: 'activity', loadChildren: () => import('./MyComponents/activity/activity.module').then(m => m.ActivityModule) } 
    
 ];
 

@@ -70,7 +70,7 @@ import { EditemployeeComponent } from './MyComponents/Employee/editemployee/edit
     UpdatePasswordComponent,
     ChangePasswordComponent,
     RetrieveAssetsComponent,
-    ActivityComponent,
+    // ActivityComponent,
     AddemployeeComponent,
     ViewemployeeComponent,
     EditemployeeComponent 

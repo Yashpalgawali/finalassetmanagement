@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Activity } from 'src/Models/Activity';
@@ -9,7 +9,7 @@ import { ActivityService } from 'src/app/Services/activity.service';
   templateUrl: './activity.component.html',
   styleUrls: ['./activity.component.css']
 })
-export class ActivityComponent {
+export class ActivityComponent implements OnInit {
   
   constructor(private activityserv : ActivityService,private router : Router){ }
   activities : Activity[] = []
