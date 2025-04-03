@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { event } from 'jquery';
 import { Subject } from 'rxjs';
@@ -10,7 +10,7 @@ import { DepartmentService } from 'src/app/Services/department.service';
   templateUrl: './viewdepartment.component.html',
   styleUrls: ['./viewdepartment.component.css']
 })
-export class ViewdepartmentComponent {
+export class ViewdepartmentComponent implements OnInit{
 
   constructor(private deptserv : DepartmentService,private router : Router ) {}
   response : any
@@ -64,6 +64,6 @@ export class ViewdepartmentComponent {
   }
   getDeptById(did : number)
   {
-    this.router.navigate(['departments',did]);
+    this.router.navigate(['department/edit',did]);
   }
 }

@@ -12,16 +12,16 @@
         <li ngbDropdown class="nav-item dropdown">
           <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Company</a>
            <ul ngbDropdownMenu class="dropdown-menu">
-             <li><a ngbDropdownItem class="dropdown-item" routerLink ="company">Add Company</a></li>
-             <li><a ngbDropdownItem class="dropdown-item" routerLink="viewcompany">View Company</a></li>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink ="company/addcompany">Add Company</a></li>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="company/viewcompanies">View Company</a></li>
            </ul>
         </li>
-  
+        
         <li ngbDropdown class="nav-item dropdown">
           <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Department</a>
            <ul ngbDropdownMenu class="dropdown-menu">
-             <li><a ngbDropdownItem class="dropdown-item" routerLink="adddepartment">Add Department</a></li>
-             <li><a ngbDropdownItem class="dropdown-item" routerLink="viewdepartment">View Department</a></li>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="department">Add Department</a></li>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="department/viewdepartments">View Departments</a></li>
            </ul>
         </li>
   
@@ -29,7 +29,7 @@
           <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Designation</a>
            <ul ngbDropdownMenu class="dropdown-menu">
              <li><a ngbDropdownItem class="dropdown-item" routerLink="designation">Add Designation</a></li>
-             <li><a ngbDropdownItem class="dropdown-item" routerLink="viewdesignation">View Designation</a></li>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="designation/viewdesignations">View Designations</a></li>
            </ul>
         </li>
         <li ngbDropdown class="nav-item ">
@@ -50,18 +50,18 @@
         <li ngbDropdown class="nav-item dropdown">
           <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">AssetType</a>
            <ul ngbDropdownMenu class="dropdown-menu">
-             <li><a ngbDropdownItem class="dropdown-item" routerLink="addassettype">Add Asset Type </a></li>
-              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewassettypes">View Asset Types</a></li>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="assettype">Add Asset Type </a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="assettype/viewassettypes">View Asset Types</a></li>
            </ul>
         </li>
         <li ngbDropdown class="nav-item dropdown">
           <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Asset</a>
            <ul ngbDropdownMenu class="dropdown-menu">
-             <li><a ngbDropdownItem class="dropdown-item" routerLink="addasset">Add Asset </a></li>
-              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewassets">View Assets</a></li>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="asset">Add Asset </a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="asset/viewassets">View Assets</a></li>
            </ul>
         </li>
-       
+      
         <li ngbDropdown class="nav-item dropdown" >
           <a ngbDropdownToggle class="nav-link dropdown-toggle" style="float : right !important;" id="welcome" data-bs-toggle="dropdown">Welcome&nbsp;{{loggedUser}}</a>
            <ul ngbDropdownMenu class="dropdown-menu">

@@ -40,26 +40,26 @@ import { ActivityComponent } from './MyComponents/activity/activity.component';
 import { AddemployeeComponent } from './MyComponents/Employee/addemployee/addemployee.component';
 import { ViewemployeeComponent } from './MyComponents/Employee/viewemployee/viewemployee.component';
 import { EditemployeeComponent } from './MyComponents/Employee/editemployee/editemployee.component';
-
+ 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddcompanyComponent,
-    ViewcompanyComponent,
-    EditcompanyComponent,
-    AdddepartmentComponent,
-    ViewdepartmentComponent,
-    EditdepartmentComponent,
-    AdddesignationComponent,
-    ViewdesignationComponent,
-    EditdesignationComponent,
-    AddassetComponent,
-    AddassettypeComponent,
-    ViewassettypeComponent,
-    EditassettypeComponent,
-    ViewassetComponent,
-    EditassetComponent,
+    // AddcompanyComponent,
+    // ViewcompanyComponent,
+    // EditcompanyComponent,
+    // AdddepartmentComponent,
+    // ViewdepartmentComponent,
+    // EditdepartmentComponent,
+    // AdddesignationComponent,
+    // ViewdesignationComponent,
+    // EditdesignationComponent,
+    // AddassetComponent,
+    // AddassettypeComponent,
+   // ViewassettypeComponent,
+   // EditassettypeComponent,
+    // ViewassetComponent,
+    // EditassetComponent,
     AssignedassetsComponent,
     AssetAssignHistoryComponent,
     LoginComponent,
@@ -73,7 +73,7 @@ import { EditemployeeComponent } from './MyComponents/Employee/editemployee/edit
     ActivityComponent,
     AddemployeeComponent,
     ViewemployeeComponent,
-    EditemployeeComponent
+    EditemployeeComponent 
   ],
   imports: [
     BrowserModule,

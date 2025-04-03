@@ -10,7 +10,8 @@
             </ol>
         </div>
     </div>               
-  <div *ngIf="response!='null'"> <h6 class="alert alert-success">{{response}}</h6> </div>
+    <div *ngIf="response"> <h6 class="alert alert-success">{{response}}</h6> </div>
+    <div *ngIf="reserr"> <h6 class="alert alert-warning">{{reserr}}</h6> </div>
   <form (ngSubmit)="updatePassword()"  method="POST"  >	
     <div class="card">
           <div class="card-header"><h4>Confirm OTP</h4></div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
 import { Users } from 'src/Models/Users';
+import { JwtAuthenticationService } from 'src/app/Services/Authentication/jwt-authentication.service';
 import { BasicAuthenticationService } from 'src/app/Services/basic-authentication.service';
 import { PasswordService } from 'src/app/Services/password.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -19,7 +20,7 @@ export class ChangePasswordComponent {
   user      : Users = new Users();
 
   constructor(private passserv : PasswordService,private router : Router,private userserv : UserService,
-              private baseauthserv : BasicAuthenticationService
+              private baseauthserv : BasicAuthenticationService,private jwtAuthService: JwtAuthenticationService
               ) { }
   
 
@@ -35,9 +36,12 @@ export class ChangePasswordComponent {
     {
       this.passserv.updatePassword(this.user).subscribe(data=>
                                               { 
-                                                this.baseauthserv.executeAuthenticationService(`${sessionStorage.getItem('authenticatedUser')}`,this.user.cnf_pass)
+                                                this.jwtAuthService.executeJwtAuthenticationService(`${sessionStorage.getItem('authenticatedUser')}`,this.user.cnf_pass)
                                                 this.router.navigate(['/adminhome'])
                                               })
+    }
+    else {
+
     }
   }
 }

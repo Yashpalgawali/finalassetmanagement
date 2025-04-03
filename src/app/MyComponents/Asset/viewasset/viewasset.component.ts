@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AssetService } from 'src/app/Services/asset.service';
@@ -8,7 +8,7 @@ import { AssetService } from 'src/app/Services/asset.service';
   templateUrl: './viewasset.component.html',
   styleUrls: ['./viewasset.component.css']
 })
-export class ViewassetComponent {
+export class ViewassetComponent implements OnInit,AfterViewInit {
 
   dtOptions : DataTables.Settings={}
   dtTrigger : Subject<any> = new Subject<any>
@@ -53,6 +53,6 @@ export class ViewassetComponent {
   }
   getAssetById(aid : number)
   {
-    this.router.navigate(['assets',aid])
+    this.router.navigate(['asset/edit',aid])
   }
 }

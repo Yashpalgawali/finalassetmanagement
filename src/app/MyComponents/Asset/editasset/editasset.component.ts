@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
 import { Assets } from 'src/Models/Assets';
@@ -10,7 +10,7 @@ import { AssettypeService } from 'src/app/Services/assettype.service';
   templateUrl: './editasset.component.html',
   styleUrls: ['./editasset.component.css']
 })
-export class EditassetComponent {
+export class EditassetComponent implements OnInit {
 
   constructor(private assetserv : AssetService,    private router : Router,
               private atypeserv : AssettypeService,private route  : ActivatedRoute) { }
@@ -57,11 +57,11 @@ export class EditassetComponent {
     this.assetserv.updateAssets(this.asset).subscribe({
       complete:()=>{
         sessionStorage.setItem('response',this.asset.asset_name+' is updated successfully')
-        this.router.navigate(['viewassets'])
+        this.router.navigate(['asset/viewassets'])
       },
       error:(e) =>{
         sessionStorage.setItem('reserr',this.asset.asset_name+' is not updated ')
-        this.router.navigate(['viewassets'])
+        this.router.navigate(['asset/viewassets'])
       }
     })
   }

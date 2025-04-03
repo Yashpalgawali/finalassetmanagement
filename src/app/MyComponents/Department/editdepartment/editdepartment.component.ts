@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getJSON } from 'jquery';
 import { Department } from 'src/Models/Department';
@@ -12,7 +12,7 @@ import { DepartmentService } from 'src/app/Services/department.service';
   templateUrl: './editdepartment.component.html',
   styleUrls: ['./editdepartment.component.css']
 })
-export class EditdepartmentComponent {
+export class EditdepartmentComponent implements OnInit {
 
 
   constructor(private deptserv : DepartmentService,
@@ -64,17 +64,17 @@ export class EditdepartmentComponent {
     this.deptserv.updateDepartment(this.department).subscribe({
       complete:()=>{
         sessionStorage.setItem('response',' Department '+this.department.dept_name+' is updated Successfully')
-        this.router.navigate(['viewdepartment']);
+        this.router.navigate(['department/viewdepartments']);
       },
       error:(e) =>{
           sessionStorage.setItem('reserr','Department '+this.department.dept_name+' is not updated')
-          this.router.navigate(['viewdepartment']);
+          this.router.navigate(['department/viewdepartments']);
        }
     });
   }
   public goToViewDepartments()
   {
-    this.router.navigate(['viewdepartment']);
+    this.router.navigate(['department/viewdepartments']);
   } 
   
 }

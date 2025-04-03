@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtAuthenticationService } from 'src/app/Services/Authentication/jwt-authentication.service';
 import { BasicAuthenticationService } from 'src/app/Services/basic-authentication.service';
 
 @Component({
@@ -9,14 +10,13 @@ import { BasicAuthenticationService } from 'src/app/Services/basic-authenticatio
 })
 export class LogoutComponent {
 
-  constructor(private basicauthserv : BasicAuthenticationService ,private router : Router) { }
+  constructor(private basicauthserv : BasicAuthenticationService , private jwtAuthServ : JwtAuthenticationService,
+                     private router : Router) { }
   logoutsuccess !: string
   ngOnInit(): void {
     
-    this.basicauthserv.logout();
-    this.logoutsuccess="Successfully Logged Out"
-    sessionStorage.setItem('logoutsuccess',this.logoutsuccess)
-    this.router.navigate([''])
+    this.jwtAuthServ.logout();
+   
   }
 
 }

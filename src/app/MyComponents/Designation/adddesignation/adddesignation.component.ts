@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Designation } from 'src/Models/Designation';
 import { DesignationService } from 'src/app/Services/designation.service';
@@ -8,7 +8,7 @@ import { DesignationService } from 'src/app/Services/designation.service';
   templateUrl: './adddesignation.component.html',
   styleUrls: ['./adddesignation.component.css']
 })
-export class AdddesignationComponent {
+export class AdddesignationComponent implements OnInit {
   designation : Designation = new Designation();
   
   constructor(private desigserv : DesignationService ,private router : Router){  }
@@ -23,17 +23,17 @@ export class AdddesignationComponent {
     this.desigserv.saveDesignation(this.designation).subscribe({
       complete:()=>{
         sessionStorage.setItem('response',this.designation.desig_name+' is saved successfully' )
-        this.router.navigate(['viewdesignation']);
+        this.router.navigate(['designation/viewdesignations']);
       },
       error:(e)=>{
         sessionStorage.setItem('reserr',this.designation.desig_name+' is not saved' )
-        this.router.navigate(['viewdesignation']);
+        this.router.navigate(['designation/viewdesignations']);
       }
     })
   }
 
   goToViewDesignations()
   {
-    this.router.navigate(['viewdesignation']);
+    this.router.navigate(['designation/viewdesignations']);
   }
 }

@@ -15,11 +15,11 @@ export class AddassettypeComponent {
   onSubmit() {
     this.atypeserv.saveAssetType(this.assettype).subscribe({complete:()=>{
       sessionStorage.setItem('response',this.assettype.type_name+' Asset Type is saved Successfully');
-      this.router.navigate(['viewassettypes'])
+      this.router.navigate(['assettype/viewassettypes'])
     },
     error:(e)=>{
       sessionStorage.setItem('reserr','Asset Type is not saved');
-      this.router.navigate(['viewassettypes'])
+      this.router.navigate(['assettype/viewassettypes'])
     }
     })
   }

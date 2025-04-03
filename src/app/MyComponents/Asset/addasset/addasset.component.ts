@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { data, error } from 'jquery';
 import { Assets } from 'src/Models/Assets';
@@ -10,7 +10,7 @@ import { AssettypeService } from 'src/app/Services/assettype.service';
   templateUrl: './addasset.component.html',
   styleUrls: ['./addasset.component.css']
 })
-export class AddassetComponent {
+export class AddassetComponent implements OnInit {
 
   asset  : Assets = new Assets()
   atypelist : any
@@ -25,11 +25,11 @@ export class AddassetComponent {
     this.assetserv.saveAsset(this.asset).subscribe({
       complete:()=>{
         sessionStorage.setItem('response',this.asset.asset_name+' Asset saved Successfully')
-        this.router.navigate(['viewassets'])
+        this.router.navigate(['asset/viewassets'])
       },
       error:(e)=>{
         sessionStorage.setItem('reserr',this.asset.asset_name+' Asset is not saved')
-        this.router.navigate(['viewassets'])
+        this.router.navigate(['asset/viewassets'])
       }
     })
   }

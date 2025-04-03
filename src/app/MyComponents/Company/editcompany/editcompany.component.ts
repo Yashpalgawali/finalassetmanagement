@@ -22,7 +22,7 @@ export class EditcompanyComponent {
   onSubmit() {
     this.compserv.updateCompany(this.company).subscribe(data=>{
                                         sessionStorage.setItem('response','Company updated Successfully')
-                                        this.router.navigate(['viewcompany']);});
+                                        this.router.navigate(['company/viewcompanies']);});
   }
   
 }

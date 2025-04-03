@@ -43,7 +43,7 @@ export class ViewdesignationComponent implements OnInit,AfterViewInit {
     }
   getDesigById(did : any)
   {
-    this.router.navigate(['designations',did]);
+    this.router.navigate(['designation/edit',did]);
   }
 
   ngAfterViewInit(): void {

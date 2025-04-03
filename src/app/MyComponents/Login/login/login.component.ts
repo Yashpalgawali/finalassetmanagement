@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   login : Login = new Login()
   errorMessage  : any
   logoutsuccess : any
-  
+  reserr : any
 
   constructor(private basicauthserv : BasicAuthenticationService,private router : Router,
               private jwtauthserv : JwtAuthenticationService, private appcomp : AppComponent
@@ -24,9 +24,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     sessionStorage.setItem('title',AppComponent.title)
-    this.logoutsuccess = sessionStorage.getItem('response')
+    this.logoutsuccess = sessionStorage.getItem('logoutsuccess')
+    
+    if(sessionStorage.getItem('errorMessage')!=null) {
+      this.errorMessage = sessionStorage.getItem('errorMessage')
+      setTimeout(() => {
+        sessionStorage.removeItem('errorMessage')
+        this.errorMessage=''
+      }, 2000);
+    }
+    
     setTimeout(() => {
         this.logoutsuccess=""
+        sessionStorage.removeItem('logoutsuccess')
     }, 5000);
     
     if(sessionStorage.getItem('authenticatedUser')!=null ) {

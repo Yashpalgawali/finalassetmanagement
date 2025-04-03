@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { BasicAuthenticationService } from './basic-authentication.service';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +15,7 @@ export class RouteGuardService implements CanActivate{
         return true
       }
       else {
+        sessionStorage.setItem('errorMessage','You are not authorized. Please Login to Continue')
         this.router.navigate(['login'])
         return false
       }

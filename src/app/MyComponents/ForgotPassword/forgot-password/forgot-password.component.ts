@@ -60,9 +60,9 @@ export class ForgotPasswordComponent {
         {
           sessionStorage.setItem('otp',`${data}`)
           sessionStorage.setItem('user_email',email)
-          sessionStorage.setItem('response','OTP sent to your Email ID')
+          sessionStorage.setItem('response','OTP sent to your '+email)
           
-        this.router.navigate(['confirmotp'])  
+          this.router.navigate(['confirmotp'])  
         })
 
     }

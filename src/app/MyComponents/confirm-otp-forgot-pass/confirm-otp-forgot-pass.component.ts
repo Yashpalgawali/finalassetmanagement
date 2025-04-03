@@ -11,13 +11,32 @@ import { UserService } from 'src/app/Services/user.service';
 export class ConfirmOtpForgotPassComponent {
 
   user : Users = new Users();
-  response !: string
-
+  response : any
+  reserr : any
   constructor(private userserv : UserService,private router : Router) { }
   
   ngOnInit(): void {
         this.user.email = `${sessionStorage.getItem('user_email')}`
-        this.response   = `${sessionStorage.getItem('response')}`
+         
+        if(sessionStorage.getItem('response')!=null)
+          {
+             this.response = sessionStorage.getItem('response')
+              setTimeout(() => {
+                this.response = ""
+                sessionStorage.removeItem('response')
+            }, 3000);
+          }
+
+          // if(sessionStorage.getItem('reserr')!=null)
+          //   {
+          //      this.reserr   = sessionStorage.getItem('reserr')
+          //       setTimeout(() => {
+          //         this.reserr = ""
+          //         sessionStorage.removeItem('reserr')
+          //       }, 3000);
+          //   }
+        // this.response   = `${sessionStorage.getItem('response')}`
+        // this.reserr   = `${sessionStorage.getItem('reserr')}`
   }
 
   updatePassword() {
@@ -26,6 +45,13 @@ export class ConfirmOtpForgotPassComponent {
     if(this.user.cnf_otp==`${sessionStorage.getItem('otp')}`)
     {
       this.router.navigate(['updatepassword'])
+    }
+    else {
+      this.response=''
+      sessionStorage.removeItem('response')
+      this.reserr = 'Otp Does not match'
+
+     
     }
     
   }

@@ -24,11 +24,11 @@ export class EditassettypeComponent {
   {
     this.atypeserv.updateAssetType(this.assettype).subscribe({complete:()=>{
         sessionStorage.setItem('response',this.assettype.type_name+' updated successfully')        
-        this.router.navigate(['viewassettypes'])
+        this.router.navigate(['assettype/viewassettypes'])
       },
       error:(e)=>{
         sessionStorage.setItem('reserr',this.assettype.type_name+' is not updated successfully')        
-        this.router.navigate(['viewassettypes'])
+        this.router.navigate(['assettype/viewassettypes'])
       }
     });
   }

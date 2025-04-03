@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { CompanyService } from 'src/app/Services/company.service';
@@ -6,7 +6,7 @@ import { CompanyService } from 'src/app/Services/company.service';
 @Component({
   selector: 'app-viewcompany',
   templateUrl: './viewcompany.component.html',
-  styleUrls: ['./viewcompany.component.css']
+  styleUrls: ['./viewcompany.component.css'] 
 })
 export class ViewcompanyComponent implements OnInit{
   complist : any;
@@ -15,12 +15,11 @@ export class ViewcompanyComponent implements OnInit{
   response : any;
   reserr   : any;
 
-   
-
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private compserv : CompanyService, private router : Router,private cdRef: ChangeDetectorRef,private renderer: Renderer2, private elRef: ElementRef ) { }
+  constructor(private compserv : CompanyService, private router : Router,
+              private cdRef: ChangeDetectorRef,private renderer: Renderer2, private elRef: ElementRef ) { }
 
   ngOnInit(): void {
     this.dtOptions={
@@ -80,7 +79,7 @@ export class ViewcompanyComponent implements OnInit{
 
   getCompById(cid : any)
   { 
-    this.router.navigate(['companies',cid]);
+    this.router.navigate(['company/edit',cid]);
   }
 }
  

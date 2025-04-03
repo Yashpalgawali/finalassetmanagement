@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { GlobalComponents } from 'src/app/GlobalComponents';
 import { JwtToken } from 'src/Models/JwtToken';
@@ -9,7 +10,7 @@ import { JwtToken } from 'src/Models/JwtToken';
 })
 export class JwtAuthenticationService  {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router : Router) { }
     app_url = GlobalComponents.base_url;
 
   executeJwtAuthenticationService(username:any, password:any):Observable<JwtToken> {
@@ -67,15 +68,19 @@ export class JwtAuthenticationService  {
 
   logout() {
   
-    this.http.post(`${this.app_url}logout`,  {  withCredentials: true })
+    this.http.post(`${this.app_url}logouturl`,  {  withCredentials: true })
     .subscribe({
-        complete: () => {
-          sessionStorage.removeItem('authenticatedUser')
-          sessionStorage.removeItem('token')
-          localStorage.removeItem('authenticatedUser')
-          localStorage.removeItem('token')
-             
-          alert('Logged OUT')
+        next: (data) => {
+          localStorage.clear()
+          sessionStorage.clear()
+
+          // sessionStorage.removeItem('authenticatedUser')
+          // sessionStorage.removeItem('token')
+          // localStorage.removeItem('authenticatedUser')
+          // localStorage.removeItem('token')
+          
+          sessionStorage.setItem('logoutsuccess','Successfully Logged Out')
+          this.router.navigate(['/login'])
         },
         error: (err) => {
             console.error('Logout error:', err);
