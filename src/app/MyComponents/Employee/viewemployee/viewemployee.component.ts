@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Employee } from 'src/Models/Employee';
@@ -9,7 +9,7 @@ import { EmployeeService } from 'src/app/Services/employee.service';
   templateUrl: './viewemployee.component.html',
   styleUrls: ['./viewemployee.component.css']
 })
-export class ViewemployeeComponent {
+export class ViewemployeeComponent  implements OnInit {
 
   constructor(private empserv : EmployeeService,private router : Router){}
   emplist  : Employee[] = []
@@ -61,14 +61,14 @@ export class ViewemployeeComponent {
 
   getEmpById(eid : number)
   {
-    this.router.navigate(['employee',eid])
+    this.router.navigate(['employee/edit',eid])
   }
   retrieveassetsbyempid(eid : number)
   {
-    this.router.navigate(['retrieveassetsbyempid',eid])
+    this.router.navigate(['employee/retrieveassets/empid/',eid])
   }
   viewemployeehistbyid(eid : number)
-  {
-    this.router.navigate(['assetassignhist',eid])
+  {alert(eid)
+    this.router.navigate(['employee/assetassign/history/',eid])
   }
 }

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { data } from 'jquery';
 import { Subject } from 'rxjs';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
 import { AssignedAssets } from 'src/Models/AssignedAssets';
@@ -12,7 +11,7 @@ import { EmployeeService } from 'src/app/Services/employee.service';
   templateUrl: './assignedassets.component.html',
   styleUrls: ['./assignedassets.component.css']
 })
-export class AssignedassetsComponent {
+export class AssignedassetsComponent implements OnInit{
 
 response : any
 reserr   : any

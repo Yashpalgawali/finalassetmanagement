@@ -6,12 +6,14 @@ import { ViewassetComponent } from './viewasset/viewasset.component';
 import { EditassetComponent } from './editasset/editasset.component';
 import { FormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { AssignedassetsComponent } from './assignedassets/assignedassets.component';
 
 @NgModule({
   declarations: [
      AddassetComponent,
      ViewassetComponent,
-     EditassetComponent
+     EditassetComponent,
+     AssignedassetsComponent
   ],
   imports: [
     CommonModule,
