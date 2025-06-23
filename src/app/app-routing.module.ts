@@ -26,7 +26,9 @@ const routes: Routes = [
  { path: 'designation', loadChildren: () => import('./MyComponents/Designation/designation.module').then(m => m.DesignationModule) },
  { path: 'asset', loadChildren: () => import('./MyComponents/Asset/asset.module').then(m => m.AssetModule) },
  { path: 'activity', loadChildren: () => import('./MyComponents/activity/activity.module').then(m => m.ActivityModule) },
- { path: 'employee', loadChildren: () => import('./MyComponents/Employee/employee.module').then(m => m.EmployeeModule) } 
+ { path: 'employee', loadChildren: () => import('./MyComponents/Employee/employee.module').then(m => m.EmployeeModule) },
+  
+  { path: 'adminhome', loadChildren: () => import('./MyComponents/admin-home/adminhome.module').then(m => m.AdminhomeModule) } 
    
 ];
 

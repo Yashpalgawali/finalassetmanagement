@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   login : Login = new Login()
   errorMessage  : any
+  successMessage  : any
   logoutsuccess : any
   reserr : any
 
@@ -31,6 +32,14 @@ export class LoginComponent implements OnInit {
       setTimeout(() => {
         sessionStorage.removeItem('errorMessage')
         this.errorMessage=''
+      }, 2000);
+    }
+
+    if(sessionStorage.getItem('response')!=null) {
+      this.successMessage = sessionStorage.getItem('response')
+      setTimeout(() => {
+        sessionStorage.removeItem('response')
+        this.successMessage=''
       }, 2000);
     }
     

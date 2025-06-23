@@ -9,7 +9,6 @@ import {DataTablesModule} from 'angular-datatables';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { AssignedassetsComponent } from './MyComponents/Asset/assignedassets/assignedassets.component';
 import { LoginComponent } from './MyComponents/Login/login/login.component';
 import { HttpInterceptorBasicAuthService } from './http/http-interceptor-basic-auth.service';
 import { AdminHomeComponent } from './MyComponents/admin-home/admin-home.component';
@@ -23,7 +22,7 @@ import { ChangePasswordComponent } from './MyComponents/change-password/change-p
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminHomeComponent,
+    // AdminHomeComponent,
     LogoutComponent,
     ForgotPasswordComponent,
     ConfirmOtpForgotPassComponent,

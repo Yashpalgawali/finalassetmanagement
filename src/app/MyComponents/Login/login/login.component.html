@@ -4,6 +4,7 @@
         <div class="col-md-6 offset-md-3">
           <div class="card">
               <div class="card-header"><h2 class="text-center">Login </h2></div>
+              <div *ngIf="successMessage" ><h6 class="alert alert-success">{{successMessage}}</h6></div>
                 <div *ngIf="errorMessage" ><h6 class="alert alert-danger">{{errorMessage}}</h6></div>
                 <div *ngIf="logoutsuccess"><h6 class="alert alert-success">{{logoutsuccess}}</h6></div>
                 <div class="card-body">
