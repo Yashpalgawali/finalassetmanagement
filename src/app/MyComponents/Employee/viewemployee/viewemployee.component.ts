@@ -61,14 +61,14 @@ export class ViewemployeeComponent  implements OnInit {
 
   getEmpById(eid : number)
   {
-    this.router.navigate(['employee/edit',eid])
+    this.router.navigate(['/employee/edit',eid])
   }
   retrieveassetsbyempid(eid : number)
   {
-    this.router.navigate(['employee/retrieveassets/empid/',eid])
+    this.router.navigate(['/employee/retrieveassets/employee/',eid])
   }
   viewemployeehistbyid(eid : number)
-  {alert(eid)
-    this.router.navigate(['employee/assetassign/history/',eid])
+  {
+    this.router.navigate(['/employee/assetassign/history/',eid])
   }
 }

@@ -29,11 +29,13 @@ export class RetrieveAssetsComponent {
   assetlist  : Assets[] = []
   matched    : any
   assets     : Assets = new Assets()
+
   ngOnInit(): void {
     this.emp_id= this.route.snapshot.params['id'];
     this.assignassetserv.getAssignedAssetsByEmpId(this.emp_id).subscribe({
                                                         next:(data)=>
                                                         {
+                                                          console.log('DATA is ',data)
                                                           this.assignedassets=data
                                                           this.employee =this.assignedassets[0].employee
                                                       
@@ -48,14 +50,20 @@ export class RetrieveAssetsComponent {
                                                           }
                                                           
                                                         },error:(e)=>{
-                                                                sessionStorage.setItem('reserr','No Assets Are assigned')
-                                                                this.router.navigate(['viewemployee'])
+                                                                sessionStorage.setItem('reserr',e.error.errorMessage)
+                                                                this.router.navigate(['/employee/viewemployees'])
                                                               }
                                                         })
   }
 
   onSubmit()
-  {
-    this.empserv.retrieveAllAssetsByEmpId(this.employee.emp_id).subscribe(data=>alert(data))
+  {     
+    this.empserv.retrieveAllAssetsByEmpId(this.employee).subscribe(
+      {
+        next:(data) => {
+            sessionStorage.setItem('response','')
+            this.router.navigate(['/employee/viewemployees'])
+        },
+      })
   }
 }

@@ -23,7 +23,7 @@
             <label for="comp_name">Company:</label>
                 <input type="text" class="form-control mb-3" id="comp_name" [(ngModel)]="company.comp_name" placeholder="Enter Company's Name" name="comp_name" required>
         </div>
-            <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;<button type="reset" class="btn btn-primary">Cancel</button>
+            <button type="submit" [disabled]="isDisabled" class="btn btn-primary">Submit</button> &nbsp;&nbsp;<button type="reset" class="btn btn-primary">Cancel</button>
         </div>
       </div>
      </form>

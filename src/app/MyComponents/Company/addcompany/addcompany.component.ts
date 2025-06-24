@@ -12,9 +12,14 @@ import { CompanyService } from 'src/app/Services/company.service';
 export class AddcompanyComponent {
 
   company : Company = new Company();
+  isDisabled : boolean = false
+
   constructor(private compserv : CompanyService,private router : Router) { } 
 
   onSubmit() {
+    setTimeout(() => {
+        this.isDisabled = true
+    }, 2000);
      this.compserv.saveCompany(this.company).subscribe({
                                                 complete:()=>{
                                                   sessionStorage.setItem('response',this.company.comp_name+' is saved successfully')

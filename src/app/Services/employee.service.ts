@@ -30,24 +30,24 @@ export class EmployeeService {
     return this.http.get<Employee>(`${this.base_url}editempassignassetbyempid/${eid}`)
                                   .pipe(catchError(this.handleError));
   }
-  public updateEmployee(emp : Employee):Observable<Employee[]>
+  public updateEmployee(emp : Employee): Observable<Employee[]>
   {
     return this.http.put<Employee[]>(`${this.base_url}`,emp);
   }
 
-  public getAssignedAssets():Observable<AssignedAssets[]>
+  public getAssignedAssets(): Observable<AssignedAssets[]>
   {
     return this.http.get<AssignedAssets[]>(`${this.base_url}viewassignedassets`)
   }
 
-  public getAssetAssignHistByEmpId(eid : any):Observable<AssetAssignHistory[]>
+  public getAssetAssignHistByEmpId(eid : any): Observable<AssetAssignHistory[]>
   {
     return this.http.get<AssetAssignHistory[]>(`${this.base_url}viewemphistbyempid/${eid}`); 
   }
 
-  public retrieveAllAssetsByEmpId(empid : number)
+  public retrieveAllAssetsByEmpId(emp : Employee)
   {
-    return this.http.delete(`${this.base_url}delete/${empid}`)
+    return this.http.post(`${this.base_url}delete/`,emp)
   }
   
   public getassignedassetsbyempid(eid : number)
@@ -57,8 +57,7 @@ export class EmployeeService {
   
 
   private handleError(error: HttpErrorResponse): Observable<never> {
-    if (error.status === 404) {
-       
+    if (error.status === 404) {       
       console.log(error.error.errorMessage);
     } else {
       console.log('An unexpected error occurred!');

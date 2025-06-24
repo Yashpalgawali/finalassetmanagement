@@ -31,7 +31,7 @@ export class AddemployeeComponent {
   clist     : Company [] = []
   deptlist  : Department[] = []
   assetlist : Assets [] = []
-  
+  isDisabled : boolean = false
   employee  : Employee = new Employee()
 
   ngOnInit(): void {
@@ -62,14 +62,17 @@ export class AddemployeeComponent {
   }
   onSubmit()
   {
+    setTimeout(() => {
+      this.isDisabled = true
+    }, 2000);
     this.empserv.saveEmployee(this.employee).subscribe({
                               complete:()=>{
-                                alert('Employee '+this.employee.emp_name+' is saved')
-                                this.router.navigate(['viewemployee'])
+                                sessionStorage.setItem('response','Assets are assigned to Employee '+this.employee.emp_name+' successfully')
+                                this.router.navigate(['/employee/viewemployees'])
                               },
                               error :(e)=>{
-                                alert('Employee '+this.employee.emp_name+' employee not saved')
-                                this.router.navigate(['viewemployee'])
+                                sessionStorage.setItem('reserr','Assets are NOT assigned to Employee '+this.employee.emp_name)
+                                this.router.navigate(['/employee/viewemployees'])
                               }
     })
   }
