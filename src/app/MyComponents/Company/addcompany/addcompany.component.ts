@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Company } from 'src/Models/Company';
@@ -17,14 +17,21 @@ export class AddcompanyComponent {
   constructor(private compserv : CompanyService,private router : Router) { } 
 
   onSubmit() {
-    setTimeout(() => {
-        this.isDisabled = true
-    }, 2000);
+      setTimeout(() => {
+          this.isDisabled = true
+      }, 2000);
      this.compserv.saveCompany(this.company).subscribe({
-                                                complete:()=>{
-                                                  sessionStorage.setItem('response',this.company.comp_name+' is saved successfully')
-                                                  this.router.navigate(['company/viewcompanies']);                                             
+                                                next:(data)=> {
+                                                  if('statusCode' in data){
+                                                     sessionStorage.setItem('response',data.statusMsg)
+                                                     this.router.navigate(['company/viewcompanies']);
+                                                   }
+                                                   else {
+                                                        sessionStorage.setItem('reserr',data.errorMessage)
+                                                        this.router.navigate(['company/viewcompanies']);      
+                                                   }                                                                                                                                              
                                                 }
+                                                
                                               });
    }
    

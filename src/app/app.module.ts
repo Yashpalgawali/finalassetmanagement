@@ -17,7 +17,8 @@ import { ForgotPasswordComponent } from './MyComponents/ForgotPassword/forgot-pa
 import { ConfirmOtpForgotPassComponent } from './MyComponents/confirm-otp-forgot-pass/confirm-otp-forgot-pass.component';
 import { UpdatePasswordComponent } from './MyComponents/update-password/update-password.component';
 import { ChangePasswordComponent } from './MyComponents/change-password/change-password.component';
- 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { ChangePasswordComponent } from './MyComponents/change-password/change-p
     DataTablesModule,
     NgMultiSelectDropDownModule,
     NgSelectModule,
+  
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName : 'X-XSRF-TOKEN'

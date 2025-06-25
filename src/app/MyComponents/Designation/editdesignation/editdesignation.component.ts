@@ -13,6 +13,8 @@ export class EditdesignationComponent implements OnInit{
   constructor(private desigserv:DesignationService,private route :ActivatedRoute,private router : Router) {}
   did : any;  
   designation : Designation = new Designation();
+  isDisabled : boolean =false
+
   ngOnInit(): void {
     this.did=this.route.snapshot.params['id'];
     this.desigserv.getDesignationById(this.did).subscribe(data=>this.designation=data);
@@ -20,13 +22,17 @@ export class EditdesignationComponent implements OnInit{
 
   onSubmit()
   {
-    this.desigserv.updateDesignation(this.designation).subscribe({complete:()=> {
-          sessionStorage.setItem('response',this.designation.desig_name+' is updated successfully')
-          this.router.navigate(['designation/viewdesignations'])
-        },
-        error:(e)=>{
-          sessionStorage.setItem('reserr',this.designation.desig_name+' is not updated')
-          this.router.navigate(['designation/viewdesignations'])
+    this.isDisabled =true
+    this.desigserv.updateDesignation(this.designation).subscribe({next:(data)=> {
+      if('statusCode' in data)
+          {
+            sessionStorage.setItem('response',data.statusMsg)
+            this.router.navigate(['designation/viewdesignations'])
+          }
+          else {
+            sessionStorage.setItem('reserr',data.errorMessage)
+            this.router.navigate(['designation/viewdesignations'])
+          }
         }
    });
   }

@@ -1,0 +1,25 @@
+.cdk-global-overlay-wrapper{
+    background-color: rgb(158, 216, 158);
+    color: rgb(65, 136, 65);
+}
+
+.snackbar-success , .snackbar-error {
+    --mat-snack-bar-button-color : white;
+
+    .mat-mdc-snack-bar-action {
+        background-color: rgba(white , 0.2);
+
+    }
+}
+
+.snackbar-success {
+    --mdc-snackbar-container-color :  rgb(158, 216, 158);
+    
+}
+
+
+.snackbar-error {
+
+     --mdc-snackbar-container-color :  rgb(177, 90, 90);
+   
+}

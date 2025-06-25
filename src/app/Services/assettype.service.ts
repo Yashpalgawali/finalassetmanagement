@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { GlobalComponents } from '../GlobalComponents';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AssetType } from 'src/Models/AssetType';
-import { Observable, ObservableNotification } from 'rxjs';
+import { catchError, Observable, ObservableNotification, of } from 'rxjs';
+import { ResponseDto } from 'src/Models/ResponseDto';
+import { ErrorResponseDto } from 'src/Models/ErrorResponseDto';
+import { error } from 'jquery';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +17,19 @@ export class AssettypeService {
   
   constructor(private http : HttpClient) { }
 
-  public saveAssetType(assettype : AssetType):Observable<AssetType>
+  public saveAssetType(assettype : AssetType):Observable<ResponseDto | ErrorResponseDto>
   {
-    return this.http.post<AssetType>(`${this.base_url}`,assettype)
+    return this.http.post<ResponseDto>(`${this.base_url}`,assettype).pipe(
+      catchError((error : HttpErrorResponse) => {
+        const errorResponse : ErrorResponseDto = {
+              apiPath: error.error.apiPath,
+              errorCode: error.status,
+              errorMessage: error.error.errorMessage || error.message,
+              errorTime: error.error.errorTime || new Date()
+        };
+        return of(errorResponse)
+      })
+    )
   }
 
   public getAllAssetTypes():Observable<AssetType[]>
@@ -24,12 +37,32 @@ export class AssettypeService {
     return this.http.get<AssetType[]>(`${this.base_url}`);
   }
 
-  public getAssetTypeById(aid : any):Observable<AssetType>
+  public getAssetTypeById(aid : any):Observable<AssetType | ErrorResponseDto>
   {
-    return  this.http.get<AssetType>(`${this.base_url}${aid}`)
+    return  this.http.get<AssetType>(`${this.base_url}${aid}`).pipe(
+      catchError((error : HttpErrorResponse) => {
+        const errorResponse : ErrorResponseDto = {
+            apiPath : error.error.apiPath,
+            errorCode: error.status,
+            errorMessage: error.error.errorMessage || error.message,
+            errorTime: error.error.errorTime || new Date()
+        };
+        return of(errorResponse)
+      })
+    );
   }
-  public updateAssetType(assettype : AssetType):Observable<AssetType[]>
+  public updateAssetType(assettype : AssetType):Observable<ResponseDto | ErrorResponseDto>
   {
-    return this.http.put<AssetType[]>(`${this.base_url}`,assettype);
+    return this.http.put<ResponseDto>(`${this.base_url}`,assettype).pipe(
+      catchError((error : HttpErrorResponse) => {
+        const errorResponse : ErrorResponseDto = {
+            apiPath : error.error.apiPath,
+            errorCode: error.status,
+            errorMessage: error.error.errorMessage || error.message,
+            errorTime: error.error.errorTime || new Date()
+        };
+        return of(errorResponse)
+      })
+    );
   }
 }

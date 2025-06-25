@@ -22,19 +22,30 @@ export class EditassetComponent implements OnInit {
   ngOnInit(): void {
     this.aid = this.route.snapshot.params['id'];
    
-    this.assetserv.getAssetsById(this.aid).subscribe(data=>{
-                                                    this.asset=data 
-                                                    this.atypeserv.getAllAssetTypes().subscribe(data=>{
-                                                      this.atypelist=data
-                                                     for(let i=0;i<this.atypelist.length;i++)
-                                                     {
-                                                      if(this.asset.atype.type_id==this.atypelist[i].type_id)
-                                                      {
-                                                        this.selectedAssetType = this.atypelist[i]
-                                                      }
-                                                     }
-                                                    })
-                                                })
+    this.assetserv.getAssetsById(this.aid).subscribe({
+      next : (data) => {
+
+        if('errorCode' in data) {
+          sessionStorage.setItem('reserr',data.errorMessage)  
+          this.router.navigate(['asset/viewassets'])
+        
+        }
+        else {
+            this.asset=data
+            this.atypeserv.getAllAssetTypes().subscribe(response=>{
+              this.atypelist=response
+              for(let i=0;i<this.atypelist.length;i++)
+              {
+                if(this.asset.atype.type_id==this.atypelist[i].type_id)
+                {
+                  this.selectedAssetType = this.atypelist[i]
+                }
+              }
+        })
+        } 
+          
+      },
+    })
   }
 
   onDropdownChange(newValue : any) {
@@ -50,18 +61,19 @@ export class EditassetComponent implements OnInit {
     })
   }
 
-
   onSubmit()
   {
     this.asset.atype=this.selectedAssetType
     this.assetserv.updateAssets(this.asset).subscribe({
-      complete:()=>{
-        sessionStorage.setItem('response',this.asset.asset_name+' is updated successfully')
-        this.router.navigate(['asset/viewassets'])
-      },
-      error:(e) =>{
-        sessionStorage.setItem('reserr',this.asset.asset_name+' is not updated ')
-        this.router.navigate(['asset/viewassets'])
+      next:(data)=> {
+        if('statusCode' in data) {
+          sessionStorage.setItem('response',data.statusMsg)
+          this.router.navigate(['asset/viewassets'])
+        }
+        else {
+          sessionStorage.setItem('response',data.errorMessage)
+          this.router.navigate(['asset/viewassets'])
+        }
       }
     })
   }

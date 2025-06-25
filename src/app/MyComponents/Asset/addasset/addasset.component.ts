@@ -23,13 +23,15 @@ export class AddassetComponent implements OnInit {
   onSubmit()
   {
     this.assetserv.saveAsset(this.asset).subscribe({
-      complete:()=>{
-        sessionStorage.setItem('response',this.asset.asset_name+' Asset saved Successfully')
-        this.router.navigate(['asset/viewassets'])
-      },
-      error:(e)=>{
-        sessionStorage.setItem('reserr',this.asset.asset_name+' Asset is not saved')
-        this.router.navigate(['asset/viewassets'])
+      next:(data)=>{
+        if('statusCode' in data) {
+          sessionStorage.setItem('response',data.statusMsg)
+          this.router.navigate(['asset/viewassets'])
+        }
+        else {
+          sessionStorage.setItem('reserr',data.errorMessage)
+          this.router.navigate(['asset/viewassets'])
+        }
       }
     })
   }

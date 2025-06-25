@@ -34,7 +34,9 @@ export class RetrieveAssetsComponent {
     this.emp_id= this.route.snapshot.params['id'];
     this.assignassetserv.getAssignedAssetsByEmpId(this.emp_id).subscribe({
                                                         next:(data)=>
-                                                        {
+                                                        { 
+                                                          if(data.length != 0 ) {                                                            
+                                                          
                                                           console.log('DATA is ',data)
                                                           this.assignedassets=data
                                                           this.employee =this.assignedassets[0].employee
@@ -48,7 +50,11 @@ export class RetrieveAssetsComponent {
                                                               this.already_assigned = this.already_assigned +","+ this.assignedassets[index].asset.asset_name+"("+this.assignedassets[index].asset.model_number+")"
                                                             }
                                                           }
-                                                          
+                                                        }
+                                                        else {
+                                                            sessionStorage.setItem('reserr','No assets are assigned ')
+                                                                this.router.navigate(['/employee/viewemployees'])
+                                                        }
                                                         },error:(e)=>{
                                                                 sessionStorage.setItem('reserr',e.error.errorMessage)
                                                                 this.router.navigate(['/employee/viewemployees'])

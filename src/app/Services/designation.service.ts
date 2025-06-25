@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { GlobalComponents } from '../GlobalComponents';
 import { Designation } from 'src/Models/Designation';
+import { ResponseDto } from 'src/Models/ResponseDto';
+import { ErrorResponseDto } from 'src/Models/ErrorResponseDto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +16,19 @@ export class DesignationService {
   base_url = this.app_url+"designation/"
   constructor(private http : HttpClient) { }
 
-  public saveDesignation(desig : Designation):Observable<Designation>
+  public saveDesignation(desig : Designation):Observable<ResponseDto | ErrorResponseDto>
   {
-    return this.http.post<Designation>(`${this.base_url}`,desig);
+    return this.http.post<ResponseDto>(`${this.base_url}`,desig).pipe(
+     catchError((error: HttpErrorResponse) => {
+      const errorResponse: ErrorResponseDto = {
+        apiPath: error.error.apiPath,
+        errorCode: error.status,
+        errorMessage: error.error.errorMessage || error.message,
+        errorTime: error.error.errorTime || new Date()
+      };
+      return of(errorResponse);  // convert error to observable
+    })
+   );
   }
 
   public getAllDesignations():Observable<Designation[]>
@@ -28,8 +40,18 @@ export class DesignationService {
   {
     return this.http.get<Designation>(`${this.base_url}${did}`);
   }
-  public updateDesignation(desig : Designation):Observable<Designation[]>
+  public updateDesignation(desig : Designation):Observable<ResponseDto | ErrorResponseDto>
   {
-    return this.http.put<Designation[]>(`${this.base_url}`,desig);
+    return this.http.put<ResponseDto>(`${this.base_url}`,desig).pipe(
+     catchError((error: HttpErrorResponse) => {
+      const errorResponse: ErrorResponseDto = {
+        apiPath: error.error.apiPath,
+        errorCode: error.status,
+        errorMessage: error.error.errorMessage || error.message,
+        errorTime: error.error.errorTime || new Date()
+      };
+      return of(errorResponse);  // convert error to observable
+    })
+   );
   }
 }
