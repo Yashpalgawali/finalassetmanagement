@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { GlobalComponents } from '../GlobalComponents';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Employee } from 'src/Models/Employee';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { AssignedAssets } from 'src/Models/AssignedAssets';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
+import { ErrorResponseDto } from 'src/Models/ErrorResponseDto';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +26,19 @@ export class EmployeeService {
     return this.http.get<Employee[]>(`${this.base_url}`); 
   }
 
-  public getEmployeeById(eid : any):Observable<Employee>
+  public getEmployeeById(eid : any):Observable<Employee | ErrorResponseDto>
   {
-    return this.http.get<Employee>(`${this.base_url}editempassignassetbyempid/${eid}`)
-                                  .pipe(catchError(this.handleError));
+    return this.http.get<Employee>(`${this.base_url}editempassignassetbyempid/${eid}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        const errorResponse: ErrorResponseDto = {
+          apiPath: error.error.apiPath,
+          errorCode: error.status,
+          errorMessage: error.error.errorMessage || error.message,
+          errorTime: error.error.errorTime || new Date()
+        };
+        return of(errorResponse);  // convert error to observable
+      })
+    );
   }
   public updateEmployee(emp : Employee): Observable<Employee[]>
   {

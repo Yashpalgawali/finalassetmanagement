@@ -36,9 +36,19 @@ export class DesignationService {
     return this.http.get<Designation[]>(`${this.base_url}`);
   }
 
-  public getDesignationById(did : any):Observable<Designation>
+  public getDesignationById(did : any):Observable<Designation | ErrorResponseDto>
   {
-    return this.http.get<Designation>(`${this.base_url}${did}`);
+    return this.http.get<Designation>(`${this.base_url}${did}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        const errorResponse: ErrorResponseDto = {
+          apiPath: error.error.apiPath,
+          errorCode: error.status,
+          errorMessage: error.error.errorMessage || error.message,
+          errorTime: error.error.errorTime || new Date()
+        };
+        return of(errorResponse);  // convert error to observable
+      })
+    );
   }
   public updateDesignation(desig : Designation):Observable<ResponseDto | ErrorResponseDto>
   {

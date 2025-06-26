@@ -47,7 +47,11 @@ export class EditemployeeComponent {
     
     this.empserv.getEmployeeById(this.emp_id).subscribe({
       next:(data)=> {
-        
+       if('errorCode' in data) {
+            sessionStorage.setItem('reserr',data.errorMessage)
+            this.router.navigate(['employee/viewemployees'])
+       }
+       else { 
         this.employee = data
         
         this.selectedCompany = this.employee.department.company
@@ -94,6 +98,7 @@ export class EditemployeeComponent {
                                                     })
                                                   }
                                               })
+                                            }
       },
       error:(e) => {
         
