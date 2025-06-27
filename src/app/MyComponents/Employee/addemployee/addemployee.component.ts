@@ -62,13 +62,19 @@ export class AddemployeeComponent {
   }
   onSubmit()
   {
-    setTimeout(() => {
-      this.isDisabled = true
-    }, 2000);
+    
+    this.isDisabled = true
+    
     this.empserv.saveEmployee(this.employee).subscribe({
-                              complete:()=>{
-                                sessionStorage.setItem('response','Assets are assigned to Employee '+this.employee.emp_name+' successfully')
-                                this.router.navigate(['/employee/viewemployees'])
+                              next:(data)=>{
+                                if('statusCode' in data) {
+                                  sessionStorage.setItem('response','Assets are assigned to Employee '+this.employee.emp_name+' successfully')
+                                  this.router.navigate(['/employee/viewemployees'])
+                                }
+                                else {
+                                  sessionStorage.setItem('response','Assets are assigned to Employee '+this.employee.emp_name+' successfully')
+                                  this.router.navigate(['/employee/viewemployees'])
+                                }
                               },
                               error :(e)=>{
                                 sessionStorage.setItem('reserr','Assets are NOT assigned to Employee '+this.employee.emp_name)

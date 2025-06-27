@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { GlobalComponents } from '../GlobalComponents';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Employee } from 'src/Models/Employee';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { AssignedAssets } from 'src/Models/AssignedAssets';
 import { AssetAssignHistory } from 'src/Models/AssetAssignHistory';
+import { ResponseDto } from 'src/Models/ResponseDto';
+import { ErrorResponseDto } from 'src/Models/ErrorResponseDto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +15,22 @@ export class EmployeeService {
 
   app_url = GlobalComponents.base_url;
   base_url = this.app_url+"employee/"
+  
   constructor(private http : HttpClient) { }
 
-  public saveEmployee(emp : Employee):Observable<Employee>
+  public saveEmployee(emp : Employee):Observable<ResponseDto | ErrorResponseDto>
   {
-    return this.http.post<Employee>(`${this.base_url}`,emp);
+    return this.http.post<ResponseDto>(`${this.base_url}`,emp).pipe(
+      catchError((error : HttpErrorResponse) => {
+        const errorResponse: ErrorResponseDto = {
+                apiPath: error.error.apiPath,
+                errorCode: error.status,
+                errorMessage: error.error.errorMessage || error.message,
+                errorTime: error.error.errorTime || new Date()
+              };
+              return of(errorResponse);  // convert error to observable
+      })
+    );
   }
 
   public getAllEmployees():Observable<Employee[]>
@@ -30,9 +43,19 @@ export class EmployeeService {
     return this.http.get<Employee>(`${this.base_url}editempassignassetbyempid/${eid}`)
                                   .pipe(catchError(this.handleError));
   }
-  public updateEmployee(emp : Employee): Observable<Employee[]>
+  public updateEmployee(emp : Employee): Observable<ResponseDto | ErrorResponseDto>
   {
-    return this.http.put<Employee[]>(`${this.base_url}`,emp);
+    return this.http.put<ResponseDto>(`${this.base_url}`,emp).pipe(
+      catchError((error : HttpErrorResponse) => {
+        const errorResponse: ErrorResponseDto = {
+                apiPath: error.error.apiPath,
+                errorCode: error.status,
+                errorMessage: error.error.errorMessage || error.message,
+                errorTime: error.error.errorTime || new Date()
+              };
+              return of(errorResponse);  // convert error to observable
+      })
+    );
   }
 
   public getAssignedAssets(): Observable<AssignedAssets[]>

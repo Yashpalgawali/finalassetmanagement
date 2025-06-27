@@ -42,8 +42,7 @@ export class EditassetComponent implements OnInit {
                 }
               }
         })
-        } 
-          
+        }          
       },
     })
   }
@@ -71,7 +70,7 @@ export class EditassetComponent implements OnInit {
           this.router.navigate(['asset/viewassets'])
         }
         else {
-          sessionStorage.setItem('response',data.errorMessage)
+          sessionStorage.setItem('reserr',data.errorMessage)
           this.router.navigate(['asset/viewassets'])
         }
       }
