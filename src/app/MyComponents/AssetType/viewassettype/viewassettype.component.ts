@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AssettypeService } from 'src/app/Services/assettype.service';
@@ -8,7 +8,7 @@ import { AssettypeService } from 'src/app/Services/assettype.service';
   templateUrl: './viewassettype.component.html',
   styleUrls: ['./viewassettype.component.css']
 })
-export class ViewassettypeComponent {
+export class ViewassettypeComponent implements OnInit,AfterViewInit {
 response : any;
 dtOptions : DataTables.Settings={}
 dtTrigger : Subject<any> = new Subject<any>();
@@ -44,7 +44,7 @@ ngOnInit()
 
 getAssetTypeById(atid : any)
 {
-  this.router.navigate(['assettype/edit',atid])
+  this.router.navigate(['assettype/edit/',atid])
 }
 ngAfterViewInit(): void {
   //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.

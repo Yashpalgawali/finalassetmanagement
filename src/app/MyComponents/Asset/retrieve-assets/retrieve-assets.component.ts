@@ -35,6 +35,7 @@ export class RetrieveAssetsComponent {
     this.assignassetserv.getAssignedAssetsByEmpId(this.emp_id).subscribe({
                                                         next:(data)=>
                                                         { 
+                                                         
                                                           if(data.length != 0 ) {                                                            
                                                           
                                                           console.log('DATA is ',data)
@@ -67,8 +68,15 @@ export class RetrieveAssetsComponent {
     this.empserv.retrieveAllAssetsByEmpId(this.employee).subscribe(
       {
         next:(data) => {
-            sessionStorage.setItem('response','')
-            this.router.navigate(['/employee/viewemployees'])
+          console.log(data)
+            if('statusCode' in data) {
+              sessionStorage.setItem('response',data.statusMsg)
+              this.router.navigate(['/employee/viewemployees'])  
+            }
+            else {
+              sessionStorage.setItem('reserr',data.errorMessage)
+              this.router.navigate(['/employee/viewemployees'])
+            }
         },
       })
   }

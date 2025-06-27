@@ -77,9 +77,19 @@ export class EmployeeService {
     return this.http.get<AssetAssignHistory[]>(`${this.base_url}viewemphistbyempid/${eid}`); 
   }
 
-  public retrieveAllAssetsByEmpId(emp : Employee)
+  public retrieveAllAssetsByEmpId(emp : Employee) : Observable<ResponseDto | ErrorResponseDto>
   {
-    return this.http.post(`${this.base_url}delete/`,emp)
+    return this.http.post<ResponseDto>(`${this.base_url}delete/`,emp).pipe(
+      catchError((error : HttpErrorResponse)=>{
+        const  errorResponse : ErrorResponseDto = {
+                apiPath: error.error.apiPath,
+                errorCode: error.status,
+                errorMessage: error.error.errorMessage || error.message,
+                errorTime: error.error.errorTime || new Date()
+        }
+        return of(errorResponse)
+      })
+    )
   }
   
   public getassignedassetsbyempid(eid : number)

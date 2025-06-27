@@ -53,9 +53,9 @@ export class EditemployeeComponent {
        }
        else { 
         this.employee = data
-        
+         console.log('FOUND Employee ',this.employee)
         this.selectedCompany = this.employee.department.company
-       
+        this.selectedDepartment = this.employee.department
         this.assigned_assets = this.employee.assigned_assets
         
         this.desigserv.getAllDesignations().subscribe({
@@ -67,19 +67,13 @@ export class EditemployeeComponent {
                     this.selectedDesignation=desig
                 }
               )
-              // for(let i=0;i<this.desiglist.length;i++)
-              // {
-              //   if(this.desiglist[i].desig_id==this.employee.designation.desig_id)
-              //   {
-              //     this.selectedDesignation=this.desiglist[i]
-              //   }
-              // }
             }
         })
         
         this.compserv.getAllCompanies().subscribe({
           next:(data)=> {
              this.clist=data
+            
              this.clist.map(company => {
               if(company.comp_id==this.selectedCompany.comp_id) {
                 this.selectedCompany = company               
@@ -120,28 +114,51 @@ dropDownValueChange(newValue: any) {
   })
 }
 
-onSubmit() {
+ onSubmit() {
   this.isDisabled= true
+  setTimeout(() => {
+    this.isDisabled= false
+  }, 3000);
+  console.log('EMPloyee ',this.employee)
 
   this.employee.designation=this.selectedDesignation
   this.employee.department=this.selectedDepartment
-  
-  this.empserv.updateEmployee(this.employee).subscribe({
-                  complete:()=> {
-                    sessionStorage.setItem('response','Employee '+this.employee.emp_name+' is updated Successfully')
-                    this.router.navigate(['/employee/viewemployees'])
-                  },
-                  error:(e) => {
-                    sessionStorage.setItem('reserr','Employee '+this.employee.emp_name+' is not Updated')
-                    this.router.navigate(['/employee/viewemployees'])
-                  }
-  })
+   console.log('After Changing EMPloyee ',this.employee)
+
+  try{
+      this.empserv.updateEmployee(this.employee).subscribe({
+          next : (data) => {
+              if('statusCode' in data) {
+                sessionStorage.setItem('response',data.statusMsg)
+                this.router.navigate(['/employee/viewemployees'])
+              }
+              if('errorCode' in data) {
+                console.log(data.errorMessage)
+                alert('Not updated')
+                sessionStorage.setItem('reserr',data.errorMessage)
+                this.router.navigate(['/employee/viewemployees'])
+              }
+          }
+        })
+  }
+  catch(err) {
+
+  }
+  finally{
+      this.isDisabled = false;
+  }
 }
 
   getdeptbycompid(cid : Company)
   {
     this.deptserv.getDepartmentByCompId(cid.comp_id).subscribe({
-      next:(data)=> this.deptlist=data
+      next : (data) => {
+          this.deptlist = data
+      },
+      error:(error) => {
+          this.deptlist = []
+          alert('No departments found')
+      },
     })
   }
 }

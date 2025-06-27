@@ -27,15 +27,7 @@ export class AddassettypeComponent {
          }
       },
     })
-    // this.atypeserv.saveAssetType(this.assettype).subscribe({complete:()=>{
-    //   sessionStorage.setItem('response',this.assettype.type_name+' Asset Type is saved Successfully');
-    //   this.router.navigate(['assettype/viewassettypes'])
-    // },
-    // error:(e)=>{
-    //   sessionStorage.setItem('reserr','Asset Type is not saved');
-    //   this.router.navigate(['assettype/viewassettypes'])
-    // }
-    // })
+   
   }
 
   goToViewAssetTypes()
