@@ -17,7 +17,17 @@ export class EditdesignationComponent implements OnInit{
 
   ngOnInit(): void {
     this.did=this.route.snapshot.params['id'];
-    this.desigserv.getDesignationById(this.did).subscribe(data=>this.designation=data);
+    this.desigserv.getDesignationById(this.did).subscribe({
+      next : (data) => {
+        if('errorCode' in data) {
+          sessionStorage.setItem('reserr' , data.errorMessage)
+          this.router.navigate(['designation/viewdesignations'])
+        }
+        else {
+          this.designation = data
+        }
+      },
+    });
   }
 
   onSubmit()
